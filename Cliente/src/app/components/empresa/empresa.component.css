@@ -1,0 +1,33 @@
+.invalid {
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
+  }
+  .mapa {
+    margin: 0px auto;
+    position: relative;
+    width: 85%;
+    height: 500px;
+    overflow: hidden;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+  
+  .mapa iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Estilos adicionales para mejorar la apariencia del mapa */
+  .mapa iframe {
+    border-radius: 10px; /* Borde redondeado */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+  }
+  .container
+  {
+    width: 90%;
+  }
+
+

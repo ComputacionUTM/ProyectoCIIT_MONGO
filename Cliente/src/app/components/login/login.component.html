@@ -1,0 +1,56 @@
+<div class="bodyLogin conteiner">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l8 offset-l2 loginDiv">
+                <div class="row loginContainer">
+                    <div class="logito">
+                        <img src="../../../assets/imagenes/logo.png" alt="img-login">
+                    </div>
+                    <div class="col s12 m6 l6">
+                        <div class="col s11 offset-s1">
+                        </div>
+                    </div>
+                    <ul id="dropdown3" class="dropdown-content idioma-nav">
+                        <li (click)="setIdioma(1)"><a>
+                            <img class="imagen_icono" src="../../../assets/img/bandera.png" alt="ingles">
+                        </a></li>
+                        <li (click)="setIdioma(2)">
+                            <a>
+                                <img class="imagen_icono" src="../../../assets/img/mexico.png" alt="español">
+                            </a>
+                        </li>
+                    </ul>
+                    <li style="float: right; display: block;">
+                        <a class="dropdown-trigger" data-target="dropdown3">
+                            <i class="material-icons">flag</i>
+                        </a>
+                    </li>
+                    <div class="col s12 m5 l5 offset-l1 offset-m1">
+                        <div class="loginTitulo">
+                            <h5>{{"Iniciar Sesión" | translate}}</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 customInput">
+                                <i class="material-icons prefix">email</i>
+                                <input class="browser-default" type="email" [(ngModel)]="usuario.correo" name="email"
+                                    id="email" placeholder="correo" autocomplete="off">
+                            </div>
+                            <div class="col s12 customInput">
+                                <i class="material-icons prefix">vpn_key</i>
+                                <input class="browser-default" type="password" name="password" id="password"
+                                    [(ngModel)]="usuario.contrasena" placeholder="contraseña" autocomplete="off">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button (click)="logueo()" class="btn col l12 s12 m12 btnLogin ">{{"Loguear" | translate}}</button>
+                            <div class="col s12 m12 l12 divOlvide">
+                                <a href="/olvideContrasena">{{"Olvidé mi contraseña!" | translate}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

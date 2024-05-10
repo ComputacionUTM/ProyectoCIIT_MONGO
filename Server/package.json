@@ -1,0 +1,40 @@
+{
+  "name": "proyectociit",
+  "version": "1.0.0",
+  "description": "Desarrollo de un sitio web del ciit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/build/index.js",
+    "correo": "nodemon src/build/app.js",
+    "imagen": "nodemon src/build/imagen.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "emailjs": "^2.2.0",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.6.1",
+    "mongoose": "^8.3.4",
+    "morgan": "^1.10.0",
+    "save-dev": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.16",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/morgan": "^1.9.9",
+    "@types/swagger-ui-express": "^4.1.2",
+    "nodemon": "^3.0.1",
+    "swagger-express": "^1.0.1",
+    "swagger-ui-express": "^4.1.6",
+    "typescript": "^5.2.2"
+  }
+}

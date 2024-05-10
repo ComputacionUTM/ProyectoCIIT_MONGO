@@ -1,0 +1,195 @@
+<h1>{{"Lista de empresas"| translate}}</h1><br><br>
+<div class="container">
+
+  <a href="javascript: void(0);">
+    <i class="material-icons" (click)="crearEmpresa()">add</i>
+  </a>
+  <table class="default" *ngIf="empresas != undefined">
+    <tr *ngFor="let empresa of empresas |
+    paginate: {
+    itemsPerPage: pageSize,
+    currentPage: p
+    };let i=index">
+      <td *ngIf="empresa.fotito == 1"><img width="64" src="{{liga}}/empresas/{{empresa.id_empresa}}.jpg"
+          alt="{{liga}}/empresas/1.jpg"></td>
+      <td *ngIf="empresa.fotito == 0"><img width="64" src="{{liga}}/empresas/00.jpg" alt="{{liga}}/empresas/1.jpg"></td>
+      <td>{{empresa.nombre_empresa}}</td>
+      <td>{{empresa.direccion}}</td>
+      <td *ngIf="idioma=='1'"> {{empresa.descripcion}}</td>
+      <td *ngIf="idioma=='2'"> {{empresa.description}}</td>
+      <td><a href="javascript: void(0);" class="space" (click)="actualizarEmpresa(empresa.id_empresa)">
+          <i class="material-icons">edit</i></a></td>
+      <td><a href="javascript: void(0);" class="material-icons" (click)="eliminarEmpresa(empresa.id_empresa)">
+          <i class="material-icons">delete_forever</i></a></td>
+      <td><a href="javascript: void(0);" class="space" (click)="mostrarImagen(empresa.id_empresa)">
+          <i class="material-icons">image </i></a></td>
+    </tr>
+
+  </table>
+  <div class="row center-align">
+    <pagination-controls class="my-pagination" (pageChange)="p = ($event)" previousLabel="{{'Anterior'|translate}}"
+      nextLabel="{{'Siguiente'|translate}}">
+    </pagination-controls>
+  </div>
+</div>
+
+<div class="mapa">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3765.0889183366476!2d-99.11034012478844!3d19.32194748193391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDE5JzE5LjAiTiA5OcKwMDYnMjguMCJX!5e0!3m2!1ses-419!2smx!4v1714875470210!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+<div id="modalModificarEmpresa" class="modal">
+  <div class="modal-content">
+    <div class="row" style="margin-bottom: 0px !important;">
+      <div class="col s12">
+        <h5 class="center">{{"Actualizar empresa"| translate}}</h5>
+      </div>
+    </div>
+    <div style="border: .5px solid #78909c; padding: 10px;">
+      <div class="row">
+        <div class="input-field col s12">
+          <label class="active" for="nombre_empresa"> {{"Nombre"| translate}} </label>
+          <input id="nombre_empresa" [(ngModel)]="empresa.nombre_empresa" type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+          <label class="active">{{"Dirección"| translate}} </label>
+          <input [(ngModel)]="empresa.direccion" type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+          <label class="active">{{"Fecha"| translate}} </label>
+          <input [(ngModel)]="empresa.fecha" type="text" id="fechaEmpresa" #fechaD
+            (change)="actualizarFecha(fechaD.value)" class="datepicker">
+        </div>
+        <div class="input-field col s6">
+          <label class="active">Teléfono </label>
+          <input [(ngModel)]="empresa.telefono" type="text" class="validate"
+            [ngClass]="{'invalid': !validateTelefono()}">
+        </div>
+        <div class="input-field col s6">
+          <label class="active">RFC </label>
+          <input [(ngModel)]="empresa.rfc" type="text" class="validate" [ngClass]="{'invalid': !validateRFC()}">
+        </div>
+
+        <div class="input-field col s12">
+          <label class="active">Descripción</label>
+          <input [(ngModel)]="empresa.descripcion" type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+          <label class="active">Description</label>
+          <input [(ngModel)]="empresa.description" type="text" class="validate">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6 center">
+          <button type="submit" class="waves-effect btn-large brown lighten-3 modal-close black-text"
+            [disabled]="!validateRFC()" (click)="guardarActualizarEmpresa()">
+            {{ 'Enviar' | translate }}
+          </button>
+        </div>
+        <div class="col s6 center">
+          <a class="modal-action modal-close waves-effect btn-large brown lighten-3
+  black-text">{{'Cancelar'|translate}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="Imagen" class="modal">
+  <div class="modal-content">
+    <div class="row" style="margin-bottom: 0px !important;">
+      <div class="col s12">
+        <h5 class="center">{{"Imagen"| translate}}</h5>
+      </div>
+    </div>
+    <div style="border: .5px solid #78909c; padding: 10px;">
+      <div class="row">
+        <div class="input-field col s12">
+          <!--
+                  <div align="center">
+            <img *ngIf="usuario.fotito == 1" width="64" src="{{liga}}/usuarios/{{usuario.id}}.jpg" alt="{{liga}}/usuarios/1.jpg">
+            <img *ngIf="usuario.fotito == 0" width="64" src="{{liga}}/usuarios/0.jpg" alt="{{liga}}/usuarios/1.jpg">
+          </div> 
+        </div>
+      -->
+          <div class="input-field col s6">
+            <br><br>
+            <input type="file" (change)="cargandoImagen($event.target)" multiple>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6 center">
+            <button class="waves-effect btn-large brown lighten-3 modal-close black-text"
+              (click)="guardandoImagen()">{{'Enviar'|translate}}</button>
+          </div>
+          <div class="col s6 center">
+            <button class="modal-action modal-close waves-effect btn-large brown lighten-3 black-text">{{ 'Cancelar' |
+              translate }}</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modalCrearEmpresa" class="modal">
+  <div class="modal-content">
+    <div class="row" style="margin-bottom: 0px !important;">
+      <div class="col s12">
+        <h5 class="center">{{'Crear compañía'|translate}}</h5>
+      </div>
+    </div>
+    <div style="border: .5px solid #78909c; padding: 10px;">
+      <div class="row">
+        <div class="input-field col s12">
+          <label class="active" for="nombre_empresa">{{"Nombre"| translate}} </label>
+
+          <input id="nombre_empresa" [(ngModel)]="empresaNueva.nombre_empresa" type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+          <label class="active">{{"Dirección"| translate}}</label>
+          <input [(ngModel)]="empresaNueva.direccion" type="text" class="validate">
+        </div>
+        <div class="input-field col s6">
+          <label class="active">Teléfono </label>
+          <input [(ngModel)]="empresaNueva.telefono" type="text" class="validate"
+            [ngClass]="{'invalid': !validateNewTelefono()}">
+        </div>
+        <div class="input-field col s12">
+          <label class="active">{{"Fecha"| translate}} </label>
+          <input [(ngModel)]="empresaNueva.fecha" type="text" id="fechaEmpresa" #fechaA
+            (change)="nuevaFecha(fechaA.value)" class="datepicker">
+        </div>
+        <div class="input-field col s6">
+          <label class="active">RFC </label>
+          <input [(ngModel)]="empresaNueva.rfc" type="text" class="validate" [ngClass]="{'invalid': !validateNewRFC()}">
+        </div>
+      </div>
+      <div class="input-field col s12">
+        <label class="active">Descripción</label>
+        <input [(ngModel)]="empresaNueva.descripcion" type="text" class="validate">
+      </div>
+      <div class="input-field col s12">
+        <label class="active">Description</label>
+        <input [(ngModel)]="empresaNueva.description" type="text" class="validate">
+      </div>
+      <div class="input-field col s12">
+        <label class="active">Imagen</label>
+        <input type="file" (change)="cargandoImagen($event.target)" multiple>
+      </div>
+      <div class="row">
+        <div class="col s6 center">
+          <button type="submit" class="waves-effect btn-large brown lighten-3 modal-close black-text"
+            [disabled]="!validateNewRFC() || !validateNewTelefono()" (click)="guardarNuevaEmpresa()">
+            {{ 'Enviar' | translate }}
+          </button>
+        </div>
+        <div class="col s6 center">
+          <a
+            class="modal-action modal-close waves-effect btn-large brown lighten-3 black-text">{{'Cancelar'|translate}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

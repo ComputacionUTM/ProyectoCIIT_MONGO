@@ -1,0 +1,51 @@
+.page-footer {
+    background-color: #333; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+    padding: 20px 0; /* Espacio interno */
+}
+
+.letras h5 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 22px;
+}
+
+.letras p {
+    font-family: 'Verdana', sans-serif;
+    font-size: 15px;
+}
+
+.ubi {
+    margin-top: 20px; /* Espacio entre el contenido y el mapa */
+}
+
+.redes-sociales h5 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 24px;
+}
+
+.redes-sociales ul {
+    list-style-type: none; /* Quita los puntos de la lista */
+    padding: 0;
+}
+
+.redes-sociales ul li {
+    margin-bottom: 20px; /* Espacio entre los elementos de la lista */
+}
+
+.redes-sociales ul li a {
+    color: #fff; /* Texto blanco */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.redes-sociales ul li a img {
+    width: 20px; /* Tamaño de las imágenes */
+    margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+#imagenes{
+    width: 50px;
+    height: 50px;
+    padding: 2%;
+}

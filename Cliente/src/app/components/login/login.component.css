@@ -1,0 +1,105 @@
+.bodyLogin {
+    background-color:  #f2f2f2; 
+    padding: 50px 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginDiv {
+    background-color: #D4C19C; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 30px;
+}
+
+.loginTitulo h5 {
+    color: #333; /* Texto oscuro */
+    margin-bottom: 30px; /* Espacio entre el título y los campos de entrada */
+}
+
+.customInput {
+    margin-bottom: 20px; /* Espacio entre los campos de entrada */
+}
+
+input.browser-default:focus:not([readonly]) {
+    border-bottom: 1px solid #7420; 
+}
+
+.btnLogin {
+    background-color: #7E3B3B; 
+    color: white;
+    border-radius: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease; 
+}
+
+.btnLogin:hover {
+    background-color: #4e232e; 
+}
+
+.divOlvide a {
+    color: #A3856A; 
+}
+
+.divOlvide a:hover {
+    color: #504; 
+}
+
+.logito img {
+    float: left;
+    height: auto;
+    max-width: 50%;
+}
+
+
+.dropdown-content li>a,
+.dropdown-content li>span {
+color: #ffa400;
+font-family: 'Raleway-Medium', sans-serif;
+}
+.dropdown-content li>span,
+.dropdown-content.idioma-nav li>a,
+.dropdown-content li>span {
+color: #051c49;
+font-size: 14px;
+}
+.dropdown-content.idioma-nav {
+top: 80px !important;
+}
+.dropdown-content li:hover,
+.dropdown-content li.active {
+background-color: #051c49;
+color: #fff;
+}
+.dropdown-content li:hover a,
+.dropdown-content li.active a {
+color: #fff !important;
+}
+.dropdown-content {
+width: 50px !important;
+right: 0px;
+top: 0px;
+height: auto;
+}
+.dropdown-content .bold {
+font-family: 'Raleway-Bold', sans-serif;
+margin-right: 20px;
+width: 30px;
+text-align: right;
+display: block;
+color: #ffa400;
+}
+.select-dropdown li.disabled,
+.select-dropdown li.disabled>span,
+.select-dropdown li.optgroup {
+background: #051c49;
+color: #fff;
+}
+
+.imagen_icono {
+    width: 30px;
+    margin: 0 5px;
+}
