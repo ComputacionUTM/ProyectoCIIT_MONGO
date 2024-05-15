@@ -12,59 +12,55 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.empresasController = void 0;
-const database_1 = __importDefault(require("../database")); //acceso a la base de datos
-class EmpresasController {
+exports.empresaController = void 0;
+const database_1 = require("../database"); //acceso a la base de datos
+const empresa_model_1 = __importDefault(require("../models/empresa.model"));
+class EmpresaController {
+    constructor() {
+        (0, database_1.connectDB)();
+    }
+    //aqui va el crud
+    /*
+    nombre_empresa: string;
+    direccion: string;
+    rfc: string;
+    descripcion: string;
+    description: string;
+    */
     createEmpresa(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
-            const resp = yield database_1.default.query("INSERT INTO empresa set ?", [req.body]);
-            console.log(resp);
-            res.json(resp);
-            //res.json(null);
-        });
-    }
-    mostrar_todos_empresa(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log("YA ESTAMOS AQUI");
-            const respuesta = yield database_1.default.query('SELECT * FROM empresa order by id_empresa ASC');
-            res.json(respuesta);
-        });
-    }
-    actualizarEmpresa(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            //console.log(req.params);
-            console.log(id);
-            const resp = yield database_1.default.query("UPDATE empresa set ? WHERE id_empresa = ?", [req.body, id]);
-            res.json(resp);
-            //res.json(null);
-        });
-    }
-    eliminarEmpresa(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const resp = yield database_1.default.query(`DELETE FROM empresa WHERE id_empresa = ${id}`);
-            res.json(resp);
-        });
-    }
-    listOne(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const respuesta = yield database_1.default.query('SELECT * FROM empresa WHERE id_empresa = ?', [id]);
-            if (respuesta.length > 0) {
-                res.json(respuesta[0]);
-                return;
+            const { nombre_empresa, direccion, rfc, descripcion, description } = req.body;
+            try {
+                console.log("ENTRANDO...");
+                const nuevoEmpresa = new empresa_model_1.default({
+                    nombre_empresa,
+                    direccion,
+                    rfc,
+                    descripcion,
+                    description
+                });
+                console.log(nuevoEmpresa);
+                const empresaGuardado = yield nuevoEmpresa.save();
+                //const token = await createAccesToken({ id: usuarioGuardado._id });
+                //res.cookie('token', token);
+                res.json({
+                    id: empresaGuardado._id,
+                    nombre_empresa: empresaGuardado.nombre_empresa,
+                    direccion: empresaGuardado.direccion,
+                    rfc: empresaGuardado.rfc,
+                    descripcion: empresaGuardado.descripcion,
+                    description: empresaGuardado.description,
+                    createAt: empresaGuardado.createdAt,
+                    updateAt: empresaGuardado.updatedAt
+                });
+            }
+            catch (error) {
+                res.status(500).json({ message: error.message });
             }
         });
     }
-    actualizarFotito(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            console.log(id);
-            const resp = yield database_1.default.query("UPDATE empresa set fotito = 1 WHERE id_empresa = ?", [id]);
-            res.json(resp);
-        });
-    }
 }
-exports.empresasController = new EmpresasController();
+//function decodeJWT(token: any) {
+//    return (Buffer.from(token.split('.')[1], 'base64').toString());
+//}
+exports.empresaController = new EmpresaController();

@@ -1,38 +1,50 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import { connectDB } from '../database'; //acceso a la base de datos
-import Usuario from '../models/usuario.model'
+import Empresa from '../models/empresa.model'
 
 
-class UsuariosController {
+class EmpresaController {
 
     constructor() {
         connectDB();
     }
     //aqui va el crud
-    public async createUsuario(req: Request, res: Response): Promise<void> {
-        const { usuario, correo, password } = req.body;
+    /*
+    nombre_empresa: string;
+    direccion: string;
+    rfc: string;
+    descripcion: string;
+    description: string;
+    */
+    public async createEmpresa(req: Request, res: Response): Promise<void> {
+        const { nombre_empresa, direccion, rfc, descripcion,description} = req.body;
         try {
             console.log("ENTRANDO...");
 
-            const nuevoUsuario = new Usuario(
+            const nuevoEmpresa = new Empresa(
                 {
-                    usuario,
-                    correo,
-                    password
+                    nombre_empresa,
+                    direccion,
+                    rfc,
+                    descripcion,
+                    description
                 })
-            console.log(nuevoUsuario);
+            console.log(nuevoEmpresa);
 
-            const usuarioGuardado = await nuevoUsuario.save();
+            const empresaGuardado = await nuevoEmpresa.save();
             //const token = await createAccesToken({ id: usuarioGuardado._id });
             //res.cookie('token', token);
             res.json(
                 {
-                    id: usuarioGuardado._id,
-                    usuario: usuarioGuardado.usuario,
-                    correo: usuarioGuardado.correo,
-                    createAt: usuarioGuardado.createdAt,
-                    updateAt: usuarioGuardado.updatedAt
+                    id: empresaGuardado._id,
+                    nombre_empresa: empresaGuardado.nombre_empresa,
+                    direccion: empresaGuardado.direccion,
+                    rfc: empresaGuardado.rfc,
+                    descripcion:empresaGuardado.descripcion,
+                    description:empresaGuardado.description,
+                    createAt: empresaGuardado.createdAt,
+                    updateAt: empresaGuardado.updatedAt
                 })
         }
         catch (error: any) {
@@ -40,7 +52,7 @@ class UsuariosController {
         }
     }
 
-    public async mostrar_todos_usuarios(req: Request, res: Response): Promise<void> {
+    /*public async mostrar_todos_usuarios(req: Request, res: Response): Promise<void> {
         console.log("Mostrando todos usuario");
         const usuarios = await Usuario.find()
         res.json(usuarios)
@@ -61,7 +73,7 @@ class UsuariosController {
         console.log("Actualizando un usuario");
         const usuario = await Usuario.findByIdAndUpdate(req.params.id,req.body,{new:true})
         res.json(usuario)
-    }
+    }*/
     
 
 }
@@ -69,4 +81,4 @@ class UsuariosController {
 //    return (Buffer.from(token.split('.')[1], 'base64').toString());
 //}
 
-export const usuariosController = new UsuariosController();
+export const empresaController = new EmpresaController();

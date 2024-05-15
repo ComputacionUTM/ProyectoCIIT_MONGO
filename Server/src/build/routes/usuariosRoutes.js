@@ -9,7 +9,10 @@ class UsuariosRoutes {
     }
     config() {
         this.router.get('/', usuariosController_1.usuariosController.mostrar_todos_usuarios);
+        this.router.get('/obtenerUsuario/:id', usuariosController_1.usuariosController.listOne);
         this.router.post('/', usuariosController_1.usuariosController.createUsuario);
+        this.router.delete('/:id', usuariosController_1.usuariosController.borrarUsuario);
+        this.router.put('/:id', usuariosController_1.usuariosController.actualizarUsuario);
     }
 }
 const usuariosRoutes = new UsuariosRoutes();

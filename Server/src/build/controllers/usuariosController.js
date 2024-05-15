@@ -54,6 +54,27 @@ class UsuariosController {
             res.json(usuarios);
         });
     }
+    listOne(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Mostrando un usuario");
+            const usuario = yield usuario_model_1.default.findById(req.params.id);
+            res.json(usuario);
+        });
+    }
+    borrarUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Borrando un usuario");
+            const usuario = yield usuario_model_1.default.findByIdAndDelete(req.params.id);
+            res.json(usuario);
+        });
+    }
+    actualizarUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Actualizando un usuario");
+            const usuario = yield usuario_model_1.default.findByIdAndUpdate(req.params.id, req.body, { new: true });
+            res.json(usuario);
+        });
+    }
 }
 //function decodeJWT(token: any) {
 //    return (Buffer.from(token.split('.')[1], 'base64').toString());

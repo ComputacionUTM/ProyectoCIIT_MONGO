@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
+const EmpresasRoutes_1 = __importDefault(require("./routes/EmpresasRoutes"));
 //import swaggerDocument from './swagger.json';
 class Server {
     constructor() {
@@ -24,6 +25,7 @@ class Server {
     }
     routes() {
         this.app.use('/api/usuarios', usuariosRoutes_1.default);
+        this.app.use('/api/empresas', EmpresasRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
