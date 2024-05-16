@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { validarToken } from './middleware/auth'
 import EmpresasRoutes from './routes/EmpresasRoutes';
+import OfertalaboralRoutes from './routes/OfertalaboralRoutes';
 //import swaggerDocument from './swagger.json';
 class Server {
     public app: Application;
@@ -25,6 +26,7 @@ class Server {
     routes(): void {
         this.app.use('/api/usuarios', usuariosRoutes);
         this.app.use('/api/empresas', EmpresasRoutes);
+        this.app.use('/api/ofertasLaborales', OfertalaboralRoutes);
     }
     start(): void {
         this.app.listen(this.app.get('port'), () => {

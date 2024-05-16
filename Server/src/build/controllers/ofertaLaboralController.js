@@ -13,52 +13,58 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ofertaLaboralController = void 0;
-const database_1 = __importDefault(require("../database")); //acceso a la base de datos
+const database_1 = require("../database"); //acceso a la base de datos
+const ofertaLaboral_model_1 = __importDefault(require("../models/ofertaLaboral.model"));
 class OfertaLaboralController {
-    mostrar_todos_puestos(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const respuesta = yield database_1.default.query('SELECT * FROM ofertalaboral');
-            console.log(respuesta);
-            res.json(respuesta);
-        });
+    constructor() {
+        (0, database_1.connectDB)();
     }
-    listOne(req, res) {
+    //aqui va el crud
+    createOfertaLaboral(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const respuesta = yield database_1.default.query('SELECT * FROM ofertalaboral WHERE idOferta = ?', [id]);
-            if (respuesta.length > 0) {
-                res.json(respuesta[0]);
-                return;
+            try {
+                console.log("ENTRANDO...");
+                const nuevaOfertaLaboral = new ofertaLaboral_model_1.default({
+                    salario: req.body.salario,
+                    puesto: req.body.puesto,
+                    position: req.body.position,
+                    descripcion: req.body.descripcion,
+                    description: req.body.description,
+                    horario: req.body.horario
+                });
+                console.log(nuevaOfertaLaboral);
+                const ofertaLaboralGuardado = yield nuevaOfertaLaboral.save();
+                //const token = await createAccesToken({ id: usuarioGuardado._id });
+                //res.cookie('token', token);
+                res.json({
+                    id: ofertaLaboralGuardado._id,
+                    salario: ofertaLaboralGuardado.salario,
+                    puesto: ofertaLaboralGuardado.puesto,
+                    position: ofertaLaboralGuardado.position,
+                    descripcion: ofertaLaboralGuardado.descripcion,
+                    description: ofertaLaboralGuardado.description,
+                    horario: ofertaLaboralGuardado.horario,
+                    createAt: ofertaLaboralGuardado.createdAt,
+                    updateAt: ofertaLaboralGuardado.updatedAt
+                });
             }
-            res.status(404).json({ 'mensaje': 'Oferta no encontrado' });
+            catch (error) {
+                res.status(500).json({ message: error.message });
+            }
         });
     }
-    //EMPIEZA CRUD
-    createOferta(req, res) {
+    getOfertasLaborales(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const idEmpresa = req.body.id_empresa;
-            var resp = yield database_1.default.query("INSERT INTO ofertalaboral set ?", [req.body]);
-            const idOferta = resp.insertId;
-            const consulta = { "idEmpresa": idEmpresa, "idOferta": idOferta };
-            resp = yield database_1.default.query(`INSERT INTO oferta_empresa set ?`, [consulta]);
-            res.json(resp);
+            console.log("Mostrando todas las ofertas laborales");
+            const ofertas = yield ofertaLaboral_model_1.default.find();
+            res.json(ofertas);
         });
     }
-    actualizarOferta(req, res) {
+    getOfertaLaboral(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            //console.log(req.params);
-            console.log(id);
-            const resp = yield database_1.default.query("UPDATE ofertalaboral set ? WHERE idOferta = ?", [req.body, id]);
-            res.json(resp);
-            //res.json(null);
-        });
-    }
-    eliminarOferta(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const resp = yield database_1.default.query(`DELETE FROM ofertalaboral WHERE idOferta = ${id}`);
-            res.json(resp);
+            console.log("Mostrando una oferta laboral");
+            const oferta = yield ofertaLaboral_model_1.default.findById(req.params.id);
+            res.json(oferta);
         });
     }
 }

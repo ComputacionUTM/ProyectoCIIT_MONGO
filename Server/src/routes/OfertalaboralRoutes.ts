@@ -7,8 +7,10 @@ class OfertaLaboralRoutes {
         this.config();
     }
     config(): void {
-       /* this.router.post('/',ofertaLaboralController.createOfertaLaboral);
-        this.router.get('/obtenerUsuario/:id',ofertaLaboralController.listOne);
+        this.router.get('/obtenerOfertasLaborales',ofertaLaboralController.getOfertasLaborales);
+        this.router.get('/obtenerOfertaLaboral/:id',ofertaLaboralController.getOfertaLaboral);
+        this.router.post('/crearOfertaLaboral',ofertaLaboralController.createOfertaLaboral);
+        /*
         this.router.post('/', ofertaLaboralController.createOfertaLaboral);
         this.router.delete('/:id',ofertaLaboralController.borrarOfertaLaboral);
         this.router.put('/:id',ofertaLaboralController.actualizarOfertaLaboral);*/

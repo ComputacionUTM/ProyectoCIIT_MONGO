@@ -6,42 +6,42 @@ interface OfertaLaboral {
     position: string;
     descripcion: string;
     description: string;
-    horario: Date;
+    horario: string;
+    createdAt: Date;
+    updatedAt: Date;
 }
+
 const schemaOfertaLaboral = new Schema<OfertaLaboral>({
-    salario:
-    {
+    salario: {
         type: Number,
         required: true,
         trim: true,
         unique: true
     },
-    puesto:
-    {
+    puesto: {
         type: String,
         required: true,
         trim: true,
     },
-    position:
-    {
+    position: {
         type: String,
         required: true,
-        unique:true
+        unique: true
     },
-    descripcion:
-    {
-        type: String,
-        required: true,
-    },
-    description:
-    {
+    descripcion: {
         type: String,
         required: true,
     },
-    
-},
-    {
-        timestamps: true
+    description: {
+        type: String,
+        required: true,
+    },
+    horario: {
+        type: String,
+        required: true,
     }
-)
-export default mongoose.model('OfertaLaboral', schemaOfertaLaboral);
+}, {
+    timestamps: true
+});
+
+export default mongoose.model('OfertaLaboral', schemaOfertaLaboral, 'ofertas_laborales');
