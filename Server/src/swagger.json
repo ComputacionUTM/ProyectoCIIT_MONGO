@@ -23,6 +23,10 @@
         {
             "name": "Roles",
             "description": "API para obtener información de las roles del ciit"
+        },
+        {
+            "name": "OfertasLaborales",
+            "description": "API para obtener información de las ofertas laborales del ciit"
         }
         ],
 
@@ -624,6 +628,89 @@
                     }
                 ]
             }
+        },
+        "/api/ofertasLaborales/obtenerOfertasLaborales":{
+            "get": {
+                "tags": [
+                    "OfertasLaborales"
+                ],
+                "summary": "Listado de todas las ofertas laborales que existen en el ciit.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las ofertas laborales que existen en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son las ofertas laborales existentes en el ciit?</strong></em></p>",
+                    "responses": {
+                    "200":{
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "_id": "66454f5da09f3811ed71fa1b",
+                                    "salario": 1000,
+                                    "puesto": "Jefe de cocina",
+                                    "position": "Head Chef",
+                                    "descripcion": "Encargado de la cocina",
+                                    "description": "In charge of the kitchen",
+                                    "horario": "7:00 - 16:00",
+                                    "createdAt": "2024-05-16T00:12:13.538Z",
+                                    "updatedAt": "2024-05-16T00:12:13.538Z",
+                                    "__v": 0
+                                }
+                                
+                            ]
+                        },
+                        "schema":{
+                            "$ref": "#/definitions/OfertasLaborales"
+                        }
+                    },
+                    "403":{
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/ofertasLaborales/obtenerOfertaLaboral/:id":{
+            "get": {
+                "tags": ["Empresas"],
+                "summary": "Obtencion de una oferta laboral",
+                "description": "<p>Servicio que devuelve la información detallada de una oferta laboral dado su identificador</p>",
+                "responses": {
+                    "200":{
+                        "description": "OK",
+                        "examples": {      
+                            "application/json": [
+                                
+                                {
+                                    "_id": "66454f5da09f3811ed71fa1b",
+                                    "salario": 1000,
+                                    "puesto": "Jefe de cocina",
+                                    "position": "Head Chef",
+                                    "descripcion": "Encargado de la cocina",
+                                    "description": "In charge of the kitchen",
+                                    "horario": "7:00 - 16:00",
+                                    "createdAt": "2024-05-16T00:12:13.538Z",
+                                    "updatedAt": "2024-05-16T00:12:13.538Z",
+                                    "__v": 0
+                                }
+                                
+                            ]
+                        },
+                        "schema":{
+                            "$ref": "#/definitions/OfertaLaboral"
+                        }
+                    },
+                    "403":{
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador de la oferta laboral",
+                        "type" : "number", 
+                        "default" : "1"
+
+                    } ]
+            }
         }  
     },
     "definitions":{
@@ -800,6 +887,83 @@
                     "description" : "Nombre del rol"
                 }
             }
+        },
+        "OfertasLaborales": {
+            "type":"array",
+            "items":{
+                "$ref": "#/definitions/OfertaLaboral"
+            }
+        },
+        "OfertaLaboral": {
+            "type": "object",
+            "properties":{
+                "id" :{
+                    "type": "number",
+                    "description" : "Codigo que permite identificar la oferta laboral"
+                },
+               "puesto" :{
+                    "type": "string",
+                    "description" : "Nombre del puesto ofertado en espanol"
+               },
+               "position" :{
+                    "type": "string",
+                    "description" : "Nombre del puesto ofertado en ingles"
+               },
+                "descripcion" :{
+                      "type": "string",
+                      "description" : "Descripcion de la oferta laboral en espanol"
+                },
+                "description" :{
+                    "type": "string",
+                    "description" : "Descripcion de la oferta laboral en ingles"
+                },
+                "horario" :{
+                    "type": "string",
+                    "description" : "Horario de la oferta laboral"
+                },
+                "salario" :{
+                    "type": "number",
+                    "description" : "Salario de la oferta laboral"
+                },
+                "createdAt" :{
+                    "type": "date",
+                    "description" : "Fecha de creacion de la oferta laboral"
+                },
+                "updatedAt" :{
+                    "type": "date",
+                    "description" : "Fecha de actualizacion de la oferta laboral"
+                }
+            }
+        },
+        "NuevaOfertaLaboral":{
+            "type": "object",
+            "properties":{
+                "puesto" :{
+                    "type": "string",
+                    "description" : "Nombre del puesto ofertado en espanol"
+                },
+                "position" :{
+                    "type": "string",
+                    "description" : "Nombre del puesto ofertado en ingles"
+                },
+                "descripcion" :{
+                    "type": "string",
+                    "description" : "Descripcion de la oferta laboral en espanol"
+                },
+                "description" :{
+                    "type": "string",
+                    "description" : "Descripcion de la oferta laboral en ingles"
+                },
+                "horario" :{
+                    "type": "string",
+                    "description" : "Horario de la oferta laboral"
+                },
+                "salario" :{
+                    "type": "number",
+                    "description" : "Salario de la oferta laboral"
+                }
+            }
         }
+
     }
 }
