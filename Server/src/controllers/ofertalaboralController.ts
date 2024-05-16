@@ -22,6 +22,12 @@ class OfertaLaboralController {
         res.json(oferta)
     }
 
+    public async putOfertaLaboral(req: Request, res: Response): Promise<void> {
+        console.log("Actualizando una oferta laboral");
+        const oferta = await ofertaLaboralModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
+        res.json(oferta)
+    }
+
     
 }
 
