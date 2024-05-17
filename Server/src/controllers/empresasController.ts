@@ -52,29 +52,35 @@ class EmpresaController {
         }
     }
 
-    /*public async mostrar_todos_usuarios(req: Request, res: Response): Promise<void> {
-        console.log("Mostrando todos usuario");
-        const usuarios = await Usuario.find()
-        res.json(usuarios)
-    }
-    public async listOne(req: Request, res: Response): Promise<void> {
-        console.log("Mostrando un usuario");
-        const usuario = await Usuario.findById(req.params.id)
-        res.json(usuario)
+    public async mostrar_todos_empresa(req: Request, res: Response ): Promise<void>{
+        console.log("Mostrando todas las empresas");
+        const empresas = await Empresa.find()
+        res.json(empresas)
     }
 
-    public async borrarUsuario(req: Request, res: Response): Promise<void> {
-        console.log("Borrando un usuario");
-        const usuario = await Usuario.findByIdAndDelete(req.params.id)
-        res.json(usuario)
+    public async actualizarEmpresa(req: Request, res: Response): Promise<void> {
+       console.log("Actualizando la empresa");
+       const empresas = await Empresa.findByIdAndUpdate(req.params,req.body,{new:true})
+        res.json(empresas)
+    }
+    public async eliminarEmpresa(req: Request, res: Response): Promise<void> {
+        console.log("Eliminado la empresa");
+       const empresas = await Empresa.findByIdAndDelete(req.params)
+        res.json(empresas)
     }
 
-    public async actualizarUsuario(req: Request, res: Response): Promise<void> {
-        console.log("Actualizando un usuario");
-        const usuario = await Usuario.findByIdAndUpdate(req.params.id,req.body,{new:true})
-        res.json(usuario)
-    }*/
-    
+    public async listOne(req: Request, res: Response): Promise <void>{
+        console.log("Mostrando a una empresa");
+       const empresas = await Empresa.findById(req.params)
+        res.json(empresas)
+    }
+
+    public async actualizarFotito(req: Request, res: Response): Promise<void> {
+        console.log("Actualizando la variable fotito de una empresa empresas");
+       const empresas = await Empresa.findByIdAndUpdate(req.params,req.body,{new:true})
+        res.json(empresas)
+    }
+
 
 }
 //function decodeJWT(token: any) {
