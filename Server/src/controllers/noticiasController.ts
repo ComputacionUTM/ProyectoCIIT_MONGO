@@ -52,6 +52,13 @@ class NoticiasController {
         res.json(noticias)
     }
 
+    public async mostrarNoticia(req: Request, res: Response): Promise<void> {
+        console.log("Mostrar una noticia.");
+        const { id } = req.params;
+        const noticia = await Noticias.findById(id);
+        res.json(noticia);
+    }
+
     public async eliminarNoticia(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
         const noticia = await Noticias.findByIdAndDelete(id);

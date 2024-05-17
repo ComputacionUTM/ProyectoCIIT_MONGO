@@ -60,6 +60,14 @@ class NoticiasController {
             res.json(noticias);
         });
     }
+    mostrarNoticia(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Mostrar una noticia.");
+            const { id } = req.params;
+            const noticia = yield noticias_model_1.default.findById(id);
+            res.json(noticia);
+        });
+    }
     eliminarNoticia(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
