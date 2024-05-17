@@ -23,6 +23,10 @@
         {
             "name": "Roles",
             "description": "API para obtener información de las roles del ciit"
+        },
+        {
+            "name":"Redes Sociales",
+            "description":"API para obtener informacion de las redes sociales del ciit"
         }
         ],
 
@@ -799,6 +803,28 @@
                     "type": "string",
                     "description" : "Nombre del rol"
                 }
+            }
+        },
+        "RedSocial": {
+            "type": "object",
+            "properties":{
+                "_id":{
+                    "type":"string",
+                    "description":"identificador de la red social"
+                },
+                "nombre" :{
+                    "type": "string",
+                    "description" : "Nombre de la red social"
+                },
+                "enlace":{
+                    "type":"string",
+                    "description":"enlace a la pagina de la red social"
+                },
+                "fotito":{
+                    "type":"int",
+                    "description":"bandera para saber si tiene una imagen asignada"
+                }
+
             }
         }
     }

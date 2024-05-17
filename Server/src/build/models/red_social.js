@@ -24,32 +24,24 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const schemaEmpresa = new mongoose_1.Schema({
-    nombre_empresa: {
+const schemaRedSocial = new mongoose_1.Schema({
+    nombre: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    enlace: {
         type: String,
         required: true,
         trim: true,
         unique: true
     },
-    direccion: {
-        type: String,
-        required: true,
-        trim: true,
-    },
-    rfc: {
-        type: String,
+    foto: {
+        type: Number,
         required: true,
         unique: true
-    },
-    descripcion: {
-        type: String,
-        required: true,
-    },
-    description: {
-        type: String,
-        required: true,
     }
 }, {
     timestamps: true
 });
-exports.default = mongoose_1.default.model('Empresa', schemaEmpresa);
+exports.default = mongoose_1.default.model('RedSocial', schemaRedSocial);
