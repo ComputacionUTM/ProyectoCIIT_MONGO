@@ -28,6 +28,20 @@ class OfertaLaboralController {
         res.json(oferta)
     }
 
+    public async deleteOfertaLaboral(req: Request, res: Response): Promise<void> {
+        console.log("Eliminando una oferta laboral");
+        try {
+            const ofertaEliminada = await ofertaLaboralModel.findByIdAndDelete(req.params.id);
+            if (!ofertaEliminada) {
+                res.status(404).json({ message: "Oferta laboral no encontrada" });
+            } else {
+                res.json({ message: "Oferta laboral eliminada correctamente", oferta: ofertaEliminada });
+            }
+        } catch (error) {
+            console.error("Error al eliminar la oferta laboral:", error);
+            res.status(500).json({ message: "Error interno del servidor" });
+        }
+    }
     
 }
 
