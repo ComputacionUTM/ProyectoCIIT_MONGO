@@ -46,9 +46,18 @@ class NoticiasController {
             res.status(500).json({ message: error.message });
         }
     }
+    public async mostrarNoticias(req: Request, res: Response): Promise<void> {
+        console.log("Mostrando todas las noticias");
+        const noticias = await Noticias.find()
+        res.json(noticias)
+    }
 
+    public async eliminarNoticia(req: Request, res: Response): Promise<void> {
+        const { id } = req.params;
+        const noticia = await Noticias.findByIdAndDelete(id);
+        res.json(noticia);
+    }
     
-
 }
 
 export const noticiasController = new NoticiasController();

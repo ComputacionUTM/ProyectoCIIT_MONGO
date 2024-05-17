@@ -9,6 +9,8 @@ class NoticiasRoutes {
     }
     config() {
         this.router.post('/', noticiasController_1.noticiasController.createNoticia);
+        this.router.get('/', noticiasController_1.noticiasController.mostrarNoticias);
+        this.router.delete('/:id', noticiasController_1.noticiasController.eliminarNoticia);
     }
 }
 const noticiasRoutes = new NoticiasRoutes();
