@@ -9,7 +9,7 @@ class OfertaLaboralRoutes {
     config(): void {
         this.router.get('/obtenerOfertasLaborales',ofertaLaboralController.getOfertasLaborales);
         this.router.get('/obtenerOfertaLaboral/:id',ofertaLaboralController.getOfertaLaboral);
-        this.router.put('/:id',ofertaLaboralController.putOfertaLaboral);
+        this.router.put('/actualizarOfertaLaboral/:id',ofertaLaboralController.putOfertaLaboral);
         /*
         this.router.post('/crearOfertaLaboral',ofertaLaboralController.createOfertaLaboral);
         this.router.post('/', ofertaLaboralController.createOfertaLaboral);

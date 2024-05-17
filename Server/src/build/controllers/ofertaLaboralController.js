@@ -34,5 +34,30 @@ class OfertaLaboralController {
             res.json(oferta);
         });
     }
+    putOfertaLaboral(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Actualizando una oferta laboral");
+            const oferta = yield ofertaLaboral_model_1.default.findByIdAndUpdate(req.params.id, req.body, { new: true });
+            res.json(oferta);
+        });
+    }
+    deleteOfertaLaboral(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Eliminando una oferta laboral");
+            try {
+                const ofertaEliminada = yield ofertaLaboral_model_1.default.findByIdAndDelete(req.params.id);
+                if (!ofertaEliminada) {
+                    res.status(404).json({ message: "Oferta laboral no encontrada" });
+                }
+                else {
+                    res.json({ message: "Oferta laboral eliminada correctamente", oferta: ofertaEliminada });
+                }
+            }
+            catch (error) {
+                console.error("Error al eliminar la oferta laboral:", error);
+                res.status(500).json({ message: "Error interno del servidor" });
+            }
+        });
+    }
 }
 exports.ofertaLaboralController = new OfertaLaboralController();
