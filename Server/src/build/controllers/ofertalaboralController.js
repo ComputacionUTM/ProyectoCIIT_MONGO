@@ -43,7 +43,6 @@ class OfertaLaboralController {
     }
     deleteOfertaLaboral(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("Eliminando una oferta laboral");
             try {
                 const ofertaEliminada = yield ofertaLaboral_model_1.default.findByIdAndDelete(req.params.id);
                 if (!ofertaEliminada) {

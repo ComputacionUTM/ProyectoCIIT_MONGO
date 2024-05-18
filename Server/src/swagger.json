@@ -668,7 +668,7 @@
         },
         "/api/ofertasLaborales/obtenerOfertaLaboral/:id":{
             "get": {
-                "tags": ["Empresas"],
+                "tags": ["OfertasLaborales"],
                 "summary": "Obtencion de una oferta laboral",
                 "description": "<p>Servicio que devuelve la información detallada de una oferta laboral dado su identificador</p>",
                 "responses": {
@@ -752,7 +752,32 @@
                     }
                 }
             }
-        }, 
+        },
+        "/api/ofertasLaborales/eliminarOfertaLaboral/{id}": {
+            "delete": {
+                "tags": ["OfertasLaborales"],
+                "summary": "Eliminar una oferta laborla del ciit dado su identificador",
+                "description": "<p>Servicio que elimina la oferta laboral dado el identificador enviado</p><p>&nbsp;</p><p><em><strong>¿Fué una ejecución exitoso?</strong></em></p>",
+                "responses": {
+                    "200":{
+                        "description": "OK"
+                    },   
+                    "403":{
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador de la oferta laboral",
+                        "schema": {
+                            "type": "string"
+                        }
+                    } ] 
+            }
+        },
     "definitions":{
         "Usuario": {
             "type": "object",

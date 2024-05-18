@@ -10,7 +10,7 @@ class OfertaLaboralRoutes {
     config() {
         this.router.get('/obtenerOfertasLaborales', ofertalaboralController_1.ofertaLaboralController.getOfertasLaborales);
         this.router.get('/obtenerOfertaLaboral/:id', ofertalaboralController_1.ofertaLaboralController.getOfertaLaboral);
-        this.router.put('/:id', ofertalaboralController_1.ofertaLaboralController.putOfertaLaboral);
+        this.router.put('/actualizarOfertaLaboral/:id', ofertalaboralController_1.ofertaLaboralController.putOfertaLaboral);
         /*
         this.router.post('/crearOfertaLaboral',ofertaLaboralController.createOfertaLaboral);
         this.router.post('/', ofertaLaboralController.createOfertaLaboral);

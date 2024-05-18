@@ -29,7 +29,6 @@ class OfertaLaboralController {
     }
 
     public async deleteOfertaLaboral(req: Request, res: Response): Promise<void> {
-        console.log("Eliminando una oferta laboral");
         try {
             const ofertaEliminada = await ofertaLaboralModel.findByIdAndDelete(req.params.id);
             if (!ofertaEliminada) {
