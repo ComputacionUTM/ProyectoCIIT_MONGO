@@ -64,12 +64,29 @@ class UsuariosController {
             res.status(500).json({ message: "Error interno del servidor" });
         }
     }
+    
 
     public async actualizarUsuario(req: Request, res: Response): Promise<void> {
         console.log("Actualizando un usuario");
         const usuario = await Usuario.findByIdAndUpdate(req.params.id,req.body,{new:true})
         res.json(usuario)
     }
+
+    public async obtenerUsuarioCorreo(req: Request, res: Response): Promise<void> {
+        try {
+          const { correo } = req.params;
+          const user = await Usuario.findOne({ correo: correo });
+      
+          if (user) {
+            res.json(user);
+          } else {
+            res.status(404).json({ message: "Correo no encontrado" });
+          }
+        } catch (error) {
+          console.error("Error al obtener el usuario por correo:", error);
+          res.status(500).json({ error: 'Error al obtener el usuario' });
+        }
+      }
     
 
 }

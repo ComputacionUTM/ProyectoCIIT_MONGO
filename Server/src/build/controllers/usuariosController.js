@@ -86,6 +86,24 @@ class UsuariosController {
             res.json(usuario);
         });
     }
+    obtenerUsuarioCorreo(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { correo } = req.params;
+                const user = yield usuario_model_1.default.findOne({ correo: correo });
+                if (user) {
+                    res.json(user);
+                }
+                else {
+                    res.status(404).json({ message: "Correo no encontrado" });
+                }
+            }
+            catch (error) {
+                console.error("Error al obtener el usuario por correo:", error);
+                res.status(500).json({ error: 'Error al obtener el usuario' });
+            }
+        });
+    }
 }
 //function decodeJWT(token: any) {
 //    return (Buffer.from(token.split('.')[1], 'base64').toString());

@@ -11,6 +11,7 @@ class UsuariosRoutes {
         this.router.get('/obtenerUsuario/:id',usuariosController.listOne);
         this.router.post('/', usuariosController.createUsuario);
         this.router.delete('/:id',usuariosController.eliminarUsuario);
+        this.router.get('/:correo', usuariosController.obtenerUsuarioCorreo);
         this.router.put('/:id',usuariosController.actualizarUsuario);
     }
 }
