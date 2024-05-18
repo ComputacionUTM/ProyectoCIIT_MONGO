@@ -12,7 +12,7 @@ class NoticiasRoutes {
         this.router.get('/verNoticias', noticiasController.mostrarNoticias);
         this.router.get('/:id', noticiasController.mostrarNoticia);
         this.router.delete('/:id', noticiasController.eliminarNoticia);
-        this.router.put('actualizarNoticia/:id', noticiasController.actualizarNoticias);
+        this.router.put('/actualizarNoticia/:id', noticiasController.actualizarNoticias);
     }
 }
 const noticiasRoutes = new NoticiasRoutes();

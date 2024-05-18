@@ -80,8 +80,13 @@ class NoticiasController {
     actualizarNoticias(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("Actualizando noticia");
-            const noticia = yield noticias_model_1.default.findByIdAndUpdate(req.params.id, req.body, { new: true });
-            res.json(noticia);
+            try {
+                const noticia = yield noticias_model_1.default.findByIdAndUpdate(req.params.id, req.body, { new: true });
+                res.json(noticia);
+            }
+            catch (error) {
+                res.status(500).json({ message: error.message });
+            }
         });
     }
 }

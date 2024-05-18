@@ -691,7 +691,7 @@
                         "in": "path",
                         "required": true,
                         "description": "identificador de la noticia",
-                        "type": "number",
+                        "type": "string",
                         "default": ""
                     },
                     {
@@ -700,7 +700,7 @@
                         "description": "Cuerpo de la noticia",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/noticia"
+                            "$ref": "#/definitions/nuevaNoticia"
                         }
                     }
                 ],
@@ -875,7 +875,7 @@
         "noticia": {
             "type": "object",
             "properties": {
-                "id_noticia": {
+                "_id": {
                     "type": "number",
                     "description": "Codigo que permite identificar a la noticia"
                 },

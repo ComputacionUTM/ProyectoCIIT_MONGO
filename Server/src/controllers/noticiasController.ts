@@ -69,10 +69,17 @@ class NoticiasController {
 
     public async actualizarNoticias(req: Request, res: Response): Promise<void> {
         console.log("Actualizando noticia");
-        const noticia = await Noticias.findByIdAndUpdate(req.params.id,req.body,{new:true})
-        res.json(noticia)
-    }
+        try
+        {
+            const noticia = await Noticias.findByIdAndUpdate(req.params.id,req.body,{new:true})
+            res.json(noticia)
+        }
+        catch (error: any) 
+        {
+                res.status(500).json({ message: error.message });
+        }
     
+        }
 }
 
 export const noticiasController = new NoticiasController();
