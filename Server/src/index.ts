@@ -6,6 +6,7 @@ import cors from 'cors';
 import { validarToken } from './middleware/auth'
 import EmpresasRoutes from './routes/EmpresasRoutes';
 import noticiasRoutes from './routes/noticiasRoutes';
+import swaggerDocument from './swagger.json';
 //import swaggerDocument from './swagger.json';
 class Server {
     public app: Application;
@@ -13,7 +14,7 @@ class Server {
         this.app = express();
         this.config();
         this.routes();
-        //this.app.use('/documentacion', swagger_ui_express.serve, swagger_ui_express.setup(swaggerDocument));
+        this.app.use('/documentacion', swagger_ui_express.serve, swagger_ui_express.setup(swaggerDocument));
     }
 
     config(): void {

@@ -55,9 +55,11 @@ class NoticiasController {
     }
     mostrarNoticias(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("Mostrando todas las noticias");
             const noticias = yield noticias_model_1.default.find();
-            res.json(noticias);
+            if (noticias.length == 0)
+                res.json(false);
+            else
+                res.json(noticias);
         });
     }
     mostrarNoticia(req, res) {

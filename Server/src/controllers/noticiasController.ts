@@ -47,9 +47,11 @@ class NoticiasController {
         }
     }
     public async mostrarNoticias(req: Request, res: Response): Promise<void> {
-        console.log("Mostrando todas las noticias");
         const noticias = await Noticias.find()
-        res.json(noticias)
+        if(noticias.length == 0)
+            res.json(false)
+        else
+            res.json(noticias)
     }
 
     public async mostrarNoticia(req: Request, res: Response): Promise<void> {

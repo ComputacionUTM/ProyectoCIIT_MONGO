@@ -624,7 +624,44 @@
                     }
                 ]
             }
-        }  
+        },
+        "/api/noticias/verNoticias/":{
+            "get": {
+                "tags": [
+                    "Noticias"
+                ],
+                "summary": "Listado de todas las noticias que existen en el ciit.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las noticias que existen en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son las noticias existentes en el ciit?</strong></em></p>",
+                    "responses": {
+                    "200":{
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_noticia": 1,
+                                    "titulo": "Noticia 1",
+                                    "title": "News 1",
+                                    "autor": "Autor 1",
+                                    "fecha_publicacion": "2020-12-12",
+                                    "contenido": "Contenido de la noticia 1",
+                                    "content": "Content of the news 1",
+                                    "createdAt": "2020-12-12",
+                                    "updatedAt": "2020-12-12"
+                                }
+                                
+                            ]
+                        },
+                        "schema":{
+                            "$ref": "#/definitions/noticias"
+                        }
+                    },
+                    "403":{
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        }
+
     },
     "definitions":{
         "Usuario": {
@@ -798,6 +835,55 @@
                 "nombre_rol" :{
                     "type": "string",
                     "description" : "Nombre del rol"
+                }
+            }
+        },
+        "noticias":{
+            "type":"array",
+            "items":{
+                "$ref":"#/definitions/noticia"
+            }
+        },
+        "noticia":{
+            "type": "object",
+            "properties":{
+                "id_noticia" :{
+                    "type": "number",
+                    "description" : "Codigo que permite identificar a la noticia"
+                },
+                
+                "titulo" :{
+                    "type": "string",
+                    "description" : "Titulo de la noticia"
+                },
+                "title" :{
+                    "type": "string",
+                    "description" : "Titulo de la noticia en ingles"
+                },
+                "autor" :{
+                    "type": "string",
+                    "description" : "Autor de la noticia"
+                },
+                "fecha_publicacion" :{
+                    "type": "string",
+                    "description" : "Fecha de publicacion de la noticia"
+                },
+                
+                "contenido" :{
+                    "type": "string",
+                    "description" : "Contenido de la noticia"
+                },
+                "content" :{
+                    "type": "string",
+                    "description" : "Contenido de la noticia en ingles"
+                },
+                "createdAt" :{
+                    "type": "string",
+                    "description" : "Fecha de creacion de la noticia"
+                },
+                "updatedAt" :{
+                    "type": "string",
+                    "description" : "Fecha de actualizacion de la noticia"
                 }
             }
         }
