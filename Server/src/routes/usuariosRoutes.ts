@@ -10,7 +10,7 @@ class UsuariosRoutes {
         this.router.get('/',usuariosController.mostrar_todos_usuarios);
         this.router.get('/obtenerUsuario/:id',usuariosController.listOne);
         this.router.post('/', usuariosController.createUsuario);
-        this.router.delete('/:id',usuariosController.borrarUsuario);
+        this.router.delete('/:id',usuariosController.eliminarUsuario);
         this.router.put('/:id',usuariosController.actualizarUsuario);
     }
 }

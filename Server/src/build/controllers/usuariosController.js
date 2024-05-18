@@ -61,11 +61,22 @@ class UsuariosController {
             res.json(usuario);
         });
     }
-    borrarUsuario(req, res) {
+    eliminarUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("Borrando un usuario");
-            const usuario = yield usuario_model_1.default.findByIdAndDelete(req.params.id);
-            res.json(usuario);
+            try {
+                const usuario = yield usuario_model_1.default.findByIdAndDelete(req.params.id);
+                if (!usuario) {
+                    res.status(404).json({ message: "Usuario no encontrado" });
+                }
+                else {
+                    res.json(usuario);
+                }
+            }
+            catch (error) {
+                console.error("Error al eliminar usuario:", error);
+                res.status(500).json({ message: "Error interno del servidor" });
+            }
         });
     }
     actualizarUsuario(req, res) {

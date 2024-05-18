@@ -50,11 +50,19 @@ class UsuariosController {
         const usuario = await Usuario.findById(req.params.id)
         res.json(usuario)
     }
-
-    public async borrarUsuario(req: Request, res: Response): Promise<void> {
+    public async eliminarUsuario(req: Request, res: Response): Promise<void> {
         console.log("Borrando un usuario");
-        const usuario = await Usuario.findByIdAndDelete(req.params.id)
-        res.json(usuario)
+        try {
+            const usuario = await Usuario.findByIdAndDelete(req.params.id)
+            if (!usuario) {
+                res.status(404).json({ message: "Usuario no encontrado" });
+            } else {
+                res.json(usuario)
+            }
+        } catch (error) {
+            console.error("Error al eliminar usuario:", error);
+            res.status(500).json({ message: "Error interno del servidor" });
+        }
     }
 
     public async actualizarUsuario(req: Request, res: Response): Promise<void> {
