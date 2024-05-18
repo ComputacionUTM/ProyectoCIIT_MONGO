@@ -648,6 +648,43 @@
                     }
                 ]
             }
+        },
+        "/api/noticias/actualizarNoticia/{id}": {
+            "put": {
+                "summary": "Actualizar la informaciòn de la noticia del ciit",
+                "description": "<p>Servicio que permite editar la informaciòn de alguna noticia de ciit, dado el id el mismo </p><p>&nbsp;</p>",
+                "operationId": "update",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador de la noticia",
+                        "type": "number",
+                        "default": ""
+                    },
+                    {
+                        "name": "noticia",
+                        "in": "body",
+                        "description": "Cuerpo de la noticia",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/noticia"
+                        }
+                    }
+                ],
+                "tags": ["Noticias"],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
         }
     },
     "definitions": {

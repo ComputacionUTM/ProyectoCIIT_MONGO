@@ -77,5 +77,12 @@ class NoticiasController {
             res.json(noticia);
         });
     }
+    actualizarNoticias(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Actualizando noticia");
+            const noticia = yield noticias_model_1.default.findByIdAndUpdate(req.params.id, req.body, { new: true });
+            res.json(noticia);
+        });
+    }
 }
 exports.noticiasController = new NoticiasController();

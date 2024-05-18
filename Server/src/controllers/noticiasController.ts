@@ -66,6 +66,12 @@ class NoticiasController {
         const noticia = await Noticias.findByIdAndDelete(id);
         res.json(noticia);
     }
+
+    public async actualizarNoticias(req: Request, res: Response): Promise<void> {
+        console.log("Actualizando noticia");
+        const noticia = await Noticias.findByIdAndUpdate(req.params.id,req.body,{new:true})
+        res.json(noticia)
+    }
     
 }
 
