@@ -9,9 +9,9 @@ class UsuariosRoutes {
     config(): void {
         this.router.get('/',usuariosController.mostrar_todos_usuarios);
         this.router.get('/obtenerUsuario/:id',usuariosController.listOne);
-        this.router.post('/', usuariosController.createUsuario);
-        this.router.delete('/:id',usuariosController.eliminarUsuario);
-        this.router.get('/:correo', usuariosController.obtenerUsuarioCorreo);
+        this.router.post('/crearUsuario/', usuariosController.createUsuario);
+        this.router.delete('/eliminarUsuario/:id',usuariosController.eliminarUsuario);
+        this.router.get('/obtenerUsuarioCorreo/:correo', usuariosController.obtenerUsuarioCorreo);
         this.router.put('/:id',usuariosController.actualizarUsuario);
     }
 }
