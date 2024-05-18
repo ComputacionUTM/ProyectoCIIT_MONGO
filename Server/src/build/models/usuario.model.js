@@ -39,6 +39,14 @@ const schemaUsuario = new mongoose_1.Schema({
     password: {
         type: String,
         required: true
+    },
+    fotito: {
+        type: Number,
+        required: true
+    },
+    id_rol: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true

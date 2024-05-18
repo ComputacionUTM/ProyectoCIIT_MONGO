@@ -12,7 +12,10 @@ class UsuariosRoutes {
         this.router.post('/crearUsuario/', usuariosController.createUsuario);
         this.router.delete('/eliminarUsuario/:id',usuariosController.eliminarUsuario);
         this.router.get('/obtenerUsuarioCorreo/:correo', usuariosController.obtenerUsuarioCorreo);
-        this.router.put('/:id',usuariosController.actualizarUsuario);
+        this.router.put('/actualizarUsuario/:id',usuariosController.actualizarUsuario);
+        this.router.put('/reestablecerContrasena/:token', usuariosController.actualizarContrasena);
+        this.router.put('/actualizarFotito/:id',usuariosController.actualizarFotito);
+        this.router.get('/listarUsuariosRol/:id',usuariosController.listarUsuariosRol);
     }
 }
 const usuariosRoutes = new UsuariosRoutes();

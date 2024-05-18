@@ -4,6 +4,8 @@ interface Usuario {
     usuario: string;
     correo: string;
     password: string;
+    fotito: number;
+    id_rol : string;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -22,6 +24,16 @@ const schemaUsuario = new Schema<Usuario>({
         unique: true
     },
     password:
+    {
+        type: String,
+        required: true
+    },
+    fotito:
+    {
+        type: Number,
+        required: true
+    },
+    id_rol:
     {
         type: String,
         required: true
