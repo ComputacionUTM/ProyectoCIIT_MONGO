@@ -685,6 +685,39 @@
                     }
                 ]
             }
+        },
+        "/api/noticias/":{
+            "post":
+            {
+                "summary" : "Creando una noticia",
+                "operationId": "create",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name" : "Noticias",
+                        "in": "body",
+                        "description" :"Noticia agregada",
+                        "required" : true,
+                        "schema" : {
+                            "$ref" : "#/definitions/nuevaNoticia"
+                        }
+                    }
+                ],
+
+                "tags" : ["Noticias"],
+                
+                "responses" : {
+                    "200" :{
+                        "description" : "Insertado con exito"
+                    },
+                    "403" : {
+                        "description" : "Prohibido"
+                    }
+                }
+
+            }
         }
 
     },
@@ -877,6 +910,44 @@
                     "description" : "Codigo que permite identificar a la noticia"
                 },
                 
+                "titulo" :{
+                    "type": "string",
+                    "description" : "Titulo de la noticia"
+                },
+                "title" :{
+                    "type": "string",
+                    "description" : "Titulo de la noticia en ingles"
+                },
+                "autor" :{
+                    "type": "string",
+                    "description" : "Autor de la noticia"
+                },
+                "fecha_publicacion" :{
+                    "type": "string",
+                    "description" : "Fecha de publicacion de la noticia"
+                },
+                
+                "contenido" :{
+                    "type": "string",
+                    "description" : "Contenido de la noticia"
+                },
+                "content" :{
+                    "type": "string",
+                    "description" : "Contenido de la noticia en ingles"
+                },
+                "createdAt" :{
+                    "type": "string",
+                    "description" : "Fecha de creacion de la noticia"
+                },
+                "updatedAt" :{
+                    "type": "string",
+                    "description" : "Fecha de actualizacion de la noticia"
+                }
+            }
+        },
+        "nuevaNoticia":{
+            "type": "object",
+            "properties":{
                 "titulo" :{
                     "type": "string",
                     "description" : "Titulo de la noticia"
