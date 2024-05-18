@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import { connectDB } from '../database'; //acceso a la base de datos
-import Usuario from '../models/usuario.model'
+import RedSocial from '../models/red_social'
 
 
 class RedSocialController {
@@ -10,7 +10,12 @@ class RedSocialController {
         connectDB();
     }
     //aqui va el crud
-
+    public async eliminarRed(req: Request, res:Response)
+    {
+        console.log("Borrando una Red");
+        const redSocial = await RedSocial.findByIdAndDelete(req.params.id)
+        res.json(redSocial)
+    }
 }
 
 

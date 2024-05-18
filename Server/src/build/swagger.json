@@ -592,6 +592,31 @@
                     }
                 ]
             }
+        },
+        "/api/redSocial/eliminarRed/{id}": {
+            "delete": {
+                "tags": ["Redes Sociales"],
+                "summary": "Eliminar una red social por medio de su identificador",
+                "description": "<p>Servicio que elimina la red social dado el identificador enviado</p><p>&nbsp;</p><p><em><strong>¿Fué una ejecución exitosa?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador de la red",
+                        "type": "string",
+                        "default": "1"
+                    }
+                ]
+            }
         }
     },
     "definitions": {

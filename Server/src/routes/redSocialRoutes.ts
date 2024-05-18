@@ -7,6 +7,7 @@ class RedSocialRoutes {
         this.config();
     }
     config(): void {
+        this.router.delete('/eliminarRed/:id', redSocialController.eliminarRed);
         
     }
 }

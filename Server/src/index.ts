@@ -6,6 +6,7 @@ import cors from 'cors';
 import { validarToken } from './middleware/auth'
 import EmpresasRoutes from './routes/EmpresasRoutes';
 import swaggerDocument from './swagger.json';
+import redSocialRoutes from './routes/redSocialRoutes';
 class Server {
     public app: Application;
     constructor() {
@@ -25,6 +26,7 @@ class Server {
     routes(): void {
         this.app.use('/api/usuarios', usuariosRoutes);
         this.app.use('/api/empresas', EmpresasRoutes);
+        this.app.use('/api/redSocial', redSocialRoutes)
     }
     start(): void {
         this.app.listen(this.app.get('port'), () => {
