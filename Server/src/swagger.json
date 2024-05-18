@@ -711,8 +711,48 @@
 
                     } ]
             }
-        }  
-    },
+        }, 
+        "/api/ofertasLaborales/actualizarOfertaLaboral/:id":{
+            "put": {
+                "summary": "Actualizar la informacion de una oferta laboral del ciit",
+                "description": "<p>Servicio que permite editar la informaciòn de una oferta laboral de ciit, dado el id del mismo </p><p>&nbsp;</p>",
+                "operationId" : "update",
+                "consumes" : ["application/json" ],
+                "produces" : ["application/json" ],
+                
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador de la oferta laboral",
+                        "type" : "number", 
+                        "default" : "1"
+
+                    },
+                    {
+                        "name" : "Puesto",
+                        "in" : "body",
+                        "description" : "Puesto de la oferta laboral",
+                        "required" : true,
+                        "schema" : {
+                            "$ref" : "#/definitions/NuevaOfertaLaboral"
+                        }
+                        
+                    }
+                
+                ],
+                "tags" :["OfertasLaborales"],
+                "responses": {
+                    "200":{
+                        "description": "OK"
+                    },   
+                    "403":{
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        }, 
     "definitions":{
         "Usuario": {
             "type": "object",
@@ -966,4 +1006,5 @@
         }
 
     }
+}
 }
