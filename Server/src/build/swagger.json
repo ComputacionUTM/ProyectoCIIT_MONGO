@@ -623,6 +623,31 @@
                     }
                 }
             }
+        },
+        "/api/noticias/{id}": {
+            "delete": {
+                "tags": ["Noticias"],
+                "summary": "Eliminar una noticia registrada en el ciit",
+                "description": "<p>Servicio que permite eliminar una noticia en el ciit.</p><p>&nbsp;</p><p><em><strong>Eliminar rol</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "Noticia Eliminada con exito"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "<p>Información de la noticia que se va a eliminar.</p>",
+                        "type": "string",
+                        "default": "1"
+                    }
+                ]
+            }
         }
     },
     "definitions": {
