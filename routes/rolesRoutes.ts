@@ -10,6 +10,7 @@ class RolesRoutes {
         this.router.get('/obtenerRol/:id',rolesController.listOne);
         this.router.put('/:id',rolesController.actualizarRol);
         this.router.get('/',rolesController.mostrarRoles);
+        this.router.delete('/eliminaRol/:id', rolesController.deleteRol);
     }
 }
 const rolesRoutes = new RolesRoutes();
