@@ -828,6 +828,44 @@
                     } ] 
             }
         },
+
+ "/api/usuarios/ofertasLaborales/crearOfertaLaboral":{
+            "post":
+            {
+                "summary" : "Creando una nueva oferta laboral",
+                "description": "<p>Servicio que permite crear un nuevo rol </p><p>&nbsp;</p>",
+                "operationId": "create",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "salario": 2000,
+                        "puesto": "Jefe",
+                        "position": "Boss",
+                        "id_empresa": 1,
+                        "descripcion": "jefe de jefes",
+                        "description": "Nadota",
+                        "horario": "1 a 2"
+                    }
+                    
+                ],
+
+                "tags" : ["OfertasLaborales"],
+                
+                "responses" : {
+                    "200" :{
+                        "description" : "Insertado con exito"
+                    },
+                    "403" : {
+                        "description" : "Prohibido"
+                    }
+                }
+
+            }
+        },
+
+        
     "definitions":{
         "Usuario": {
             "type": "object",
