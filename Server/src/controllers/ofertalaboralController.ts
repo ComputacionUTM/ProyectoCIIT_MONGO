@@ -28,6 +28,44 @@ class OfertaLaboralController {
         res.json(oferta)
     }
 
+    async createOfertaLaboral(req: Request, res: Response): Promise<void> {
+        const { salario, puesto, position, id_empresa, descripcion, description, horario } = req.body;
+        
+        try {
+            console.log("Creando nueva oferta laboral...");
+    
+    
+            const nuevaOfertaLaboral = new ofertaLaboralModel({
+                salario,
+                puesto,
+                position,
+                id_empresa,
+                descripcion,
+                description,
+                horario
+            });
+    
+            console.log(nuevaOfertaLaboral);
+    
+            const ofertaLaboralGuardada = await nuevaOfertaLaboral.save();
+    
+            res.json({
+                idOferta: ofertaLaboralGuardada._id,
+                salario: ofertaLaboralGuardada.salario,
+                puesto: ofertaLaboralGuardada.puesto,
+                position: ofertaLaboralGuardada.position,
+                id_empresa: ofertaLaboralGuardada.id_empresa,
+                descripcion: ofertaLaboralGuardada.descripcion,
+                description: ofertaLaboralGuardada.description,
+                horario: ofertaLaboralGuardada.horario,
+                createAt: ofertaLaboralGuardada.createdAt,
+                updateAt: ofertaLaboralGuardada.updatedAt
+            });
+        } catch (error: any) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+
     public async deleteOfertaLaboral(req: Request, res: Response): Promise<void> {
         try {
             const ofertaEliminada = await ofertaLaboralModel.findByIdAndDelete(req.params.id);
