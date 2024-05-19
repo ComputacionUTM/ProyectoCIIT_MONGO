@@ -617,6 +617,80 @@
                     }
                 ]
             }
+        },
+        "/api/redSocial/mostrar_todas_redes": {
+            "get": {
+                "tags": [
+                    "Redes Sociales"
+                ],
+                "summary": "Listado de todas las redes sociales que existen en el ciit.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las redes sociales que existen en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son las redes sociales existentes en el ciit?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "_id": "1",
+                                    "nombre": "Facebook",
+                                    "enlace": "https://www.facebook.com/",
+                                    "foto": 1
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/RedSocial"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/redSocial/createRedSocial": {
+            "post": {
+                "tags": [
+                    "Redes Sociales"
+                ],
+                "summary": "Crear una nueva red social en el ciit.",
+                "description": "<p>Servicio que permite crear una nueva red social en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cómo crear una nueva red social en el ciit?</strong></em></p>",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Información de la red social que se va a crear.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RedSocial"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": {
+                                "_id": "1",
+                                "nombre": "Facebook",
+                                "enlace": "https://www.facebook.com/",
+                                "foto": 1,
+                                "createdAt": "2022-01-01T00:00:00Z",
+                                "updatedAt": "2022-01-01T00:00:00Z"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/RedSocial"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
         }
     },
     "definitions": {

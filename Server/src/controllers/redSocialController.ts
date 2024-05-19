@@ -23,6 +23,32 @@ class RedSocialController {
         const redSocial = await RedSocial.find()
         res.json(redSocial)
     }
+
+    public async createRedSocial(req: Request, res: Response): Promise<void> {
+        const { nombre, enlace, foto } = req.body;
+        try {
+            console.log("ENTRANDO...");
+
+            const nuevaRedSocial = new RedSocial(
+                {
+                    nombre,
+                    enlace,
+                    foto
+                })
+            console.log(nuevaRedSocial);
+
+            const redSocialGuardada = await nuevaRedSocial.save();
+            res.json(
+                {
+                    nombre: redSocialGuardada.nombre,
+                    enlace: redSocialGuardada.enlace,
+                    foto: redSocialGuardada.foto,
+                })
+        }
+        catch (error: any) {
+            res.status(500).json({ message: error.message });
+        }
+}
 }
 
 
