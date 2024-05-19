@@ -673,6 +673,52 @@
                 ]
             }
         },
+        "/api/ofertasLaborales/crearOfertaLaboral": {
+            "post": {
+                "tags": ["OfertasLaborales"],
+                "summary": "Inserta una nueva oferta laboral en el ciit.",
+                "operationId": "create",
+                "description": "<p>Servicio que permite crear una nueva oferta laboral en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los datos necesarios para crear una nueva oferta?</strong></em></p>",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "ofertaLaboral",
+                        "in": "body",
+                        "description": "<p>Información del la oferta laboral que se va a crear.</p>",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NuevaOfertaLaboral"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Oferta Laboral insertada con exito",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "_id": "66454f5da09f3811ed71fa1b",
+                                    "salario": 1000,
+                                    "puesto": "Jefe de cocina",
+                                    "position": "Head Chef",
+                                    "descripcion": "Encargado de la cocina",
+                                    "description": "In charge of the kitchen",
+                                    "horario": "7:00 - 16:00",
+                                    "createdAt": "2024-05-16T00:12:13.538Z",
+                                    "updatedAt": "2024-05-16T00:12:13.538Z",
+                                    "__v": 0
+                                }
+                            ]
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
         "/api/ofertasLaborales/actualizarOfertaLaboral/:id": {
             "put": {
                 "summary": "Actualizar la informacion de una oferta laboral del ciit",

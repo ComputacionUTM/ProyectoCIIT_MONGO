@@ -20,6 +20,39 @@ class OfertaLaboralController {
         (0, database_1.connectDB)();
     }
     //aqui va el crud
+    createOfertaLaboral(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                console.log("ENTRANDO...");
+                const nuevaOfertaLaboral = new ofertaLaboral_model_1.default({
+                    salario: req.body.salario,
+                    puesto: req.body.puesto,
+                    position: req.body.position,
+                    descripcion: req.body.descripcion,
+                    description: req.body.description,
+                    horario: req.body.horario
+                });
+                console.log(nuevaOfertaLaboral);
+                const ofertaLaboralGuardado = yield nuevaOfertaLaboral.save();
+                //const token = await createAccesToken({ id: usuarioGuardado._id });
+                //res.cookie('token', token);
+                res.json({
+                    id: ofertaLaboralGuardado._id,
+                    salario: ofertaLaboralGuardado.salario,
+                    puesto: ofertaLaboralGuardado.puesto,
+                    position: ofertaLaboralGuardado.position,
+                    descripcion: ofertaLaboralGuardado.descripcion,
+                    description: ofertaLaboralGuardado.description,
+                    horario: ofertaLaboralGuardado.horario,
+                    createAt: ofertaLaboralGuardado.createdAt,
+                    updateAt: ofertaLaboralGuardado.updatedAt
+                });
+            }
+            catch (error) {
+                res.status(500).json({ message: error.message });
+            }
+        });
+    }
     getOfertasLaborales(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("Mostrando todas las ofertas laborales");
