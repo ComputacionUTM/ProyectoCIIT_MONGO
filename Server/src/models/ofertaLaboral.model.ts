@@ -51,4 +51,4 @@ const schemaOfertaLaboral = new Schema<OfertaLaboral>({
     timestamps: true
 });
 
-export default mongoose.model('OfertaLaboral', schemaOfertaLaboral, 'ofertas_laborales');
+export default mongoose.model('OfertaLaboral', schemaOfertaLaboral, 'ofertalaboral');

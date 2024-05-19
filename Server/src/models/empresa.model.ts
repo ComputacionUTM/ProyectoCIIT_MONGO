@@ -58,4 +58,4 @@ const schemaEmpresa = new Schema<Empresa>({
         timestamps: true
     }
 )
-export default mongoose.model('Empresa', schemaEmpresa);
+export default mongoose.model('Empresa', schemaEmpresa, 'empresa');

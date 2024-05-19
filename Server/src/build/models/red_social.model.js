@@ -44,4 +44,4 @@ const schemaRedSocial = new mongoose_1.Schema({
 }, {
     timestamps: true
 });
-exports.default = mongoose_1.default.model('RedSocial', schemaRedSocial);
+exports.default = mongoose_1.default.model('RedSocial', schemaRedSocial, 'red_social');
