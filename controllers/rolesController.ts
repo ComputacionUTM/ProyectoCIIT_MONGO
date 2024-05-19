@@ -24,5 +24,20 @@ class RolesController {
         const rol = await roles.find()
         res.json(rol)
     }
+
+    public async deleteRol(req: Request, res: Response): Promise<void> {
+        console.log("Eliminando un rol");
+        try {
+            const role = await roles.findByIdAndDelete(req.params.id);
+            if (!role) {
+                res.status(404).json({ message: 'Rol no encontrado' });
+            } else {
+                res.json({ message: 'Rol eliminado exitosamente' });
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
 }
 export const rolesController = new RolesController();
