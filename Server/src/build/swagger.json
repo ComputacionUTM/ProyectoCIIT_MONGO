@@ -648,7 +648,45 @@
                 }
             }
         },
-        "/api/redSocial/createRedSocial": {
+        "/api/redSocial/obtenerRed/{id}": {
+            "get": {
+                "tags": ["Redes Sociales"],
+                "summary": "Obtencion de una red social",
+                "description": "<p>Servicio que devuelve la información detallada de una red social</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "_id": "6649491ff2432d76da49b538",
+                                    "nombre": "Facebook",
+                                    "enlace": "https://www.facebook.com/",
+                                    "foto": 1
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/RedSocial"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador de la red social",
+                        "type": "string",
+                        "default": "6649491ff2432d76da49b538"
+                    }
+                ]
+            }
+        },
+        "/api/redSocial/crearRed": {
             "post": {
                 "tags": [
                     "Redes Sociales"
@@ -685,9 +723,45 @@
                     },
                     "403": {
                         "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/redSocial/actualizarRed/{id}": {
+            "put": {
+                "tags": [
+                    "Redes Sociales"
+                ],
+                "summary": "Actualización de una red social por medio de su identificador",
+                "description": "<p>Servicio que recibe el identificador y los datos nuevos de una red social, y los sustituye por los ya existentes en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los nuevos datos de una red social?</strong></em></p>",
+                "operationId": "update",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador de la red social",
+                        "type": "number",
+                        "default": 1
                     },
-                    "500": {
-                        "description": "Error interno del servidor"
+                    {
+                        "name": "Red Social",
+                        "in": "body",
+                        "description": "Datos nuevos de la red social",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RedSocial"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
                     }
                 }
             }
@@ -846,10 +920,6 @@
         "RedSocial": {
             "type": "object",
             "properties": {
-                "_id": {
-                    "type": "string",
-                    "description": "identificador de la red social"
-                },
                 "nombre": {
                     "type": "string",
                     "description": "Nombre de la red social"
@@ -858,8 +928,8 @@
                     "type": "string",
                     "description": "enlace a la pagina de la red social"
                 },
-                "fotito": {
-                    "type": "int",
+                "foto": {
+                    "type": "integer",
                     "description": "bandera para saber si tiene una imagen asignada"
                 }
             }

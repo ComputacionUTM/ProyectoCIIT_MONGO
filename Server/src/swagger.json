@@ -726,7 +726,7 @@
                     } ]
             }
         },
-        "/api/redSocial/createRedSocial": {
+        "/api/redSocial/crearRed": {
             "post": {
                 "tags": [
                     "Redes Sociales"
@@ -763,9 +763,6 @@
                     },
                     "403": {
                         "description": "Prohibido"
-                    },
-                    "500": {
-                        "description": "Error interno del servidor"
                     }
                 }
             }
@@ -988,10 +985,6 @@
         "RedSocial": {
             "type": "object",
             "properties":{
-                "_id":{
-                    "type":"string",
-                    "description":"identificador de la red social"
-                },
                 "nombre" :{
                     "type": "string",
                     "description" : "Nombre de la red social"
@@ -1000,8 +993,8 @@
                     "type":"string",
                     "description":"enlace a la pagina de la red social"
                 },
-                "fotito":{
-                    "type":"int",
+                "foto":{
+                    "type":"integer",
                     "description":"bandera para saber si tiene una imagen asignada"
                 }
 
