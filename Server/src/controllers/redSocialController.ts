@@ -23,6 +23,13 @@ class RedSocialController {
         res.json(redSocial)
     }
 
+    //Mostar una red
+    public async listOne(req: Request, res: Response): Promise<void> {
+        console.log("Mostrando una red");
+        const redSocial = await RedSocial.findById(req.params.id)
+        res.json(redSocial)
+    }
+
     public async createRedSocial(req: Request, res: Response): Promise<void> {
         const { nombre, enlace, foto } = req.body;
         try {

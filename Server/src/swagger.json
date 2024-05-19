@@ -686,6 +686,46 @@
                 }
             }
         },
+        "/api/redSocial/obtenerRed/{id}":{
+            "get": {
+                "tags": ["Redes Sociales"],
+                "summary": "Obtencion de una red social",
+                "description": "<p>Servicio que devuelve la información detallada de una red social</p>",
+                "responses": {
+                    "200":{
+                        "description": "OK",
+                        "examples": {      
+                            "application/json": [
+                                
+                                {
+                                    "_id": "6649491ff2432d76da49b538",
+                                    "nombre": "Facebook",
+                                    "enlace": "https://www.facebook.com/",
+                                    "foto": 1
+                                }
+                                
+                            ]
+                        },
+                        "schema":{
+                            "$ref": "#/definitions/RedSocial"
+                        }
+                    },
+                    "403":{
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador de la red social",
+                        "type" : "string", 
+                        "default" : "6649491ff2432d76da49b538"
+
+                    } ]
+            }
+        },
         "/api/redSocial/createRedSocial": {
             "post": {
                 "tags": [
