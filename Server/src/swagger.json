@@ -17,16 +17,24 @@
             "description": "API para obtener información de los usuarios del ciit"
         },
         {
-            "name": "Empresas",
-            "description": "API para obtener información de las empresas que ofertan trabajos para el ciit"
-        },
-        {
             "name": "Roles",
             "description": "API para obtener información de las roles del ciit"
         },
         {
+            "name": "Empresas",
+            "description": "API para obtener información de las empresas que ofertan trabajos para el ciit"
+        },
+        {
             "name": "OfertasLaborales",
             "description": "API para obtener información de las ofertas laborales del ciit"
+        },
+        {
+            "name":"Noticias",
+            "description":"API para obtener informacion de las noticias del ciit"
+        },
+        {
+            "name":"Redes Sociales",
+            "description":"API para obtener informacion de las redes sociales del ciit"
         }
     ],
     "schemes": [
@@ -39,272 +47,303 @@
         "application/json"
     ],
     "paths": {
-        "/api/usuarios/mostrarTodosUsuarios/": {
+        "/api/usuarios/":{
             "get": {
-                "tags": [
-                    "Usuarios"
-                ],
+                "tags": ["Usuarios"],
                 "summary": "Listado de todos los usuarios que existen en el ciit.",
                 "description": "<p>Servicio que devuelve la información detallada de todos los usuarios que existen en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los usuarios existentes en el ciit?</strong></em></p>",
                 "responses": {
-                    "200": {
+                    "200":{
                         "description": "OK",
-                        "examples": {
+                        "examples": {      
                             "application/json": [
                                 {
-                                    "id": 4,
+                                    "_id": "66492f0010ad0bc1b72270fb",
                                     "nombre": "Angel Cruz",
                                     "correo": "Angel@gmail.com",
-                                    "id_Rol": 4,
-                                    "contrasena": "789*"
+                                    "contrasena": "123",
+                                    "fotito": 1,
+                                    "id_Rol": "rol",
+                                    "createdAt": "2024-05-18T22:43:12.725+00:00",
+                                    "update": "2024-05-18T22:58:18.541+00:00"
                                 }
+                                
                             ]
                         },
-                        "schema": {
+                        "schema":{
                             "$ref": "#/definitions/Usuarios"
                         }
                     },
-                    "403": {
+                    "403":{
                         "description": "Prohibido"
                     }
                 }
             }
         },
-        "/api/usuarios/obtenerUsuario/{id}": {
+        "/api/usuarios/obtenerUsuario/{id}":{
             "get": {
-                "tags": [
-                    "Usuarios"
-                ],
+                "tags": ["Usuarios"],
                 "summary": "Informacion asociada al usuario, si es que existe en el ciit",
                 "description": "<p>Servicio que devuelve la información detallada del usuarios soliciado</p><p>&nbsp;</p><p><em><strong>¿Cuál es del usuario de este id?</strong></em></p>",
                 "responses": {
-                    "200": {
+                    "200":{
                         "description": "OK",
-                        "examples": {
+                        "examples": {      
                             "application/json": [
+                                
                                 {
-                                    "id": 4,
+                                    "_id": "66492f0010ad0bc1b72270fb",
                                     "nombre": "Angel Cruz",
                                     "correo": "Angel@gmail.com",
-                                    "id_Rol": 4,
-                                    "contrasena": "789*"
+                                    "contrasena": "123",
+                                    "fotito": 1,
+                                    "id_Rol": "rol",
+                                    "createdAt": "2024-05-18T22:43:12.725+00:00",
+                                    "update": "2024-05-18T22:58:18.541+00:00"
                                 }
+                                
                             ]
                         },
-                        "schema": {
+                        "schema":{
                             "$ref": "#/definitions/Usuario"
                         }
                     },
-                    "403": {
+                    "403":{
                         "description": "Prohibido"
                     }
                 },
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "description": "identificador del usuario",
-                        "type": "number",
-                        "default": "4"
-                    }
-                ]
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador del usuario",
+                        "type" : "string", 
+                        "default" : "4"
+
+                    } ]
             }
         },
-        "/api/usuarios/crearUsuario/": {
-            "post": {
-                "summary": "Creando un usuario",
+        "/api/usuarios/crearUsuario/":{
+            "post":
+            {
+                "summary" : "Creando un usuario",
                 "operationId": "create",
-                "produces": [
+                "produces":[
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "Usuario",
+                        "name" : "Usuario",
                         "in": "body",
-                        "description": "Usuario agregado",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/NuevoUsuario"
+                        "description" :"Usuario agregado",
+                        "required" : true,
+                        "schema" : {
+                            "$ref" : "#/definitions/NuevoUsuario"
                         }
                     }
                 ],
-                "tags": [
-                    "Usuarios"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Insertado con exito"
+                "tags" : ["Usuarios"],
+                
+                "responses" : {
+                    "200" :{
+                        "description" : "Insertado con exito"
                     },
-                    "403": {
-                        "description": "Prohibido"
+                    "403" : {
+                        "description" : "Prohibido"
                     }
                 }
+
             }
         },
-        "/api/usuarios/actualizarUsuario/{id}": {
+        "/api/usuarios/ValidarUsuario/":{
+            "post":
+            {
+                "summary" : "Validar un usuario",
+                "operationId": "create",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name" : "Usuario",
+                        "in": "body",
+                        "description" :"Usuario agregado",
+                        "required" : true,
+                        "schema" : {
+                            "$ref" : "#/definitions/validar"
+                        }
+                    }
+                ],
+                "tags" : ["Usuarios"],
+                
+                "responses" : {
+                    "200" :{
+                        "description" : "Insertado con exito"
+                    },
+                    "403" : {
+                        "description" : "Prohibido"
+                    }
+                }
+
+            }
+        },
+        "/api/usuarios/actualizarUsuario/{id}":{
             "put": {
                 "summary": "Actualizar la informaciòn del usuario del ciit",
                 "description": "<p>Servicio que permite editar la informaciòn del usuario de ciit, dado el id el mismo </p><p>&nbsp;</p>",
-                "operationId": "update",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "description": "identificador del usuario",
-                        "type": "number",
-                        "default": "4"
+                "operationId" : "update",
+                "consumes" : ["application/json" ],
+                "produces" : ["application/json" ],
+                
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador del usuario",
+                        "type" : "number", 
+                        "default" : "4"
+
                     },
                     {
-                        "name": "Usuario",
-                        "in": "body",
-                        "description": "Nombre del usuario",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/NuevoUsuario"
+                        "name" : "Usuario",
+                        "in" : "body",
+                        "description" : "Nombre del usuario",
+                        "required" : true,
+                        "schema" : {
+                            "$ref" : "#/definitions/NuevoUsuario"
                         }
+                        
                     }
+                
                 ],
-                "tags": [
-                    "Usuarios"
-                ],
+                "tags" :["Usuarios"],
                 "responses": {
-                    "200": {
+                    "200":{
                         "description": "OK"
-                    },
-                    "403": {
+                    },   
+                    "403":{
                         "description": "Prohibido"
                     }
                 }
             }
         },
-        "/api/usuarios/reestablecreestablecerContrasena/{token}": {
+        
+        "/api/usuarios/actualizarFotito/{id}":{
             "put": {
-                "summary": "Actualizar  del usla contraseña de un usuario del ciit",
-                "description": "<p>Servicio que permite editar la contraseña del usuario de ciit, dado el correo tokenizado del usuario </p><p>&nbsp;</p>",
-                "operationId": "update",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "token",
-                        "in": "path",
-                        "required": true,
-                        "description": "Correo tokenizado del usuario",
-                        "type": "string",
-                        "default": "eyJhbGciOiJIUzI1NiJ9.eGltZW5hMjYwNzAzQGdtYWlsLmNvbQ.V8rTdiJR2JZYZn2O1P4PG8jevAWqb-cWwfMYPEnakYc"
+                "summary": "Actualizar fotito de un usuario del ciit",
+                "operationId" : "update",
+                "consumes" : ["application/json" ],
+                "produces" : ["application/json" ],
+                
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "Fotito actualizado del usuario",
+                        "type" : "string", 
+                        "default" : "0"
+
                     },
                     {
-                        "name": "Usuario",
-                        "in": "body",
-                        "description": "Contraseña nueva del usuario",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/NuevaContrasena"
+                        "name" : "Usuario",
+                        "in" : "body",
+                        "description" : "Contraseña nueva del usuario",
+                        "required" : true,
+                        "schema" : {
+                            "$ref" : "#/definitions/foto"
                         }
+                        
                     }
+                
                 ],
-                "tags": [
-                    "Usuarios"
-                ],
+                "tags" :["Usuarios"],
                 "responses": {
-                    "200": {
+                    "200":{
                         "description": "OK"
-                    },
-                    "403": {
+                    },   
+                    "403":{
                         "description": "Prohibido"
                     }
                 }
             }
         },
-        "/api/usuarios/eliminarUsuario/{id}": {
+        "/api/usuarios/eliminarUsuario/{id}":{
             "delete": {
-                "tags": [
-                    "Usuarios"
-                ],
+                "tags": ["Usuarios"],
                 "summary": "Eliminar el usuario del ciit dado su identificador",
                 "description": "<p>Servicio que elimina el usuario dado el identificador enviado</p><p>&nbsp;</p><p><em><strong>¿Fué una ejecución exitoso?</strong></em></p>",
                 "responses": {
-                    "200": {
+                    "200":{
                         "description": "OK"
-                    },
-                    "403": {
+                    },   
+                    "403":{
                         "description": "Prohibido"
                     }
                 },
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "description": "identificador del usuario",
-                        "type": "number",
-                        "default": "8"
-                    }
-                ]
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador del usuario",
+                        "type" : "string", 
+                        "default" : "8"
+
+                    } ]
+                    
             }
         },
-        "/api/usuarios/obtenerUsuarioCorreo/{correo}": {
+        "/api/usuarios/obtenerUsuarioCorreo/{correo}":{
             "get": {
-                "tags": [
-                    "Usuarios"
-                ],
+                "tags": ["Usuarios"],
                 "summary": "Obtencion de un usuario",
                 "description": "<p>Servicio que devuelve la información detallada de un usuario</p>",
                 "responses": {
-                    "200": {
+                    "200":{
                         "description": "OK",
-                        "examples": {
+                        "examples": {      
                             "application/json": [
+                                
                                 {
-                                    "id": 4,
-                                    "nombre": "Angel Cruz",
+                                    "id": "66492f0010ad0bc1b72270fb",
+                                    "usuario": "Angel Cruz",
                                     "correo": "example@gmail.com",
-                                    "id_Rol": 4,
-                                    "contrasena": "789*"
+                                    "id_Rol": "4",
+                                    "password": "789*"
                                 }
                             ]
                         },
-                        "schema": {
+                        "schema":{
                             "$ref": "#/definitions/Usuario"
                         }
                     },
-                    "403": {
+                    "403":{
                         "description": "Prohibido"
                     }
                 },
-                "parameters": [
-                    {
-                        "name": "correo",
-                        "in": "path",
-                        "required": true,
-                        "description": "correo del usuario",
-                        "type": "string",
-                        "default": "example@gmail.com"
-                    }
-                ]
+                "parameters":[              
+                    {                          
+                        "name" : "correo",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "correo del usuario",
+                        "type" : "string", 
+                        "default" : "example@gmail.com"
+            } ]
             }
         },
-        "/api/empresas/MostrarTodasEmpresas/": {
+        "/api/empresas/MostrarTodasEmpresas/":{
             "get": {
                 "tags": [
                     "Empresas"
                 ],
                 "summary": "Listado de todas las empresas que existen en el ciit.",
                 "description": "<p>Servicio que devuelve la información detallada de todas las empresas que existen en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son las empresas existentes en el ciit?</strong></em></p>",
-                "responses": {
-                    "200": {
+                    "responses": {
+                    "200":{
                         "description": "OK",
                         "examples": {
                             "application/json": [
@@ -316,30 +355,30 @@
                                     "telefono": "2132",
                                     "responsable": "ninguno"
                                 }
+                                
                             ]
                         },
-                        "schema": {
+                        "schema":{
                             "$ref": "#/definitions/Empresas"
                         }
                     },
-                    "403": {
+                    "403":{
                         "description": "Prohibido"
                     }
                 }
             }
         },
-        "/api/empresas/obtenerEmpresa/{id}": {
+        "/api/empresas/obtenerEmpresa/{id}":{
             "get": {
-                "tags": [
-                    "Empresas"
-                ],
+                "tags": ["Empresas"],
                 "summary": "Obtencion de una empresa",
                 "description": "<p>Servicio que devuelve la información detallada de una empresa</p>",
                 "responses": {
-                    "200": {
+                    "200":{
                         "description": "OK",
-                        "examples": {
+                        "examples": {      
                             "application/json": [
+                                
                                 {
                                     "id_empresa": 2,
                                     "nombre_empresa": "pepsi s.a de c.v",
@@ -348,206 +387,205 @@
                                     "telefono": "2132",
                                     "responsable": "ninguno"
                                 }
+                                
                             ]
                         },
-                        "schema": {
+                        "schema":{
                             "$ref": "#/definitions/Empresa"
                         }
                     },
-                    "403": {
+                    "403":{
                         "description": "Prohibido"
                     }
                 },
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "description": "identificador de la empresa",
-                        "type": "number",
-                        "default": "1"
-                    }
-                ]
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador de la empresa",
+                        "type" : "number", 
+                        "default" : "1"
+
+                    } ]
             }
         },
-        "/api/empresas/crearEmpresa/": {
-            "post": {
-                "summary": "Creando una empresa",
+        "/api/empresas/crearEmpresa/":{
+            "post":
+            {
+                "summary" : "Creando una empresa",
                 "operationId": "create",
-                "produces": [
+                "produces":[
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "Empresa",
+                        "name" : "Empresa",
                         "in": "body",
-                        "description": "Empresa agregada",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/NuevaEmpresa"
+                        "description" :"Empresa agregada",
+                        "required" : true,
+                        "schema" : {
+                            "$ref" : "#/definitions/NuevaEmpresa"
                         }
                     }
                 ],
-                "tags": [
-                    "Empresas"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Insertado con exito"
+
+                "tags" : ["Empresas"],
+                
+                "responses" : {
+                    "200" :{
+                        "description" : "Insertado con exito"
                     },
-                    "403": {
-                        "description": "Prohibido"
+                    "403" : {
+                        "description" : "Prohibido"
                     }
                 }
+
             }
         },
-        "/api/empresas/actualizarEmpresa/{id}": {
+        "/api/empresas/actualizarEmpresa/{id}":{
             "put": {
                 "summary": "Actualizar la informaciòn de la empresa",
                 "description": "<p>Servicio que permite editar la informaciòn de una empresa dado el id</p><p>&nbsp;</p>",
-                "operationId": "update",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "description": "identificador de la empresa",
-                        "type": "number",
-                        "default": "4"
+                "operationId" : "update",
+                "consumes" : ["application/json" ],
+                "produces" : ["application/json" ],
+                
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador de la empresa",
+                        "type" : "number", 
+                        "default" : "4"
+
                     },
                     {
-                        "name": "Empresa",
-                        "in": "body",
-                        "description": "Nombre de la empresa",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/NuevaEmpresa"
+                        "name" : "Empresa",
+                        "in" : "body",
+                        "description" : "Nombre de la empresa",
+                        "required" : true,
+                        "schema" : {
+                            "$ref" : "#/definitions/NuevaEmpresa"
                         }
+                        
                     }
+                
                 ],
-                "tags": [
-                    "Empresas"
-                ],
+                "tags" :["Empresas"],
                 "responses": {
-                    "200": {
+                    "200":{
                         "description": "OK"
-                    },
-                    "403": {
+                    },   
+                    "403":{
                         "description": "Prohibido"
                     }
                 }
             }
         },
-        "/api/empresas/eliminarEmpresa/{id}": {
+        "/api/empresas/eliminarEmpresa/{id}":{
             "delete": {
-                "tags": [
-                    "Empresas"
-                ],
+                "tags": ["Empresas"],
                 "summary": "Eliminar una empresa del ciit dado su identificador",
                 "description": "<p>Servicio que elimina la empresa dado el identificador enviado</p><p>&nbsp;</p><p><em><strong>¿Fué una ejecución exitoso?</strong></em></p>",
                 "responses": {
-                    "200": {
+                    "200":{
                         "description": "OK"
-                    },
-                    "403": {
+                    },   
+                    "403":{
                         "description": "Prohibido"
                     }
                 },
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "description": "identificador de la empresa",
-                        "type": "number",
-                        "default": "2"
-                    }
-                ]
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador de la empresa",
+                        "type" : "number", 
+                        "default" : "2"
+
+                    } ]
+                    
             }
         },
-        "/api/roles/mostrarTodosRoles/": {
+        "/api/roles/":{
             "get": {
                 "tags": [
                     "Roles"
                 ],
                 "summary": "Listado de todos los roles que existen en el ciit.",
                 "description": "<p>Servicio que devuelve la información detallada de todos los roles que existen en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los roles existentes en el ciit?</strong></em></p>",
-                "responses": {
-                    "200": {
+                    "responses": {
+                    "200":{
                         "description": "OK",
                         "examples": {
                             "application/json": [
                                 {
                                     "id_rol": 1,
-                                    "nombre_rol": "Administrador"
+                                    "nombre_rol": "Administrador"   
                                 }
+                                
                             ]
                         },
-                        "schema": {
+                        "schema":{
                             "$ref": "#/definitions/Roles"
                         }
                     },
-                    "403": {
+                    "403":{
                         "description": "Prohibido"
                     }
                 }
             }
         },
-        "/api/roles/obtenerRol/{id}": {
+        "/api/roles/obtenerRol/{id}":{
             "get": {
-                "tags": [
-                    "Roles"
-                ],
+                "tags": ["Roles"],
                 "summary": "Muestra un rol existente en el ciit.",
                 "description": "<p>Servicio que devuelve la información detallada de todos los roles que existen en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los roles existentes en el ciit?</strong></em></p>",
-                "responses": {
-                    "200": {
+                 "responses": {
+                    "200":{
                         "description": "OK",
-                        "examples": {
+                        "examples": {      
                             "application/json": [
+                                
                                 {
-                                    "id_rol": 1,
-                                    "nombre_rol": "Administrador"
-                                }
+                                    "id_rol": "66492c2eb6489d86aab8c310",
+                                    "nombre_rol": "Administrador"   
+                                  }
+                                
                             ]
                         },
-                        "schema": {
+                        "schema":{
                             "$ref": "#/definitions/Rol"
                         }
                     },
-                    "403": {
+                    "403":{
                         "description": "Prohibido"
                     }
                 },
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "description": "identificador del rol",
-                        "type": "number",
-                        "default": "4"
-                    }
-                ]
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador del rol",
+                        "type" : "string", 
+                        "default" : "66492c2eb6489d86aab8c310"
+
+                    } ]
             }
         },
-        "/api/roles/crearRol/": {
+        "/api/roles/crearRol/":{
             "post": {
-                "tags": [
-                    "Roles"
-                ],
+                "tags": ["Roles"],
                 "summary": "Inserta un nuevo rol en el ciit.",
                 "operationId": "create",
                 "description": "<p>Servicio que permite crear un nuevo rol en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los datos necesarios para crear un nuevo rol?</strong></em></p>",
                 "produces": [
                     "application/json"
-                ],
+                ], 
                 "parameters": [
                     {
                         "name": "rol",
@@ -569,44 +607,40 @@
                 }
             }
         },
-        "/api/roles/actualizarRol/{id}": {
+        "/api/roles/{id}":{
             "put": {
-                "summary": "Actualizar la informaciòn del Rol del ciit",
-                "description": "<p>Servicio que permite editar la informaciòn del Rol de ciit, dado el id el mismo </p><p>&nbsp;</p>",
-                "operationId": "update",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "description": "identificador del Rol",
-                        "type": "number",
-                        "default": "4"
+                "summary": "Actualizar la información del Rol del ciit",
+                "description": "<p>Servicio que permite editar la información del Rol de ciit, dado el id el mismo </p><p>&nbsp;</p>",
+                "operationId" : "update",
+                "consumes" : ["application/json" ],
+                "produces" : ["application/json" ],
+                
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "Identificador del Rol",
+                        "type" : "string"
                     },
                     {
-                        "name": "Rol",
-                        "in": "body",
-                        "description": "Nombre del Rol",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/NuevoRol"
+                        "name" : "Rol",
+                        "in" : "body",
+                        "description" : "Nombre del Rol",
+                        "required" : true,
+                        "schema" : {
+                            "$ref" : "#/definitions/NuevoRol"
                         }
+                        
                     }
+                
                 ],
-                "tags": [
-                    "Roles"
-                ],
+                "tags" :["Roles"],
                 "responses": {
-                    "200": {
+                    "200":{
                         "description": "OK"
-                    },
-                    "403": {
+                    },   
+                    "403":{
                         "description": "Prohibido"
                     }
                 }
@@ -614,9 +648,7 @@
         },
         "/api/roles/eliminarRol/{id}": {
             "delete": {
-                "tags": [
-                    "Roles"
-                ],
+                "tags": ["Roles"],
                 "summary": "Elimina un Rol registrado en el ciit",
                 "description": "<p>Servicio que permite eliminar un rol en el ciit.</p><p>&nbsp;</p><p><em><strong>Eliminar rol</strong></em></p>",
                 "responses": {
@@ -873,155 +905,563 @@
                     }
                 }
             }
+        },
+        "/api/noticias/verNoticias/":{
+            "get": {
+                "tags": [
+                    "Noticias"
+                ],
+                "summary": "Listado de todas las noticias que existen en el ciit.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las noticias que existen en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son las noticias existentes en el ciit?</strong></em></p>",
+                    "responses": {
+                    "200":{
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_noticia": 1,
+                                    "titulo": "Noticia 1",
+                                    "title": "News 1",
+                                    "autor": "Autor 1",
+                                    "fecha_publicacion": "2020-12-12",
+                                    "contenido": "Contenido de la noticia 1",
+                                    "content": "Content of the news 1",
+                                    "createdAt": "2020-12-12",
+                                    "updatedAt": "2020-12-12"
+                                }
+                                
+                            ]
+                        },
+                        "schema":{
+                            "$ref": "#/definitions/Noticias"
+                        }
+                    },
+                    "403":{
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/noticias/verNoticia/{id}":{
+            "get":{
+                "tags":["Noticias"],
+                "summary":"Ver una sola noticia",
+                "description":"Servicio que devuelve la informacion detallada de una noticia",
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "required":true,
+                        "description":"identificador de la noticia",
+                        "type":"string",
+                        "default":""
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "examples":{
+                            "application/json":[
+                                {
+                                    "id_noticia": 1,
+                                    "titulo": "Noticia 1",
+                                    "title": "News 1",
+                                    "autor": "Autor 1",
+                                    "fecha_publicacion": "2020-12-12",
+                                    "contenido": "Contenido de la noticia 1",
+                                    "content": "Content of the news 1",
+                                    "createdAt": "2020-12-12",
+                                    "updatedAt": "2020-12-12"
+                                }
+                            ]
+                        },
+                        "schema":{
+                            "$ref":"#/definitions/Noticia"
+                        }
+                    },
+                    "403":{
+                        "description":"Prohibido"
+                    }
+                }
+            }
+        },
+
+        "/api/noticias/":{
+            "post":
+            {
+                "summary" : "Creando una noticia",
+                "operationId": "create",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name" : "Noticias",
+                        "in": "body",
+                        "description" :"Noticia agregada",
+                        "required" : true,
+                        "schema" : {
+                            "$ref" : "#/definitions/NuevaNoticia"
+                        }
+                    }
+                ],
+
+                "tags" : ["Noticias"],
+                
+                "responses" : {
+                    "200" :{
+                        "description" : "Insertado con exito"
+                    },
+                    "403" : {
+                        "description" : "Prohibido"
+                    }
+                }
+
+            }
+        },
+        "/api/noticias/{id}": {
+            "delete": {
+                "tags": ["Noticias"],
+                "summary": "Eliminar una noticia registrada en el ciit",
+                "description": "<p>Servicio que permite eliminar una noticia en el ciit.</p><p>&nbsp;</p><p><em><strong>Eliminar rol</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "Noticia Eliminada con exito"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "<p>Información de la noticia que se va a eliminar.</p>",
+                        "type": "string",
+                        "default": "1"
+                    }
+                ]
+            }
+        },
+
+        "/api/noticias/actualizarNoticia/{id}":{
+            "put": {
+                "summary": "Actualizar la informaciòn de la noticia del ciit",
+                "description": "<p>Servicio que permite editar la informaciòn de alguna noticia de ciit, dado el id el mismo </p><p>&nbsp;</p>",
+                "operationId" : "update",
+                "consumes" : ["application/json" ],
+                "produces" : ["application/json" ],
+                
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador de la noticia",
+                        "type" : "string", 
+                        "default" : ""
+
+                    },
+                    {
+                        "name" : "noticia",
+                        "in" : "body",
+                        "description" : "Cuerpo de la noticia",
+                        "required" : true,
+                        "schema" : {
+                            "$ref" : "#/definitions/NuevaNoticia"
+                        }
+                        
+                    }
+                
+                ],
+                "tags" :["Noticias"],
+                "responses": {
+                    "200":{
+                        "description": "OK"
+                    },   
+                    "403":{
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/redSocial/eliminarRed/{id}":{
+            "delete": {
+                "tags": ["Redes Sociales"],
+                "summary": "Eliminar una red social por medio de su identificador",
+                "description": "<p>Servicio que elimina la red social dado el identificador enviado</p><p>&nbsp;</p><p><em><strong>¿Fué una ejecución exitosa?</strong></em></p>",
+                "responses": {
+                    "200":{
+                        "description": "OK"
+                    },   
+                    "403":{
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador de la red",
+                        "type" : "string", 
+                        "default" : "1"
+
+                    } ]
+                    
+            }
+        },
+        "/api/redSocial/mostrar_todas_redes":{
+            "get": {
+                "tags": [
+                    "Redes Sociales"
+                ],
+                "summary": "Listado de todas las redes sociales que existen en el ciit.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las redes sociales que existen en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son las redes sociales existentes en el ciit?</strong></em></p>",
+                    "responses": {
+                    "200":{
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "_id": "1",
+                                    "nombre": "Facebook",
+                                    "enlace": "https://www.facebook.com/",
+                                    "foto": 1
+                                }
+                                
+                            ]
+                        },
+                        "schema":{
+                            "$ref": "#/definitions/RedSocial"
+                        }
+                    },
+                    "403":{
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/redSocial/obtenerRed/{id}":{
+            "get": {
+                "tags": ["Redes Sociales"],
+                "summary": "Obtencion de una red social",
+                "description": "<p>Servicio que devuelve la información detallada de una red social</p>",
+                "responses": {
+                    "200":{
+                        "description": "OK",
+                        "examples": {      
+                            "application/json": [
+                                
+                                {
+                                    "_id": "6649491ff2432d76da49b538",
+                                    "nombre": "Facebook",
+                                    "enlace": "https://www.facebook.com/",
+                                    "foto": 1
+                                }
+                                
+                            ]
+                        },
+                        "schema":{
+                            "$ref": "#/definitions/RedSocial"
+                        }
+                    },
+                    "403":{
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters":[              
+                    {                          
+                        "name" : "id",
+                        "in" : "path",
+                        "required" : true,
+                        "description" : "identificador de la red social",
+                        "type" : "string", 
+                        "default" : "6649491ff2432d76da49b538"
+
+                    } ]
+            }
+        },
+        "/api/redSocial/crearRed": {
+            "post": {
+                "tags": [
+                    "Redes Sociales"
+                ],
+                "summary": "Crear una nueva red social en el ciit.",
+                "description": "<p>Servicio que permite crear una nueva red social en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cómo crear una nueva red social en el ciit?</strong></em></p>",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Información de la red social que se va a crear.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RedSocial"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": {
+                                "_id": "1",
+                                "nombre": "Facebook",
+                                "enlace": "https://www.facebook.com/",
+                                "foto": 1
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/RedSocial"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/redSocial/actualizarRed/{id}": {
+            "put": {
+                "tags": [
+                    "Redes Sociales"
+                ],
+                "summary": "Actualización de una red social por medio de su identificador",
+                "description": "<p>Servicio que recibe el identificador y los datos nuevos de una red social, y los sustituye por los ya existentes en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los nuevos datos de una red social?</strong></em></p>",
+                "operationId": "update",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador de la red social",
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "name": "Red Social",
+                        "in": "body",
+                        "description": "Datos nuevos de la red social",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RedSocial"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        
         "Usuario": {
             "type": "object",
-            "properties": {
-                "id": {
+            "properties":{
+                "_id" :{
+                    "type": "string",
+                    "description" : "Codigo que permite identificar al usuario"
+                },
+                
+                "nombre" :{
+                    "type": "string",
+                    "description" : "Nombre del usuario"
+                },
+
+                "correo" :{
+                    "type": "string",
+                    "description" : "Correo del usuario"
+                },
+                "fotito" :{
                     "type": "number",
-                    "description": "Codigo que permite identificar al usuario"
+                    "description" : "Foto del usuario"
                 },
-                "nombre": {
+                "contrasena" :{
                     "type": "string",
-                    "description": "Nombre del usuario"
+                    "description" : "Contraseña del usuario"
                 },
-                "correo": {
+
+                "createAt" :{
                     "type": "string",
-                    "description": "Correo del usuario"
+                    "description" : "Fecha en que se creó"
                 },
-                "id_Rol": {
-                    "type": "number",
-                    "description": "Codigo que permite identificar el rol del usuario"
-                },
-                "contrasena": {
+                "updateAt" :{
                     "type": "string",
-                    "description": "Contrasena del usuario"
+                    "description" : "Fecha en que se modificó"
+                },
+                "id_Rol" :{
+                    "type": "string",
+                    "description" : "Codigo que permite identificar al rol"
                 }
+
             }
         },
-        "Usuarios": {
-            "type": "array",
-            "items": {
+        "Usuarios" :{
+            "type":"array",
+            "items":{
                 "$ref": "#/definitions/Usuario"
             }
         },
-        "NuevoUsuario": {
+        "NuevoUsuario":{
             "type": "object",
-            "properties": {
-                "nombre": {
+            "properties":{
+                "nombre" :{
                     "type": "string",
-                    "description": "Nombre del usuario"
+                    "description" : "Nombre del usuario"
                 },
-                "correo": {
+
+                "correo" :{
                     "type": "string",
-                    "description": "Correo del usuario"
+                    "description" : "Correo del usuario"
                 },
-                "id_Rol": {
+                "fotito" :{
                     "type": "number",
-                    "description": "Codigo que permite identificar el rol del usuario"
+                    "description" : "Foto del usuario"
                 },
-                "contrasena": {
+                "contrasena" :{
                     "type": "string",
-                    "description": "Contrasena del usuario"
+                    "description" : "Contraseña del usuario"
+                },
+                "id_Rol" :{
+                    "type": "string",
+                    "description" : "Codigo que permite identificar al rol"
+                }
+
+            }
+        },
+        "NuevaContrasena":{
+            "type": "object",
+            "properties":{
+                "contrasena" :{
+                    "type": "string",
+                    "description" : "Contrasena nueva del usuario"
                 }
             }
         },
-        "NuevaContrasena": {
+        "foto":{
             "type": "object",
-            "properties": {
-                "contrasena": {
-                    "type": "string",
-                    "description": "Contrasena nueva del usuario"
-                }
-            }
-        },
-        "NuevaEmpresa": {
-            "type": "object",
-            "properties": {
-                "nombre_empresa": {
-                    "type": "string",
-                    "description": "Nombre de la empresa"
-                },
-                "direccion": {
-                    "type": "string",
-                    "description": "Codigo que permite sabe la dirrecion de una empresa"
-                },
-                "rfc": {
-                    "type": "string",
-                    "description": "Codigo que permite saber el RFC de la empresa"
-                },
-                "telefono": {
+            "properties":{
+                "fotito" :{
                     "type": "number",
-                    "description": "Este codigo permite saber el numero de telefono de la empresa"
-                },
-                "responsable": {
-                    "type": "string",
-                    "description": "Este codigo permite saber el responsable de la empresa"
+                    "description" : "Fotito del usuario"
                 }
             }
         },
         "Empresa": {
             "type": "object",
-            "properties": {
-                "id_empresa": {
+            "properties":{
+                "id_empresa" :{
                     "type": "number",
-                    "description": "Codigo que permite identificar a la empresa"
+                    "description" : "Codigo que permite identificar a la empresa"
                 },
-                "nombre_empresa": {
+                
+                "nombre_empresa" :{
                     "type": "string",
-                    "description": "Nombre de la empresa"
+                    "description" : "Nombre de la empresa"
                 },
-                "direccion": {
-                    "type": "string",
-                    "description": "Codigo que permite sabe la dirrecion de una empresa"
+
+                "direccion":{
+                    "type":"string",
+                    "description":"Codigo que permite sabe la dirrecion de una empresa"
+
                 },
-                "rfc": {
-                    "type": "string",
-                    "description": "Codigo que permite saber el RFC de la empresa"
+                "rfc":{
+                    "type":"string",
+                    "description":"Codigo que permite saber el RFC de la empresa"
                 },
-                "telefono": {
-                    "type": "number",
-                    "description": "Este codigo permite saber el numero de telefono de la empresa"
+                "telefono":{
+                    "type":"number",
+                    "description":"Este codigo permite saber el numero de telefono de la empresa"
+
                 },
-                "responsable": {
+                "responsable":{
                     "type": "string",
                     "description": "Este codigo permite saber el responsable de la empresa"
+
                 }
             }
         },
-        "Empresas": {
-            "type": "array",
-            "items": {
+        "Empresas" :{
+            "type":"array",
+            "items":{
                 "$ref": "#/definitions/Empresa"
+            }
+        },
+        "NuevaEmpresa":{
+            "type": "object",
+            "properties":{
+                
+                
+                "nombre_empresa" :{
+                    "type": "string",
+                    "description" : "Nombre de la empresa"
+                },
+
+                "direccion":{
+                    "type":"string",
+                    "description":"Codigo que permite sabe la dirrecion de una empresa"
+
+                },
+                "rfc":{
+                    "type":"string",
+                    "description":"Codigo que permite saber el RFC de la empresa"
+                },
+                "telefono":{
+                    "type":"number",
+                    "description":"Este codigo permite saber el numero de telefono de la empresa"
+
+                },
+                "responsable":{
+                    "type": "string",
+                    "description": "Este codigo permite saber el responsable de la empresa"
+
+                }
             }
         },
         "Rol": {
             "type": "object",
-            "properties": {
-                "id_rol": {
-                    "type": "int",
-                    "description": "Codigo que permite identificar al rol"
-                },
-                "nombre_rol": {
+            "properties":{
+                "id_rol" :{
                     "type": "string",
-                    "description": "Nombre del rol"
+                    "description" : "Identificador del Rol"
+                },
+                
+                "nombre_rol" :{
+                    "type": "string",
+                    "description" : "Nombre del rol"
+                },
+                "name_rol" :{
+                    "type": "string",
+                    "description" : "Nombre del rol en inglés"
                 }
             }
         },
-        "Roles": {
-            "type": "array",
-            "items": {
+        
+        "Roles" :{
+            "type":"array",
+            "items":{
                 "$ref": "#/definitions/Rol"
             }
         },
-        "NuevoRol": {
+        "NuevoRol":{
             "type": "object",
-            "properties": {
-                "nombre_rol": {
+            "properties":{
+                "nombre_rol" :{
                     "type": "string",
-                    "description": "Nombre del rol"
+                    "description" : "Nombre del rol"
+                },
+                "name_rol" :{
+                    "type": "string",
+                    "description" : "Nombre del rol en inglés"
                 }
             }
         },
@@ -1107,6 +1547,103 @@
                     "type": "string",
                     "description": "Codigo que permite identificar la empresa"
                 }
+            }
+        },
+        "Noticia":{
+            "type": "object",
+            "properties":{
+                "_id" :{
+                    "type": "number",
+                    "description" : "Codigo que permite identificar a la noticia"
+                },
+                
+                "titulo" :{
+                    "type": "string",
+                    "description" : "Titulo de la noticia"
+                },
+                "title" :{
+                    "type": "string",
+                    "description" : "Titulo de la noticia en ingles"
+                },
+                "autor" :{
+                    "type": "string",
+                    "description" : "Autor de la noticia"
+                },
+                "fecha_publicacion" :{
+                    "type": "string",
+                    "description" : "Fecha de publicacion de la noticia"
+                },
+                
+                "contenido" :{
+                    "type": "string",
+                    "description" : "Contenido de la noticia"
+                },
+                "content" :{
+                    "type": "string",
+                    "description" : "Contenido de la noticia en ingles"
+                },
+                "createdAt" :{
+                    "type": "string",
+                    "description" : "Fecha de creacion de la noticia"
+                },
+                "updatedAt" :{
+                    "type": "string",
+                    "description" : "Fecha de actualizacion de la noticia"
+                }
+            }
+        },
+        "Noticias":{
+            "type":"array",
+            "items":{
+                "$ref":"#/definitions/Noticia"
+            }
+        },
+        "NuevaNoticia":{
+            "type": "object",
+            "properties":{
+                "titulo" :{
+                    "type": "string",
+                    "description" : "Titulo de la noticia"
+                },
+                "title" :{
+                    "type": "string",
+                    "description" : "Titulo de la noticia en ingles"
+                },
+                "autor" :{
+                    "type": "string",
+                    "description" : "Autor de la noticia"
+                },
+                "fecha_publicacion" :{
+                    "type": "string",
+                    "description" : "Fecha de publicacion de la noticia"
+                },
+                
+                "contenido" :{
+                    "type": "string",
+                    "description" : "Contenido de la noticia"
+                },
+                "content" :{
+                    "type": "string",
+                    "description" : "Contenido de la noticia en ingles"
+                }
+            }
+        },
+        "RedSocial": {
+            "type": "object",
+            "properties":{
+                "nombre" :{
+                    "type": "string",
+                    "description" : "Nombre de la red social"
+                },
+                "enlace":{
+                    "type":"string",
+                    "description":"enlace a la pagina de la red social"
+                },
+                "foto":{
+                    "type":"integer",
+                    "description":"bandera para saber si tiene una imagen asignada"
+                }
+
             }
         }
     }

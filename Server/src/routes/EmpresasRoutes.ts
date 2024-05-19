@@ -7,11 +7,12 @@ class EmpresasRoutes {
         this.config();
     }
     config(): void {
-        this.router.post('/',empresaController.createEmpresa);
-        /*this.router.get('/obtenerUsuario/:id',empresaController.listOne);
-        this.router.post('/', empresaController.createUsuario);
-        this.router.delete('/:id',empresaController.borrarUsuario);
-        this.router.put('/:id',empresaController.actualizarUsuario);*/
+        this.router.post('/crearEmpresa/', empresaController.createEmpresa);
+        this.router.get('/MostrarTodasEmpresas/', empresaController.mostrar_todos_empresa);
+        this.router.put('/actualizarEmpresa/:id', empresaController.actualizarEmpresa);
+        this.router.delete('/eliminarEmpresa/:id', empresaController.eliminarEmpresa);
+        this.router.get('/ListOneEmpresa/:id', empresaController.listOne);
+        this.router.put('/actualizarFotito/:id', empresaController.actualizarFotito);
     }
 }
 const empresasRoutes = new EmpresasRoutes();

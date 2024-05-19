@@ -6,6 +6,8 @@ interface Empresa {
     rfc: string;
     descripcion: string;
     description: string;
+    telefono: number;
+    fotito: boolean;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -37,7 +39,19 @@ const schemaEmpresa = new Schema<Empresa>({
     description:
     {
         type: String,
+        required: true
+    },
+    telefono:
+    {
+        type: Number,
         required: true,
+        trim: true,
+        unique:true
+    },
+    fotito:
+    {
+        type: Boolean,
+        default: false
     }
 },
     {

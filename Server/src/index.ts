@@ -2,6 +2,9 @@ import express, { Application } from 'express';
 import usuariosRoutes from './routes/usuariosRoutes';
 import empresasRoutes from './routes/empresasRoutes';
 import ofertalaboralRoutes from './routes/ofertalaboralRoutes';
+import rolesRoutes from './routes/rolesRoutes';
+import redSocialRoutes from './routes/redSocialRoutes';
+import noticiasRoutes from './routes/noticiasRoutes';
 
 import swagger_ui_express from 'swagger-ui-express';
 import swaggerDocument from './swagger.json';
@@ -27,6 +30,9 @@ class Server {
         this.app.use('/api/usuarios', usuariosRoutes);
         this.app.use('/api/empresas', empresasRoutes);
         this.app.use('/api/ofertasLaborales', ofertalaboralRoutes);
+        this.app.use('/api/roles', rolesRoutes);
+        this.app.use('/api/redSocial', redSocialRoutes);
+        this.app.use('/api/noticias', noticiasRoutes);
     }
     start(): void {
         this.app.listen(this.app.get('port'), () => {

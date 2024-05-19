@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
 const empresasRoutes_1 = __importDefault(require("./routes/empresasRoutes"));
 const ofertalaboralRoutes_1 = __importDefault(require("./routes/ofertalaboralRoutes"));
+const rolesRoutes_1 = __importDefault(require("./routes/rolesRoutes"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_json_1 = __importDefault(require("./swagger.json"));
 const morgan_1 = __importDefault(require("morgan"));
@@ -29,6 +30,7 @@ class Server {
         this.app.use('/api/usuarios', usuariosRoutes_1.default);
         this.app.use('/api/empresas', empresasRoutes_1.default);
         this.app.use('/api/ofertasLaborales', ofertalaboralRoutes_1.default);
+        this.app.use('/api/roles', rolesRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
