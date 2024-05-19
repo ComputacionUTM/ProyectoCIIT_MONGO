@@ -52,7 +52,13 @@ const schemaOfertaLaboral = new mongoose_1.Schema({
     horario: {
         type: String,
         required: true,
-    }
+    },
+    id_empresa: {
+        type: String,
+        required: true,
+        trim: true,
+        unique: true
+    },
 }, {
     timestamps: true
 });

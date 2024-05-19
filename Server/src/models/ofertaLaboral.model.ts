@@ -7,9 +7,9 @@ interface OfertaLaboral {
     descripcion: string;
     description: string;
     horario: string;
+    id_empresa : String;
     createdAt: Date;
     updatedAt: Date;
-    id_empresa : number;
 }
 
 const schemaOfertaLaboral = new Schema<OfertaLaboral>({
@@ -42,7 +42,7 @@ const schemaOfertaLaboral = new Schema<OfertaLaboral>({
         required: true,
     },
     id_empresa: {
-        type: Number,
+        type: String,
         required: true,
         trim: true,
         unique: true

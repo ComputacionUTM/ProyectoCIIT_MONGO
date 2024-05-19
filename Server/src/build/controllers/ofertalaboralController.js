@@ -30,7 +30,8 @@ class OfertaLaboralController {
                     position: req.body.position,
                     descripcion: req.body.descripcion,
                     description: req.body.description,
-                    horario: req.body.horario
+                    horario: req.body.horario,
+                    id_empresa: req.body.id_empresa
                 });
                 console.log(nuevaOfertaLaboral);
                 const ofertaLaboralGuardado = yield nuevaOfertaLaboral.save();
