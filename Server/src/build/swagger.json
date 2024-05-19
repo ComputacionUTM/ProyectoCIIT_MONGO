@@ -606,15 +606,16 @@
                         "examples": {
                             "application/json": [
                                 {
-                                    "_id": "66454f5da09f3811ed71fa1b",
+                                    "_id": "664967f36e831485062acc41",
                                     "salario": 1000,
                                     "puesto": "Jefe de cocina",
                                     "position": "Head Chef",
                                     "descripcion": "Encargado de la cocina",
                                     "description": "In charge of the kitchen",
                                     "horario": "7:00 - 16:00",
-                                    "createdAt": "2024-05-16T00:12:13.538Z",
-                                    "updatedAt": "2024-05-16T00:12:13.538Z",
+                                    "id_empresa": "1",
+                                    "createdAt": "2024-05-19T02:46:11.977Z",
+                                    "updatedAt": "2024-05-19T02:46:11.977Z",
                                     "__v": 0
                                 }
                             ]
@@ -640,15 +641,16 @@
                         "examples": {
                             "application/json": [
                                 {
-                                    "_id": "66454f5da09f3811ed71fa1b",
+                                    "_id": "664967f36e831485062acc41",
                                     "salario": 1000,
                                     "puesto": "Jefe de cocina",
                                     "position": "Head Chef",
                                     "descripcion": "Encargado de la cocina",
                                     "description": "In charge of the kitchen",
                                     "horario": "7:00 - 16:00",
-                                    "createdAt": "2024-05-16T00:12:13.538Z",
-                                    "updatedAt": "2024-05-16T00:12:13.538Z",
+                                    "id_empresa": "1",
+                                    "createdAt": "2024-05-19T02:46:11.977Z",
+                                    "updatedAt": "2024-05-19T02:46:11.977Z",
                                     "__v": 0
                                 }
                             ]
@@ -699,15 +701,15 @@
                         "examples": {
                             "application/json": [
                                 {
-                                    "_id": "66454f5da09f3811ed71fa1b",
+                                    "_id": "664967f36e831485062acc41",
                                     "salario": 1000,
                                     "puesto": "Jefe de cocina",
                                     "position": "Head Chef",
                                     "descripcion": "Encargado de la cocina",
                                     "description": "In charge of the kitchen",
                                     "horario": "7:00 - 16:00",
-                                    "createdAt": "2024-05-16T00:12:13.538Z",
-                                    "updatedAt": "2024-05-16T00:12:13.538Z",
+                                    "createdAt": "2024-05-19T02:46:11.977Z",
+                                    "updatedAt": "2024-05-19T02:46:11.977Z",
                                     "__v": 0
                                 }
                             ]
@@ -969,6 +971,10 @@
                         "type": "number",
                         "description": "Salario de la oferta laboral"
                     },
+                    "id_empresa": {
+                        "type": "string",
+                        "description": "Codigo que permite identificar la empresa"
+                    },
                     "createdAt": {
                         "type": "date",
                         "description": "Fecha de creacion de la oferta laboral"
@@ -1005,6 +1011,10 @@
                     "salario": {
                         "type": "number",
                         "description": "Salario de la oferta laboral"
+                    },
+                    "id_empresa": {
+                        "type": "string",
+                        "description": "Codigo que permite identificar la empresa"
                     }
                 }
             }
