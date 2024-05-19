@@ -23,6 +23,10 @@
         {
             "name": "Roles",
             "description": "API para obtener información de las roles del ciit"
+        },
+        {
+            "name": "OfertasLaborales",
+            "description": "API para obtener información de las ofertas laborales del ciit"
         }
     ],
     "schemes": [
@@ -37,7 +41,9 @@
     "paths": {
         "/api/usuarios/mostrarTodosUsuarios/": {
             "get": {
-                "tags": ["Usuarios"],
+                "tags": [
+                    "Usuarios"
+                ],
                 "summary": "Listado de todos los usuarios que existen en el ciit.",
                 "description": "<p>Servicio que devuelve la información detallada de todos los usuarios que existen en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los usuarios existentes en el ciit?</strong></em></p>",
                 "responses": {
@@ -66,7 +72,9 @@
         },
         "/api/usuarios/obtenerUsuario/{id}": {
             "get": {
-                "tags": ["Usuarios"],
+                "tags": [
+                    "Usuarios"
+                ],
                 "summary": "Informacion asociada al usuario, si es que existe en el ciit",
                 "description": "<p>Servicio que devuelve la información detallada del usuarios soliciado</p><p>&nbsp;</p><p><em><strong>¿Cuál es del usuario de este id?</strong></em></p>",
                 "responses": {
@@ -121,7 +129,9 @@
                         }
                     }
                 ],
-                "tags": ["Usuarios"],
+                "tags": [
+                    "Usuarios"
+                ],
                 "responses": {
                     "200": {
                         "description": "Insertado con exito"
@@ -137,8 +147,12 @@
                 "summary": "Actualizar la informaciòn del usuario del ciit",
                 "description": "<p>Servicio que permite editar la informaciòn del usuario de ciit, dado el id el mismo </p><p>&nbsp;</p>",
                 "operationId": "update",
-                "consumes": ["application/json"],
-                "produces": ["application/json"],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "id",
@@ -158,7 +172,9 @@
                         }
                     }
                 ],
-                "tags": ["Usuarios"],
+                "tags": [
+                    "Usuarios"
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -174,8 +190,12 @@
                 "summary": "Actualizar  del usla contraseña de un usuario del ciit",
                 "description": "<p>Servicio que permite editar la contraseña del usuario de ciit, dado el correo tokenizado del usuario </p><p>&nbsp;</p>",
                 "operationId": "update",
-                "consumes": ["application/json"],
-                "produces": ["application/json"],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "token",
@@ -195,7 +215,9 @@
                         }
                     }
                 ],
-                "tags": ["Usuarios"],
+                "tags": [
+                    "Usuarios"
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -208,7 +230,9 @@
         },
         "/api/usuarios/eliminarUsuario/{id}": {
             "delete": {
-                "tags": ["Usuarios"],
+                "tags": [
+                    "Usuarios"
+                ],
                 "summary": "Eliminar el usuario del ciit dado su identificador",
                 "description": "<p>Servicio que elimina el usuario dado el identificador enviado</p><p>&nbsp;</p><p><em><strong>¿Fué una ejecución exitoso?</strong></em></p>",
                 "responses": {
@@ -233,7 +257,9 @@
         },
         "/api/usuarios/obtenerUsuarioCorreo/{correo}": {
             "get": {
-                "tags": ["Usuarios"],
+                "tags": [
+                    "Usuarios"
+                ],
                 "summary": "Obtencion de un usuario",
                 "description": "<p>Servicio que devuelve la información detallada de un usuario</p>",
                 "responses": {
@@ -304,7 +330,9 @@
         },
         "/api/empresas/obtenerEmpresa/{id}": {
             "get": {
-                "tags": ["Empresas"],
+                "tags": [
+                    "Empresas"
+                ],
                 "summary": "Obtencion de una empresa",
                 "description": "<p>Servicio que devuelve la información detallada de una empresa</p>",
                 "responses": {
@@ -360,7 +388,9 @@
                         }
                     }
                 ],
-                "tags": ["Empresas"],
+                "tags": [
+                    "Empresas"
+                ],
                 "responses": {
                     "200": {
                         "description": "Insertado con exito"
@@ -376,8 +406,12 @@
                 "summary": "Actualizar la informaciòn de la empresa",
                 "description": "<p>Servicio que permite editar la informaciòn de una empresa dado el id</p><p>&nbsp;</p>",
                 "operationId": "update",
-                "consumes": ["application/json"],
-                "produces": ["application/json"],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "id",
@@ -397,7 +431,9 @@
                         }
                     }
                 ],
-                "tags": ["Empresas"],
+                "tags": [
+                    "Empresas"
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -410,7 +446,9 @@
         },
         "/api/empresas/eliminarEmpresa/{id}": {
             "delete": {
-                "tags": ["Empresas"],
+                "tags": [
+                    "Empresas"
+                ],
                 "summary": "Eliminar una empresa del ciit dado su identificador",
                 "description": "<p>Servicio que elimina la empresa dado el identificador enviado</p><p>&nbsp;</p><p><em><strong>¿Fué una ejecución exitoso?</strong></em></p>",
                 "responses": {
@@ -463,7 +501,9 @@
         },
         "/api/roles/obtenerRol/{id}": {
             "get": {
-                "tags": ["Roles"],
+                "tags": [
+                    "Roles"
+                ],
                 "summary": "Muestra un rol existente en el ciit.",
                 "description": "<p>Servicio que devuelve la información detallada de todos los roles que existen en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los roles existentes en el ciit?</strong></em></p>",
                 "responses": {
@@ -499,7 +539,9 @@
         },
         "/api/roles/crearRol/": {
             "post": {
-                "tags": ["Roles"],
+                "tags": [
+                    "Roles"
+                ],
                 "summary": "Inserta un nuevo rol en el ciit.",
                 "operationId": "create",
                 "description": "<p>Servicio que permite crear un nuevo rol en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los datos necesarios para crear un nuevo rol?</strong></em></p>",
@@ -532,8 +574,12 @@
                 "summary": "Actualizar la informaciòn del Rol del ciit",
                 "description": "<p>Servicio que permite editar la informaciòn del Rol de ciit, dado el id el mismo </p><p>&nbsp;</p>",
                 "operationId": "update",
-                "consumes": ["application/json"],
-                "produces": ["application/json"],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "id",
@@ -553,7 +599,9 @@
                         }
                     }
                 ],
-                "tags": ["Roles"],
+                "tags": [
+                    "Roles"
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -566,7 +614,9 @@
         },
         "/api/roles/eliminarRol/{id}": {
             "delete": {
-                "tags": ["Roles"],
+                "tags": [
+                    "Roles"
+                ],
                 "summary": "Elimina un Rol registrado en el ciit",
                 "description": "<p>Servicio que permite eliminar un rol en el ciit.</p><p>&nbsp;</p><p><em><strong>Eliminar rol</strong></em></p>",
                 "responses": {
@@ -587,6 +637,241 @@
                         "default": "1"
                     }
                 ]
+            }
+        },
+        "/api/ofertasLaborales/obtenerOfertasLaborales": {
+            "get": {
+                "tags": [
+                    "OfertasLaborales"
+                ],
+                "summary": "Listado de todas las ofertas laborales que existen en el ciit.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las ofertas laborales que existen en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son las ofertas laborales existentes en el ciit?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "_id": "664967f36e831485062acc41",
+                                    "salario": 1000,
+                                    "puesto": "Jefe de cocina",
+                                    "position": "Head Chef",
+                                    "descripcion": "Encargado de la cocina",
+                                    "description": "In charge of the kitchen",
+                                    "horario": "7:00 - 16:00",
+                                    "id_empresa": "1",
+                                    "createdAt": "2024-05-19T02:46:11.977Z",
+                                    "updatedAt": "2024-05-19T02:46:11.977Z",
+                                    "__v": 0
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/OfertasLaborales"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/ofertasLaborales/obtenerOfertaLaboral/:id": {
+            "get": {
+                "tags": [
+                    "OfertasLaborales"
+                ],
+                "summary": "Obtencion de una oferta laboral",
+                "description": "<p>Servicio que devuelve la información detallada de una oferta laboral dado su identificador</p>",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "_id": "664967f36e831485062acc41",
+                                    "salario": 1000,
+                                    "puesto": "Jefe de cocina",
+                                    "position": "Head Chef",
+                                    "descripcion": "Encargado de la cocina",
+                                    "description": "In charge of the kitchen",
+                                    "horario": "7:00 - 16:00",
+                                    "id_empresa": "1",
+                                    "createdAt": "2024-05-19T02:46:11.977Z",
+                                    "updatedAt": "2024-05-19T02:46:11.977Z",
+                                    "__v": 0
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/OfertaLaboral"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador de la oferta laboral",
+                        "type": "number",
+                        "default": "1"
+                    }
+                ]
+            }
+        },
+        "/api/ofertasLaborales/crearOfertaLaboral": {
+            "post": {
+                "tags": [
+                    "OfertasLaborales"
+                ],
+                "summary": "Inserta una nueva oferta laboral en el ciit.",
+                "operationId": "create",
+                "description": "<p>Servicio que permite crear una nueva oferta laboral en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los datos necesarios para crear una nueva oferta?</strong></em></p>",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "ofertaLaboral",
+                        "in": "body",
+                        "description": "<p>Información del la oferta laboral que se va a crear.</p>",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NuevaOfertaLaboral"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Oferta Laboral insertada con exito",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "_id": "664967f36e831485062acc41",
+                                    "salario": 1000,
+                                    "puesto": "Jefe de cocina",
+                                    "position": "Head Chef",
+                                    "descripcion": "Encargado de la cocina",
+                                    "description": "In charge of the kitchen",
+                                    "horario": "7:00 - 16:00",
+                                    "createdAt": "2024-05-19T02:46:11.977Z",
+                                    "updatedAt": "2024-05-19T02:46:11.977Z",
+                                    "__v": 0
+                                }
+                            ]
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/ofertasLaborales/actualizarOfertaLaboral/:id": {
+            "put": {
+                "summary": "Actualizar la informacion de una oferta laboral del ciit",
+                "description": "<p>Servicio que permite editar la informaciòn de una oferta laboral de ciit, dado el id del mismo </p><p>&nbsp;</p>",
+                "operationId": "update",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador de la oferta laboral",
+                        "type": "number",
+                        "default": "1"
+                    },
+                    {
+                        "name": "Puesto",
+                        "in": "body",
+                        "description": "Puesto de la oferta laboral",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NuevaOfertaLaboral"
+                        }
+                    }
+                ],
+                "tags": [
+                    "OfertasLaborales"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/ofertasLaborales/eliminarOfertaLaboral/{id}": {
+            "delete": {
+                "tags": [
+                    "OfertasLaborales"
+                ],
+                "summary": "Eliminar una oferta laborla del ciit dado su identificador",
+                "description": "<p>Servicio que elimina la oferta laboral dado el identificador enviado</p><p>&nbsp;</p><p><em><strong>¿Fué una ejecución exitoso?</strong></em></p>",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador de la oferta laboral",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/usuarios/ofertasLaborales/crearOfertaLaboral": {
+            "post": {
+                "summary": "Creando una nueva oferta laboral",
+                "description": "<p>Servicio que permite crear un nuevo rol </p><p>&nbsp;</p>",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "salario": 2000,
+                        "puesto": "Jefe",
+                        "position": "Boss",
+                        "id_empresa": 1,
+                        "descripcion": "jefe de jefes",
+                        "description": "Nadota",
+                        "horario": "1 a 2"
+                    }
+                ],
+                "tags": [
+                    "OfertasLaborales"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Insertado con exito"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
             }
         }
     },
@@ -737,6 +1022,90 @@
                 "nombre_rol": {
                     "type": "string",
                     "description": "Nombre del rol"
+                }
+            }
+        },
+        "OfertaLaboral": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "Codigo que permite identificar la oferta laboral"
+                },
+                "puesto": {
+                    "type": "string",
+                    "description": "Nombre del puesto ofertado en espanol"
+                },
+                "position": {
+                    "type": "string",
+                    "description": "Nombre del puesto ofertado en ingles"
+                },
+                "descripcion": {
+                    "type": "string",
+                    "description": "Descripcion de la oferta laboral en espanol"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Descripcion de la oferta laboral en ingles"
+                },
+                "horario": {
+                    "type": "string",
+                    "description": "Horario de la oferta laboral"
+                },
+                "salario": {
+                    "type": "number",
+                    "description": "Salario de la oferta laboral"
+                },
+                "id_empresa": {
+                    "type": "string",
+                    "description": "Codigo que permite identificar la empresa"
+                },
+                "createdAt": {
+                    "type": "date",
+                    "description": "Fecha de creacion de la oferta laboral"
+                },
+                "updatedAt": {
+                    "type": "date",
+                    "description": "Fecha de actualizacion de la oferta laboral"
+                }
+            }
+        },
+        "OfertasLaborales": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/OfertaLaboral"
+            }
+        },
+        "NuevaOfertaLaboral": {
+            "type": "object",
+            "properties": {
+                "puesto": {
+                    "type": "string",
+                    "description": "Nombre del puesto ofertado en espanol"
+                },
+                "position": {
+                    "type": "string",
+                    "description": "Nombre del puesto ofertado en ingles"
+                },
+                "descripcion": {
+                    "type": "string",
+                    "description": "Descripcion de la oferta laboral en espanol"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Descripcion de la oferta laboral en ingles"
+                },
+                "horario": {
+                    "type": "string",
+                    "description": "Horario de la oferta laboral"
+                },
+                "salario": {
+                    "type": "number",
+                    "description": "Salario de la oferta laboral"
+                },
+                "id_empresa": {
+                    "type": "string",
+                    "description": "Codigo que permite identificar la empresa"
                 }
             }
         }
