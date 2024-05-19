@@ -15,6 +15,7 @@ class OfertaLaboralRoutes {
         this.router.post('/', ofertaLaboralController.createOfertaLaboral);
         */
         this.router.delete('/eliminarOfertaLaboral/:id',ofertaLaboralController.deleteOfertaLaboral);
+        this.router.post('/crearOfertaLaboral',ofertaLaboralController.createOfertaLaboral);
         
     }
 }
