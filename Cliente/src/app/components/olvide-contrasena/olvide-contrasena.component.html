@@ -1,24 +1,24 @@
 <div class="login-page">
     <div class="form">
         <ul id="dropdown3" class="dropdown-content idioma-nav">
-            <li (click)="setIdioma(1)"><a>
-                <img class="imagen_icono" src="../../../assets/img/bandera.png" alt="ingles">
-            </a></li>
-            <li (click)="setIdioma(2)">
+            <li (click)="setIdioma(1)">
                 <a>
                     <img class="imagen_icono" src="../../../assets/img/mexico.png" alt="español">
                 </a>
             </li>
+            <li (click)="setIdioma(2)"><a>
+                <img class="imagen_icono" src="../../../assets/img/bandera.png" alt="ingles">
+            </a></li>
         </ul>
         <li style="float: right; display: block;">
             <a class="dropdown-trigger" data-target="dropdown3">
-                <i class="material-icons">flag</i>
+                <i class="material-icons bandera">flag</i>
             </a>
         </li>
         <form class="login-form">
             <h4 class="Titulo">{{"Restablecer Contraseña" | translate}}</h4>
             <i class="material-icons prefix">email</i>
-            <input class="browser-default" type="email" name="email" id="email" placeholder="{{'Correo' | translate}}"
+            <input class="browser-default" type="email" name="email" id="email" placeholder="{{ 'Correo' | translate }}"
                 [(ngModel)]="correo" autocomplete="off">
             <button class="boton" (click)="enviarCorreo()">{{"ACEPTAR" | translate}}</button>
             <button class="volver" (click)="volverInicio()">{{"VOLVER" | translate}}</button>

@@ -58,6 +58,7 @@
                 </div>
             </div>
         </div>
+        
     </section>
     <div class="carousel">
         <a class="carousel-item" href="#!"><video autoplay controls><source src="../../../assets/imagenes/CIIT4.mp4" type="video/mp4"></video></a>
@@ -66,7 +67,24 @@
         <a class="carousel-item" href="#!"><img src="../../../assets/imagenes/CIIT3.webp"></a>
         <a class="carousel-item" href="#!"><img src="../../../assets/imagenes/CIIT5.avif"></a>
     </div>
+
+
+
     <section class="description">
+        <div class="tarjeta" *ngIf="noticia">
+            <div class="contenido">
+                <h2 *ngIf="idioma=='1'"> {{noticia.titulo}}</h2>
+                <h2 *ngIf="idioma=='2'"> {{noticia.title}}</h2>
+              <td class="informacion-cell" *ngIf="idioma=='1'">
+                <div class="informacion-content">{{noticia.informacion}}</div>
+              </td>
+              <td class="informacion-cell" *ngIf="idioma=='2'">
+                <div class="informacion-content">{{noticia.information}}</div>
+              </td>
+              <!-- Agrega más contenido según sea necesario -->
+            </div>
+            <img *ngIf="noticia.foto == 1" src="{{liga}}/noticias/{{noticia.id_noticia}}.jpg" class="imagen-noticia">
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col s12">
@@ -99,5 +117,8 @@
             var instances = M.Carousel.init(elems, {});
         });
     </script>
+
+
+
 </body>
 </html>

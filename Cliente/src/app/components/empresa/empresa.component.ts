@@ -3,14 +3,18 @@ import { EmpresaService } from './../../services/empresa.service';
 import { Empresa } from 'src/app/models/Empresa';
 import Swal from 'sweetalert2';
 import { CambioIdiomaService } from 'src/app/services/cambio-idioma.service';
-declare var $: any;
 import { ImagenesService } from 'src/app/services/imagenes.service';
 import { environment } from 'src/environments/environment';
+import { fotos_empresas } from 'src/app/models/lista_fotos';
+
+declare var $: any;
+
 @Component({
     selector: 'app-empresa',
     templateUrl: './empresa.component.html',
     styleUrls: ['./empresa.component.css']
 })
+
 export class EmpresaComponent implements OnInit {
     empresas: Empresa[] = [];
     empresa: Empresa = new Empresa();
@@ -23,6 +27,10 @@ export class EmpresaComponent implements OnInit {
     fileToUpload: any;
     imagenActualizada = false;
     imagenUrls: { [id: number]: string } = {};
+    insertedID: any;
+    lista_fotos: fotos_empresas[] = [];
+    onePicture: any;
+    fileToUpload2: any;
 
     constructor(private imagenesService: ImagenesService, private empresaService: EmpresaService, private cambioIdiomaService: CambioIdiomaService) {
         this.liga = environment.API_URI_IMAGES;
@@ -47,6 +55,7 @@ export class EmpresaComponent implements OnInit {
 
 
     }
+
     inicializarCalendarioEN(): void {
         $('.datepicker').val('');
         $(document).ready(function () {
@@ -59,8 +68,6 @@ export class EmpresaComponent implements OnInit {
 
     inicializarCalendarioES(): void {
         $('.datepicker').val('');
-
-
         $(document).ready(function () {
             $('.datepicker').datepicker({
                 format: 'dd/mm/yyyy', // Formato de fecha
@@ -142,7 +149,7 @@ export class EmpresaComponent implements OnInit {
         }, err => console.error(err));
     }
     guardarActualizarEmpresa() {
-        console.log("Guardar empresa"); 
+        console.log("Guardar empresa");
         if (!this.empresa.descripcion || !this.empresa.description || !this.empresa.direccion || !this.empresa.nombre_empresa || !this.empresa.rfc || !this.empresa.telefono || !this.empresa.fecha) {
             if (this.idioma == '1') {
                 Swal.fire({
@@ -229,9 +236,9 @@ export class EmpresaComponent implements OnInit {
                 $('#modalCrearEmpresa').modal('close');
                 this.empresaService.list().subscribe((resEmpresas: any) => {
                     this.empresas = resEmpresas;
-                    if(this.fileToUpload != null){
+                    if (this.fileToUpload != null) {
                         let a = this.empresas.length;
-                        a=a-1;
+                        a = a - 1;
                         let prueba = this.empresas[a];
                         this.empresa = prueba;
                         this.guardandoImagen();
@@ -380,6 +387,19 @@ export class EmpresaComponent implements OnInit {
             $("#Imagen").modal("open");
         }, err => console.error(err));
     }
+
+    mostrarImagenes(id_empresa: any) {
+        this.imgEmpresa = null;
+        this.fileToUpload = null;
+        this.empresaService.listOne(id_empresa).subscribe((resEmpresa: any) => {
+            this.empresa = resEmpresa;
+            this.mostrar_todas_fotos(this.empresa.id_empresa);
+            console.log("Empresa con ID: ", this.empresa.id_empresa);
+            $('#Imagenes').modal();
+            $("#Imagenes").modal("open");
+        }, err => console.error(err));
+    }
+
     cargandoImagen(archivo: any) {
         //this.usuario.fotito = 0;
         this.imgEmpresa = null;
@@ -387,6 +407,74 @@ export class EmpresaComponent implements OnInit {
         this.fileToUpload = archivo.files.item(0);
         console.log("convirtiendo imagen");
     }
+
+    cargando_coleccion_imagenes(archivo: any) {
+        this.imgEmpresa = null;
+        this.liga = environment.API_URI_IMAGES;
+
+        for (let i = 0; i < archivo.files.length; i++) {
+            console.log("Enviando foto numero: ", i);
+            this.fileToUpload2 = archivo.files.item(i);
+            let imgPromise = this.getFileBlob(this.fileToUpload2);
+            imgPromise.then(blob => {
+                console.log("convirtiendo imagen")
+
+                const id = {
+                    id: this.empresa.id_empresa
+                }
+
+                this.empresaService.inserta_datos_foto(id).subscribe((resDatos: any) => {
+                    
+                    console.log(resDatos);
+                    this.insertedID = resDatos.insertId;
+                    console.log("Tupla ", this.insertedID);
+                    this.imagenesService.guardarImagen(this.insertedID, "fotos_empresas", blob).subscribe(
+                        (res: any) => {
+                            this.imgEmpresa = blob;
+                            this.empresaService.list().subscribe((resEmpresas: any) => {
+                                this.empresas = resEmpresas;
+                            }, err => console.error(err));
+                        },
+                        err => console.error(err));
+                });
+            });
+        }
+    }
+
+    guardar_cambios() {
+
+        Swal.fire({
+            title: 'Imagenes guardadas.',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        });
+
+        this.empresaService.list().subscribe((resEmpresas: any) => {
+            this.empresas = resEmpresas;
+        });
+    }
+
+    mostrar_todas_fotos(id: any) {
+        console.log("FUNCIONNNNNN MOSTRAR FOTOOOOOOOOOOOOOOOOOOOOOOS");
+        
+        this.lista_fotos = [];
+        this.empresaService.id_fotos_por_empresa(id).subscribe((resLista: any) => {
+            this.lista_fotos = resLista;
+            console.log("se cargaron la lista de fotos: ", this.lista_fotos);
+        }, err => console.error(err));
+    }
+
+    actualizarIndicadores() {
+        // Obtener el número de imágenes en el carrusel
+        var numImagenes = $('.carousel.carousel-slider .carousel-item').length;
+
+        // Actualizar el número de indicadores
+        $('.carousel.carousel-slider .indicators').empty(); // Vaciar los indicadores existentes
+        for (var i = 0; i < numImagenes; i++) {
+            $('.carousel.carousel-slider .indicators').append('<li></li>'); // Agregar un indicador por cada imagen
+        }
+    }
+
 
     getFileBlob(file: any) {
         var reader = new FileReader();
@@ -463,11 +551,11 @@ export class EmpresaComponent implements OnInit {
     validateTelefono(): boolean {
         const telefono = this.empresa.telefono;
         return /^\d{10}$/.test(telefono) && /^\d+$/.test(telefono);
-      }
+    }
 
-      validateNewTelefono(): boolean {
+    validateNewTelefono(): boolean {
         const telefono = this.empresaNueva.telefono;
         return /^\d{10}$/.test(telefono) && /^\d+$/.test(telefono);
-      }
+    }
 
 }

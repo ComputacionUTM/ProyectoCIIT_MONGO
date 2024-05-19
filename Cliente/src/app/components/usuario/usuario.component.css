@@ -1,0 +1,39 @@
+.row1{
+    text-align: center;
+}
+
+::ng-deep .my-pagination ::ng-deep .ngx-pagination a {
+    color: white !important; /* Esto hará que todo el texto de la paginación sea blanco */
+}
+
+::ng-deep .my-pagination ::ng-deep .ngx-pagination .current {
+    background: rgb(165, 165, 165) !important; /* Fondo del número de página actual */
+}
+  
+::ng-deep .my-pagination ::ng-deep .ngx-pagination .current a {
+    color: rgb(255, 255, 255) !important; /* Texto de la página actual en blanco */
+}
+  
+.my-pagination ::ng-deep .ngx-pagination {
+    background: #13322b; /* Fondo del componente de paginación */
+}
+
+    .rowTitle label {
+      font-family: "Zen Dots", sans-serif; 
+      font-size: 50px; 
+      color: black; 
+      margin-left: 650px; 
+      font-weight: bold;
+  }
+  .material-icons{
+    color: #9D2449;
+  }
+  .btn-floating{
+    background-color: #9D2449;
+  }
+ .cabeceraTabla{
+    background-color: #9D2449;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+ }

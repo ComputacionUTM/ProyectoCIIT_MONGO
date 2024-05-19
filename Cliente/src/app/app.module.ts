@@ -20,6 +20,10 @@ import { RolesComponent } from './components/roles/roles.component';
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { CambioIdiomaService } from 'src/app/services/cambio-idioma.service';
+import { RedesComponent } from './components/redes/redes.component';
+import { Navigation2Component } from './components/navigation2/navigation2.component';
+import { ClienteComponent } from './components/cliente/cliente.component';
+import { NoticiasComponent } from './components/noticias/noticias.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
@@ -37,7 +41,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     OlvideContrasenaComponent,
     PrincipalComponent,
     OfertaLaboralComponent,
-    RolesComponent
+    RolesComponent,
+    RedesComponent,
+    ClienteComponent,
+    NoticiasComponent,
+    Navigation2Component
   ],
   imports: [
     BrowserModule,

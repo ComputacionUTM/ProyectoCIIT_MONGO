@@ -110,7 +110,82 @@
     "Ingrese su nueva contraseña":"Enter your new password",
     "Nueva Contraseña": "New password",
     "Contraseña Anterior": "Old password",
-    "CONFIRMAR": "CONFIRM"   
+    "CONFIRMAR": "CONFIRM",
+    "Nombre del rol": "Role name",
+    "Nombre Rol en Español" : "Name Rol in Spanish",
+    "Nombre Rol en Inglés": "Name Rol in English",
+    "Confirme Contraseña":"Confirm Password",
+    "Redes Sociales": "Social Networks",
+    "Nueva red social": "New social network",
+    "Redes Sciales del CIIT": "CIIT Social Networks",
+    "Foto": "Photo",
+    "Nombre de la red social": "Social network name",
+    "Enlace de la red social": "Link to social network",
+    "Por favor rellene todos los campos.": "Please fill all inputs.",
+    "Red social agregada": "Social network added",
+    "Enlace": "Link",
+    "Editar red social": "Edit social network",
+    "Red social actualizada": "Social network updated",
+    "Logotipo": "Logo",
+    "Nombre de la empresa": "Company name",
+    "Teléfono": "Phone number",
+    "Cambiar logotipo": "Change logo",
+    "Imágenes de la empresa":"Company images",
+    "usuarioCreado":{
+        "title": "User created",
+        "text": "The user has been created successfully",
+        "confirmButtonText": "Accept"
+    },
+    "emailRegistrado":{
+        "title": "Email registered",
+        "text": "The email is already registered",
+        "confirmButtonText": "Accept"
+
+    },
+    "rellenarCampos":{
+        "title": "Fill in all fields",
+        "text": "Please fill in all fields",
+        "confirmButtonText": "Accept"
+    },
+    "usuarioActualizado":{
+        "title": "User updated",
+        "text": "The user has been updated successfully",
+        "confirmButtonText": "Accept"
+    },
+    "imagenActualizada":{
+        "title": "Image updated",
+        "text": "The image has been updated successfully",
+        "confirmButtonText": "Accept"
+    },
+    "eliminarUsuario":{
+        "title": "Are you sure?",
+        "text": "It is not possible to reverse this action!",
+        "confirmButtonText": "Yes, I want to delete it!",
+        "cancelButtonText": "Cancel"
+    },
+    "usuarioEliminado":{
+        "title": "Deleted!",
+        "text": "The user has been deleted successfully",
+        "confirmButtonText": "Accept"
+    },
+    "Editar imagen":"Edit image",
+    "Actualización de noticia": "News update",
+    "Noticia actualizada": "News update",
+    "La noticia ha sido eliminada": "The news has been deleted",
+    "Elegir archivos": "Select files",
+    "selecionar noticia" : "select news",
+    "Noticia seleccionada":"Selected news",
+    "Lista de noticias": "list of News",
+    "Noticia": "News",
+    "Creación de una noticia": "Creation of a news",
+    "Id_noticia": "Id_news",
+    "Titulo": "Title",
+    "Informacion": "Information",
+    "Noticia creada": "News created",
+    "Titulo en español": "Title in Spanish",
+    "Titulo en ingles": "English title",
+    "¿Estás seguro de eliminar esta Noticia?": "Are you sure to eliminate this new?",
+    "Sí, quiero eliminarla!":"Yes, I want to delete it!"
 }
     
     

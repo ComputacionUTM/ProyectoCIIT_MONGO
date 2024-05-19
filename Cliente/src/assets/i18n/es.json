@@ -109,6 +109,81 @@
     "Ingrese su nueva contraseña":"Ingrese su nueva contraseña",
     "Nueva Contraseña": "Nueva Contraseña",
     "Contraseña Anterior": "Contraseña Anterior",
-    "CONFIRMAR": "CONFIRMAR"
+    "CONFIRMAR": "CONFIRMAR",
+    "Nombre del rol":"Nombre del rol",
+    "Nombre Rol en Español" : "Nombre Rol en Español",
+    "Nombre Rol en Inglés": "Nombre Rol en Inglés",
+    "Confirme Contraseña": "Confirme Contraseña",
+    "Redes Sociales": "Redes Sociales",
+    "Nueva red social": "Nueva red social",
+    "Redes Sciales del CIIT": "Redes Sociales del CIIT",
+    "Foto": "Foto",
+    "Nombre de la red social": "Nombre de la red social",
+    "Enlace de la red social": "Enlace de la red social",
+    "Por favor rellene todos los campos.": "Por favor rellene todos los campos.",
+    "Red social agregada": "Red social agregada",
+    "Enlace": "Enlace",
+    "Editar red social": "Editar red social",
+    "Red social actualizada": "Red social actualizada",
+    "Logotipo": "Logotipo",
+    "Nombre de la empresa": "Nombre de la empresa",
+    "Teléfono": "Teléfono",
+    "Cambiar logotipo": "Cambiar logotipo",
+    "Imágenes de la empresa":"Imágenes de la empresa",
+    "usuarioCreado":{
+        "title": "Usuario creado",
+        "text": "El usuario ha sido creado exitosamente",
+        "confirmButtonText": "Aceptar"
+    },
+    "emailRegistrado":{
+        "title": "Correo registrado",
+        "text": "El correo ya se encuentra registrado",
+        "confirmButtonText": "Aceptar"
+    },
+    "rellenarCampos":{
+        "title": "Rellenar campos",
+        "text": "Por favor llene todos los campos",
+        "confirmButtonText": "Aceptar"
+
+    },
+    "usuarioActualizado":{
+        "title": "Usuario actualizado",
+        "text": "El usuario ha sido actualizado exitosamente",
+        "confirmButtonText": "Aceptar"
+    },
+    "imagenActualizada":{
+        "title": "Imagen actualizada",
+        "text": "La imagen ha sido actualizada exitosamente",
+        "confirmButtonText": "Aceptar"
+    },
+    "eliminarUsuario":{
+        "title": "Estás seguro?",
+        "text": "¿No es posible revertir esta acción?",
+        "confirmButtonText": "Sí, quiero eliminarlo!",
+        "cancelButtonText": "Cancelar"
+    },
+    "usuarioEliminado":{
+        "title": "Usuario eliminado",
+        "text": "El usuario ha sido eliminado exitosamente",
+        "confirmButtonText": "Aceptar"
+    },
+    "Editar imagen":"Editar imagen",
+    "Actualización de noticia": "Actualización de noticia",
+    "Noticia actualizada": "Noticia actualizada",
+    "La noticia ha sido eliminada": "La noticia ha sido eliminada",
+    "Elegir archivos": "Elegir archivos",
+    "selecionar noticia" : "selecionar noticia",
+    "Noticia seleccionada":"Noticia seleccionada",
+    "Lista de noticias": "Lista de noticias",
+    "Noticia": "Noticia",
+    "Creación de una noticia": "Creación de una noticia",
+    "Id_noticia": "Id_noticia",
+    "Titulo": "Titulo",
+    "Informacion": "Informacion",
+    "Noticia creada": "Noticia creada",
+    "Titulo en español": "Titulo en español",
+    "Titulo en ingles": "Titulo en ingles",
+    "¿Estás seguro de eliminar esta Noticia?": "¿Estás seguro de eliminar esta Noticia?",
+    "Sí, quiero eliminarla!":"Sí, quiero eliminarla!"
 }
     

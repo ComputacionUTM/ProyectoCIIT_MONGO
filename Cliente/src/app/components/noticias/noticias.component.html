@@ -1,0 +1,220 @@
+
+<div class="container">
+    <h1>{{"Lista de noticias"| translate}}</h1><br><br>
+    <a class="btn-floating btn-large waves-effect waves-light custom-btn" href="javascript: void(0);"><i class="material-icons"
+        (click)="crearNoticia()">add</i></a>
+        <h5>{{"selecionar noticia"| translate}}</h5>
+        <div class="input-field col s6">
+            <select [(ngModel)]="idNoticiaSeleccionada" class="browser-default">
+                <ng-container *ngFor="let unaNoticia of noticias">                    
+                    <option [value]="unaNoticia.id_noticia">
+                        <ng-container *ngIf="idioma === 2; then thenBlock; else elseBlock"></ng-container>
+                        <ng-template #thenBlock>{{ unaNoticia.title }}</ng-template>
+                        <ng-template #elseBlock>{{ unaNoticia.titulo }}</ng-template>
+                    </option>
+                </ng-container>
+            </select>
+            <a class="waves-effect waves-light btn" (click)="seleccionarNoticia()">{{ 'selecionar noticia' | translate }}</a>
+        </div>
+    <table class="default moved-table iconos-table" *ngIf="noticias != undefined">
+      <thead>
+        <tr>
+          <th class="header-color">{{"Titulo" | translate}}</th>
+          <th class="header-color">{{"Informacion" | translate}}</th>
+          <th class="header-color">{{"Editar" | translate}}</th>
+          <th class="header-color">{{"Eliminar" | translate}}</th>
+          <th class="header-color">{{"Foto" | translate}}</th>
+          <th class="header-color">{{"Imagen" | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let noticia of noticias |
+        paginate: {
+          itemsPerPage: pageSize,
+          currentPage: p
+        };let i=index">
+          <td *ngIf="idioma=='1'"> {{noticia.titulo}}</td>
+          <td *ngIf="idioma=='2'"> {{noticia.title}}</td>
+          <td class="informacion-cell" *ngIf="idioma=='1'">
+            <div class="informacion-content">{{noticia.informacion}}</div>
+          </td>
+          <td class="informacion-cell" *ngIf="idioma=='2'">
+            <div class="informacion-content">{{noticia.information}}</div>
+          </td>
+  
+          <td><a href="javascript: void(0);" class="space" (click)="actualizarNoticia(noticia.id_noticia)">
+              <i class="material-icons">edit</i></a></td>
+          <td><a href="javascript: void(0);" class="material-icons" (click)="eliminarNoticia(noticia.id_noticia)">
+              <i class="material-icons">delete_forever</i></a></td>
+              <td><a href="javascript: void(0);" class="space" (click)="mostrarImagen(noticia.id_noticia)">
+                <i class="material-icons">image </i></a></td>
+
+
+                <td *ngIf="noticia.foto == 1"><img width="64" src="{{liga}}/noticias/{{noticia.id_noticia}}.jpg"></td>
+                <td *ngIf="noticia.foto == 0"><img width="64" src="{{liga}}/noticias/00.jpg" alt="{{liga}}/usuarios/1.jpg"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row center-align">
+      <pagination-controls class="my-pagination row center-align white-text" (pageChange)="p = ($event)" previousLabel="{{'Anterior'|translate}}"
+        nextLabel="{{'Siguiente'|translate}}">
+      </pagination-controls>
+    </div>
+  </div>
+
+
+
+
+  <div id="modalCrearNoticia" class="modal">
+    <div class="modal-content">
+      <h2>{{ "Creación de una noticia" | translate }}</h2>
+      <form>
+        <div class="row">
+       
+          <div class="row">
+            <i class="material-icons prefix">domain</i>
+            <label class="active">{{"Noticia" | translate}}</label>
+          </div>
+        
+  
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input [(ngModel)]="noticiaNueva.titulo" type="text" id="puestoEspanol" name="puestoEspanol" required>
+            <label for="puestoEspanol" class="active">{{ "Titulo en español" | translate }}</label>
+          </div>
+  
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input [(ngModel)]="noticiaNueva.title" type="text" id="puestoIngles" name="puestoIngles" required>
+            <label for="puestoIngles" class="active">{{ "Titulo en ingles" | translate }}</label>
+          </div> 
+          <div class="input-field col s12">
+            <i class="material-icons prefix">chat</i>
+            <input [(ngModel)]="noticiaNueva.informacion" type="text" id="descripcionEspanol" name="descripcionEspanol"
+              required>
+            <label for="descripcionEspanol" class="active">{{ "Descripción en español" | translate }}</label>
+          </div>
+  
+          <div class="input-field col s12">
+            <i class="material-icons prefix">chat</i>
+            <input [(ngModel)]="noticiaNueva.information" type="text" id="descripcionIngles" name="descripcionIngles"
+              required>
+            <label for="descripcionIngles" class="active">{{ "Descripción en inglés" | translate }}</label>
+          </div>
+  
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+          <div class="col s6 center">
+            <button class="waves-effect btn-large custom-button white-text modal-close" type="submit"
+              (click)="guardarNuevaNoticia()">
+              {{"Enviar" | translate}}
+              <i class="material-icons right colorwhite">send</i>
+            </button>
+          </div>
+    
+          <div class="col s6 center">
+            <button class="modal-action modal-close waves-effect btn-large buttonRed white-text"
+              type="submit">{{"Cancelar" | translate}}
+              <i class="material-icons right colorwhite">cancel</i>
+            </button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+  <div id="modalModificarNoticia" class="modal">
+    <div class="modal-content">
+      <h2>{{ "Actualización de noticia" | translate }}</h2>
+      <form>
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input [(ngModel)]="noticia.titulo" type="text" id="puestoEspanol" name="puestoEspanol" required>
+            <label for="puestoEspanol" class="active">{{ "Titulo en ingles" | translate }}</label>
+          </div>
+  
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input [(ngModel)]="noticia.title" type="text" id="puestoIngles" name="puestoIngles" required>
+            <label for="puestoIngles" class="active">{{ "Titulo en ingles" | translate }}</label>
+          </div>
+
+          <div class="input-field col s12">
+            <i class="material-icons prefix">chat</i>
+            <textarea [(ngModel)]="noticia.informacion" id="descripcionEspanol" name="descripcionEspanol" class="materialize-textarea" required></textarea>
+            <label for="descripcionEspanol" class="active">{{ "Descripción en español" | translate }}</label>
+          </div>
+          
+          <div class="input-field col s12">
+            <i class="material-icons prefix">chat</i>
+            <textarea [(ngModel)]="noticia.information" id="descripcionIngles" name="descripcionIngles" class="materialize-textarea" required></textarea>
+            <label for="descripcionIngles" class="active">{{ "Descripción en inglés" | translate }}</label>
+          </div>
+  
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col s6 center">
+              <button class="waves-effect btn-large custom-button white-text modal-close" type="submit"
+                (click)="guardarActualizarNoticia()">
+                {{"Enviar" | translate}}
+                <i class="material-icons right colorwhite">send</i>
+              </button>
+            </div>
+      
+            <div class="col s6 center">
+              <button class="modal-action modal-close waves-effect btn-large buttonRed white-text"
+                type="submit">{{"Cancelar" | translate}}
+                <i class="material-icons right colorwhite">cancel</i>
+              </button>
+            </div>
+          </div>
+    </div>
+  </div>
+
+
+  <div id="Imagen" class="modal">
+    <div class="modal-content">
+      <div class="row" style="margin-bottom: 0px !important;">
+        <div class="col s12">
+          <h5 class="center">{{"Imagen"| translate}}</h5>
+        </div>
+      </div>
+      <div style="border: .5px solid #78909c; padding: 10px;">
+        <div class="row">
+          <div class="input-field col s12">
+          <!--
+                    <div align="center">
+              <img *ngIf="usuario.fotito == 1" width="64" src="{{liga}}/usuarios/{{usuario.id}}.jpg" alt="{{liga}}/usuarios/1.jpg">
+              <img *ngIf="usuario.fotito == 0" width="64" src="{{liga}}/usuarios/0.jpg" alt="{{liga}}/usuarios/1.jpg">
+            </div> 
+          </div>
+        -->
+          <div class="input-field col s6">
+            <br><br>
+            <input type="file" (change)="cargandoImagen($event.target)" multiple
+             title="{{ 'Elegir archivos' | translate }}">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6 center">
+            <input type="submit" class="waves-effect btn-large brown lighten-3 modal-close"
+              (click)="guardandoImagen()" value="{{'Enviar'|translate}}">
+          </div>
+          <div class="col s6 center">
+            <a class="modal-action modal-close waves-effect btn-large brown lighten-3
+    black-text">{{'Cancelar'|translate}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  

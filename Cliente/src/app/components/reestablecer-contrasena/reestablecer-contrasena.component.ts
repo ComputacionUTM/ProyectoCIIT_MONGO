@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from "@ngx-translate/core";
 
 declare var $: any;
@@ -18,7 +18,7 @@ export class ReestablecerContrasenaComponent implements OnInit {
   nuevaContrasenaConfirmacion : string = "";
   idioma:any;
 
-  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute,private translate: TranslateService) {
+  constructor(private router: Router,private usuarioService: UsuarioService, private route: ActivatedRoute,private translate: TranslateService) {
     this.nuevaContrasena = "";
     this.nuevaContrasenaConfirmacion = "";
    }
@@ -31,6 +31,10 @@ export class ReestablecerContrasenaComponent implements OnInit {
     $(document).ready(function () { $(".dropdown-trigger").dropdown(); });
     this.idioma = localStorage.getItem('idioma');
     this.verificarIdioma();
+  }
+
+  volverInicio(){
+    this.router.navigateByUrl('/login');
   }
 
   actualizarContrasena(){
@@ -49,6 +53,7 @@ export class ReestablecerContrasenaComponent implements OnInit {
       return;
     }else{
       if (this.nuevaContrasena != this.nuevaContrasenaConfirmacion){
+        this.verificarIdioma();
         Swal.fire({
           title: this.translate.instant('Error'),
           text: this.translate.instant('Las contraseñas no coinciden'),
@@ -59,6 +64,7 @@ export class ReestablecerContrasenaComponent implements OnInit {
       }else{
         this.usuarioService.actualizarContrasena(this.token, this.nuevaContrasena).subscribe((res : any) => {
           console.log(res);
+          this.verificarIdioma();
           Swal.fire({
             title: this.translate.instant('Actualización exitosa'),
             text: this.translate.instant('Se ha actualizado su contraseña'),
@@ -75,18 +81,18 @@ export class ReestablecerContrasenaComponent implements OnInit {
   setIdioma(idioma:any) {
     localStorage.removeItem('idioma');
     if (idioma == 1){
-      this.translate.use("en");
+      this.translate.use("es");
     }
     if (idioma == 2){
-      this.translate.use("es");
+      this.translate.use("en");
     }
     localStorage.setItem('idioma', idioma.toString());
   }
   verificarIdioma(){
     if(this.idioma == 1)
-      this.translate.use("en");
-    if(this.idioma == 2)
       this.translate.use("es");
+    if(this.idioma == 2)
+      this.translate.use("en");
   }
 
 }

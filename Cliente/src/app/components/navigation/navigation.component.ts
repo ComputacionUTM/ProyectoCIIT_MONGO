@@ -12,14 +12,16 @@ declare var $: any;
 })
 export class NavigationComponent implements OnInit {
   idioma:any;
+  mostrar:any;
   constructor(private router: Router, private translate: TranslateService, private cambioIdiomaService: CambioIdiomaService) {
-    this.translate.addLangs(["es","en"]);
+    this.mostrar = localStorage.getItem("id_Rol");
+    //this.translate.addLangs(["es","en"]);
     console.log("estoy en el constructor de navigation")
     this.idioma=localStorage.getItem("idioma");
-    if(this.idioma==1){
+    if(this.idioma=='1'|| this.idioma ==""){
       this.translate.setDefaultLang("es");
     }
-    if(this.idioma==2){
+    if(this.idioma=='2'){
       this.translate.setDefaultLang("en");
     }
     console.log(this.idioma);
@@ -44,12 +46,12 @@ export class NavigationComponent implements OnInit {
   }
   
   setIdioma(idioma: any) {
-    if (idioma == 1){
+    if (idioma == '1'|| idioma== ""){
       this.translate.use("es");
       this.enviarMensajeIdioma(1);
       localStorage.setItem("idioma","1")
     }  
-    if (idioma == 2){
+    if (idioma == '2'){
       this.translate.use("en");
       this.enviarMensajeIdioma(2);
       localStorage.setItem("idioma","2")

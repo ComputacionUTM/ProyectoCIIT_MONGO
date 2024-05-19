@@ -1,10 +1,13 @@
-<a href="javascript: void(0);"><i class="material-icons" (click)="crearRol()">add</i></a>
 
 
 
 <div  class="container">
   <h1>{{"Lista de roles" | translate}}</h1>
+  <a class="btn-floating btn-large waves-effect waves-light" href="javascript: void(0);"><i class="material-icons white-text"(click)="crearRol()" >add</i></a>
+  <br><br>
+
   <table class="default" *ngIf="roles != undefined">
+    <tr  > <td colspan="3" class="cabeceraTabla">{{"Nombre del rol" | translate}}</td></tr>
     <tr *ngFor="let rol of roles |
     paginate: {
     itemsPerPage: pageSize,
@@ -14,16 +17,14 @@
     <td *ngIf="idioma=='2'">{{rol.name_rol}}</td>
     <td><a href="javascript: void(0);" class="space" (click)="actualizarRol(rol.id_rol)">
       <i class="material-icons">edit</i></a></td>
-      <td><a href="javascript: void(0);" class="material-icons" (click)="eliminarRol(rol.id_rol)">
+      <td ><a href="javascript: void(0);" class="material-icons" (click)="eliminarRol(rol.id_rol)">
         <i class="material-icons">delete_forever</i></a></td>
       </tr>
   </table>
-  <div class="row center-align">
-    <pagination-controls class="my-pagination" (pageChange)="p = ($event)"
-    previousLabel="{{'Anterior'|translate}}" nextLabel="{{'Siguiente'|translate}}">
+  <div class="my-pagination" >
+    <pagination-controls class="my-pagination" (pageChange)="p = ($event)" previousLabel="{{'Previous'|translate}}" nextLabel="{{'Next'|translate}}">
     </pagination-controls>
-    </div>
-</div>
+  </div>
 
 <div id="modalModificarEmpresa" class="modal">
   <div class="modal-content">
@@ -45,12 +46,11 @@
       </div>
       <div class="row">
         <div class="col s6 center">
-          <button type="submit" class="waves-effect btn-large brown lighten-3 modal-close"
-          (click)="guardarActualizarRol()" style="color: black;">{{'Enviar' | translate}}</button>
+          <button type="submit" class="waves-effect btn-large  modal-close"
+          (click)="guardarActualizarRol()" style="color: rgb(255, 255, 255); background-color: #9D2449;">{{'Enviar' | translate}}</button>
         </div>
         <div class="col s6 center">
-          <a class="modal-action modal-close waves-effect btn-large brown lighten-3
-  black-text">{{'Cancelar'|translate}}</a>
+          <a class="modal-action modal-close waves-effect btn-large" style="color: rgb(255, 255, 255); background-color: #9D2449;" >{{'Cancelar'|translate}}</a>
         </div>
       </div>
     </div>
@@ -79,12 +79,12 @@
       </div>
       <div class="row">
         <div class="col s6 center">
-          <button type="submit" class="waves-effect btn-large brown lighten-3 modal-close"
-           (click)="guardarNuevoRol()" style="color: black;">{{'Enviar' | translate}}</button>
+          <button type="submit" class="waves-effect btn-large modal-close" style="color: rgb(255, 255, 255); background-color: #9D2449;" 
+           (click)="guardarNuevoRol()" >{{'Enviar' | translate}}</button>
         </div>
         <div class="col s6 center">
-          <a class="modal-action modal-close waves-effect btn-large brown lighten-3
-          black-text">{{'Cancelar'|translate}}</a>
+          <a class="modal-action modal-close waves-effect btn-large 
+         " style="color: rgb(255, 255, 255); background-color: #9D2449;" >{{'Cancelar'|translate}}</a>
         </div>
       </div>
     </div>

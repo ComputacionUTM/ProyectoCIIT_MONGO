@@ -8,15 +8,20 @@
 }
 
 .loginDiv {
-    background-color: #D4C19C; 
+    background-color: #13322B;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
     padding: 30px;
 }
 
-.loginTitulo h5 {
-    color: #333; /* Texto oscuro */
-    margin-bottom: 30px; /* Espacio entre el título y los campos de entrada */
+.loginTitulo h4 {
+    padding-bottom: 20px;
+    font-family: "Roboto", sans-serif;
+    color: white;
+}
+
+.bandera{
+    color: white;
 }
 
 .customInput {
@@ -28,7 +33,7 @@ input.browser-default:focus:not([readonly]) {
 }
 
 .btnLogin {
-    background-color: #7E3B3B; 
+    background: #9D2449;
     color: white;
     border-radius: 25px;
     text-transform: uppercase;
@@ -41,7 +46,7 @@ input.browser-default:focus:not([readonly]) {
 }
 
 .divOlvide a {
-    color: #A3856A; 
+    color: white; 
 }
 
 .divOlvide a:hover {

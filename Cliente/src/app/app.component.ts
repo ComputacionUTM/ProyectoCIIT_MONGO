@@ -13,7 +13,7 @@ export class AppComponent {
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         let ruta = this.router.url;
-        if (ruta=='/login' || ruta=='/olvideContrasena') {
+        if (ruta=='/login' || ruta=='/olvideContrasena' || ruta== '/cliente/principal') {
           this.aux = false;
         }
         else {

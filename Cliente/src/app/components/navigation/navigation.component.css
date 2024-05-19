@@ -1,7 +1,10 @@
 nav {
-    background-color: #000;
-    height: 100px;
-    line-height: 120px;
+    background-color: #13322B;
+    height: 105px;
+    line-height: 105px;
+    position: fixed; 
+    width: 100%; 
+    z-index: 1000;
 }
 
 .nav-wrapper {
@@ -15,8 +18,11 @@ nav {
     font-weight: bold;
     text-decoration: none;
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 15px;
     /* Ajusta según sea necesario */
+}
+.brand-logo:hover {
+    background-color: rgba(30, 71, 62, 0.5); 
 }
 
 .brand-logo img {
@@ -47,7 +53,7 @@ ul.right li a {
 }
 
 ul.right li a:hover {
-    color: #ffd700;
+    color: #D4C19C;
     background-color: transparent;
     font-size: 19px;
     transition: 400ms;
@@ -61,7 +67,7 @@ font-family: 'Raleway-Medium', sans-serif;
 .dropdown-content li>span,
 .dropdown-content.idioma-nav li>a,
 .dropdown-content li>span {
-color: #051c49;
+color: #13322B;
 font-size: 14px;
 }
 .dropdown-content.idioma-nav {
@@ -69,15 +75,15 @@ top: 80px !important;
 }
 .dropdown-content li:hover,
 .dropdown-content li.active {
-background-color: #051c49;
-color: #fff;
+background-color: #13322B;
+color: #D4C19C;
 }
 .dropdown-content li:hover a,
 .dropdown-content li.active a {
-color: #fff !important;
+color: #D4C19C!important;
 }
 .dropdown-content {
-width: 150px !important;
+width: 140px !important;
 right: 0px;
 top: 0px;
 height: auto;
@@ -93,6 +99,6 @@ color: #ffa400;
 .select-dropdown li.disabled,
 .select-dropdown li.disabled>span,
 .select-dropdown li.optgroup {
-background: #051c49;
-color: #fff;
+background: #13322B;
+color: #D4C19C;
 }

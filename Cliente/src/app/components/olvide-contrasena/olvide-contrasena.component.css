@@ -7,7 +7,7 @@
 .form {
     position: relative;
     z-index: 1;
-    background: #D4C19C;
+    background: #13322B;
     max-width: 4500px;
     margin: 0 auto;
     padding: 45px;
@@ -25,26 +25,32 @@
     margin: 0 0 15px;
     padding: 15px;
     font-size: 14px;
+    color: black;
 }
 
 .Titulo{
     padding-bottom: 20px;
     font-family: "Roboto", sans-serif;
+    color: white;
 }
 
 .boton{
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #7E3B3B;
+    background: #9D2449;
     width: 100%;
     border: 0;
     border-radius: 10px;
     padding: 15px;
-    color: #FFFFFF;
+    color: white;
     font-size: 14px;
     cursor: pointer;
     transition: all 0.3 ease;
+}
+
+.bandera{
+    color: white;
 }
 
 .volver{
@@ -52,13 +58,14 @@
     text-transform: uppercase;
     margin-top: 20px;
     width: 100%;
-    background: #D4C19C;
+    background: #9D2449;
     border: 0;
     border-radius: 10px;
     padding: 15px;
-    color: #000000;
+    color: white;
     font-size: 14px;
     cursor: pointer;
+    color: white;
 }
 
 .boton:hover{
@@ -66,8 +73,8 @@
 }
 
 .volver:hover{
-    background: #7E3B3B;
-    color: black;
+    background: #4e232e;
+    color: white
 }
 .dropdown-content li>a,
 .dropdown-content li>span {

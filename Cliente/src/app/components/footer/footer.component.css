@@ -1,5 +1,5 @@
 .page-footer {
-    background-color: #333; /* Fondo negro */
+    background-color: #285C4D; /* Fondo negro */
     color: #fff; /* Texto blanco */
     padding: 20px 0; /* Espacio interno */
 }
@@ -48,4 +48,7 @@
     width: 50px;
     height: 50px;
     padding: 2%;
+}
+.btn-personalizado {
+    background-color: #201e1e ;
 }

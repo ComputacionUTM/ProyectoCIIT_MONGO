@@ -9,6 +9,9 @@ import { OlvideContrasenaComponent } from './components/olvide-contrasena/olvide
 import { PrincipalComponent } from './components/principal/principal.component';
 import { OfertaLaboralComponent } from './components/oferta-laboral/oferta-laboral.component';
 import { RolesComponent } from './components/roles/roles.component';
+import { RedesComponent } from './components/redes/redes.component';
+import { ClienteComponent } from './components/cliente/cliente.component';
+import { NoticiasComponent } from './components/noticias/noticias.component';
 const routes: Routes = [
   {
     path:"",
@@ -20,8 +23,14 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path:'principal',
-    component: PrincipalComponent
+    path: 'cliente',
+    component : ClienteComponent,
+    children : [
+      {  
+        path:'principal',
+        component: PrincipalComponent,
+      }
+    ]
   },
   {
     path: 'olvideContrasena',
@@ -44,6 +53,10 @@ const routes: Routes = [
         component: EmpresaComponent
       },
       {
+        path: 'noticias',
+        component: NoticiasComponent,
+      },
+      {
         path: 'ofertaLaboral',
         component: OfertaLaboralComponent
       },
@@ -51,6 +64,10 @@ const routes: Routes = [
         path: 'roles',
         component: RolesComponent
       },
+      {
+        path: 'redes',
+        component: RedesComponent
+      }
       ]
   }
 ];

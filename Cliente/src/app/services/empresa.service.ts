@@ -29,4 +29,12 @@ export class EmpresaService {
     empresa);
     }
 
+    inserta_datos_foto(empresa: any) {
+        return this.http.post(`${environment.API_URI}/empresas/inserta_datos_foto`, empresa);
+    }
+
+    id_fotos_por_empresa(id: any) {
+        return this.http.get(`${environment.API_URI}/empresas/id_fotos_por_empresa/${id}`);
+    }
+
 }

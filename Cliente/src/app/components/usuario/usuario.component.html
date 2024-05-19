@@ -1,30 +1,45 @@
-
-<h1>{{"Lista de usuarios" | translate}}</h1>
-<a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearUsuario" (click)="crearUsuario()">Crear usuario</a>
-<table class="default" *ngIf="usuarios != undefined">
-  <tr *ngFor="let usuario of usuarios |
-  paginate: {
-  itemsPerPage: pageSize,
-  currentPage: p
-  };let i=index">
-  <!--<td *ngIf="usuario.fotito == 1"><img width="64" src="{{imagenUrls[usuario.id]}}/usuarios/{{usuario.id}}.jpg" alt="{{liga}}/usuarios/1.jpg"></td>-->
-    <td *ngIf="usuario.fotito == 1"><img width="64" src="{{liga}}/usuarios/{{usuario.id}}.jpg" alt="{{liga}}/usuarios/1.jpg"></td>
-    <td *ngIf="usuario.fotito == 0"><img width="64" src="{{liga}}/usuarios/00.jpg" alt="{{liga}}/usuarios/1.jpg"></td>
-    <td>{{usuario.nombre  }}</td>
-    <td>{{usuario.correo}}</td>
-    <td><a href="javascript: void(0);" class="space" (click)="actualizarUsuario(usuario.id)">
-        <i class="material-icons">edit</i></a></td>
-    <td><a href="javascript: void(0);" class="space" (click)="mostrarImagen(usuario.id)">
-        <i class="material-icons">image </i></a></td>
-    <td><a href="javascript: void(0);" class="material-icons" (click)="eliminarUsuario(usuario.id)">
-        <i class="material-icons">delete_forever</i></a></td>
-  </tr>
-</table>
-<div class="row center-align">
-  <pagination-controls class="my-pagination" (pageChange)="p = ($event)" previousLabel="{{'Anterior'|translate}}" nextLabel="{{'Siguiente'|translate}}">
-  </pagination-controls>
-</div>
-
+<div  class="container">
+  <h1>{{"Lista de usuarios" | translate}}</h1>
+  <a class="btn-floating btn-large waves-effect waves-light modal-trigger" data-target="modalCrearUsuario" (click)="crearUsuario()"><i class="material-icons white-text">add</i></a>
+  <p></p>
+  <table class="default" *ngIf="usuarios != undefined">
+    <thead>
+      <tr>
+        <td colspan="1" class="cabeceraTabla">{{"Imagen" | translate}}</td>
+        <td colspan="1" class="cabeceraTabla">{{"Nombre" | translate}}</td>
+        <td colspan="1" class="cabeceraTabla">{{"Correo" | translate}}</td>
+        <td colspan="1" class="cabeceraTabla">{{"Editar" | translate}}</td>
+        <td colspan="1" class="cabeceraTabla">{{"Editar imagen" | translate}}</td>
+        <td colspan="1" class="cabeceraTabla">{{"Eliminar" | translate}}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios |
+      paginate: {
+      itemsPerPage: pageSize,
+      currentPage: p
+      };let i=index">
+        <!--<td *ngIf="usuario.fotito == 1"><img width="64" src="{{imagenUrls[usuario.id]}}/usuarios/{{usuario.id}}.jpg" alt="{{liga}}/usuarios/1.jpg"></td>-->
+        <td *ngIf="usuario.fotito == 1"><img width="64" src="{{liga}}/usuarios/{{usuario.id}}.jpg"
+            alt="{{liga}}/usuarios/1.jpg"></td>
+        <td *ngIf="usuario.fotito == 0"><img width="64" src="{{liga}}/usuarios/00.jpg" alt="{{liga}}/usuarios/1.jpg"></td>
+        <td>{{usuario.nombre }}</td>
+        <td>{{usuario.correo}}</td>
+        <td><a href="javascript: void(0);" class="space" (click)="actualizarUsuario(usuario.id)">
+            <i class="material-icons">edit</i></a></td>
+        <td><a href="javascript: void(0);" class="space" (click)="mostrarImagen(usuario.id)">
+            <i class="material-icons">image </i></a></td>
+        <td><a href="javascript: void(0);" class="material-icons" (click)="eliminarUsuario(usuario.id)">
+            <i class="material-icons">delete_forever</i></a></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row center-align">
+    <pagination-controls class="my-pagination" (pageChange)="p = ($event)" previousLabel="{{'Anterior'|translate}}"
+      nextLabel="{{'Siguiente'|translate}}">
+    </pagination-controls>
+  </div>
+  </div>
 
 <div id="Imagen" class="modal">
   <div class="modal-content">
@@ -36,31 +51,23 @@
     <div style="border: .5px solid #78909c; padding: 10px;">
       <div class="row">
         <div class="input-field col s12">
-        <!--
-                  <div align="center">
-            <img *ngIf="usuario.fotito == 1" width="64" src="{{liga}}/usuarios/{{usuario.id}}.jpg" alt="{{liga}}/usuarios/1.jpg">
-            <img *ngIf="usuario.fotito == 0" width="64" src="{{liga}}/usuarios/0.jpg" alt="{{liga}}/usuarios/1.jpg">
-          </div> 
+          <div class="input-field col s6">
+            <br><br>
+            <input type="file" (change)="cargandoImagen($event.target)" multiple>
+          </div>
         </div>
-      -->
-        <div class="input-field col s6">
-          <br><br>
-          <input type="file" (change)="cargandoImagen($event.target)" multiple>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s6 center">
-          <input type="submit" class="waves-effect btn-large brown lighten-3 modal-close"
-            (click)="guardandoImagen()" value="{{'Enviar'|translate}}">
-        </div>
-        <div class="col s6 center">
-          <a class="modal-action modal-close waves-effect btn-large brown lighten-3
-  black-text">{{'Cancelar'|translate}}</a>
+        <div class="row">
+          <div class="col s6 center">
+           <button class="waves-effect btn-large brown lighten-3 modal-close" (click)="guardandoImagen()">{{'Enviar'|translate}}</button>
+          </div>
+          <div class="col s6 center">
+            <button class="modal-action modal-close waves-effect btn-large brown lighten-3">{{'Cancelar'|translate}}</button>
+
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <div id="modalModificarUsuario" class="modal">
@@ -77,17 +84,17 @@
           <input id="nombre_usuario" [(ngModel)]="usuario.nombre" type="text" class="validate">
         </div>
         <div class="input-field col s12">
-          <label class="active" for = "correo_usuario">{{'Correo'|translate}}</label>
-          <input id = "correo_usuario" [(ngModel)]="usuario.correo" type="text" class="validate">
+          <label class="active" for="correo_usuario">{{'Correo'|translate}}</label>
+          <input id="correo_usuario" [(ngModel)]="usuario.correo" type="text" class="validate">
         </div>
         <div class="row col s12">
           <label class="active">{{'Rol'|translate}}</label>
           <select [(ngModel)]='usuario.id_Rol' class="browser-default"> <!-- broser-default porque es un arreglo-->
-            <ng-container *ngFor="let rol of roles">                    
+            <ng-container *ngFor="let rol of roles">
               <option [value]="rol.id_rol">
-              <div *ngIf="idioma==2; then thenBlock; else elseBlock"></div>
-                  <ng-template #thenBlock>{{rol.name_rol}}</ng-template>
-                  <ng-template #elseBlock>{{rol.nombre_rol}}</ng-template>
+                <div *ngIf="idioma==2; then thenBlock; else elseBlock"></div>
+                <ng-template #thenBlock>{{rol.name_rol}}</ng-template>
+                <ng-template #elseBlock>{{rol.nombre_rol}}</ng-template>
               </option>
             </ng-container>
           </select>
@@ -95,12 +102,11 @@
       </div>
       <div class="row">
         <div class="col s6 center">
-          <a class="waves-effect btn-large brown lighten-3 modal-close black-text"
-            (click)="guardarActualizarUsuario()" >{{'Enviar'|translate}} </a>
+          <button class="waves-effect btn-large brown lighten-3 modal-close black-text" (click)="guardarActualizarUsuario()">{{'Enviar'|translate}}</button>
         </div>
         <div class="col s6 center">
-          <a class="modal-action modal-close waves-effect btn-large brown lighten-3
-  black-text">{{'Cancelar'|translate}}</a>
+          <button class="modal-action modal-close waves-effect btn-large brown lighten-3
+          black-text">{{'Cancelar'|translate}}></button>
         </div>
       </div>
     </div>
@@ -127,12 +133,12 @@
         </div>
         <div class="input-field col s6">
           <label class="active">Rol</label>
-           <select [(ngModel)]='usuarioNuevo.id_Rol' class="browser-default"> <!-- broser-default porque es un arreglo-->
-            <ng-container *ngFor="let rol of roles">                    
+          <select [(ngModel)]='usuarioNuevo.id_Rol' class="browser-default"> <!-- broser-default porque es un arreglo-->
+            <ng-container *ngFor="let rol of roles">
               <option [value]="rol.id_rol">
-              <div *ngIf="idioma==2; then thenBlock; else elseBlock"></div>
-                  <ng-template #thenBlock>{{rol.name_rol}}</ng-template>
-                  <ng-template #elseBlock>{{rol.nombre_rol}}</ng-template>
+                <div *ngIf="idioma==2; then thenBlock; else elseBlock"></div>
+                <ng-template #thenBlock>{{rol.name_rol}}</ng-template>
+                <ng-template #elseBlock>{{rol.nombre_rol}}</ng-template>
               </option>
             </ng-container>
           </select>
@@ -141,10 +147,15 @@
           <label class="active">{{'Contraseña'|translate}}</label>
           <input [(ngModel)]="usuarioNuevo.contrasena" type="text" class="validate">
         </div>
+        <div class="row">
+          <input type="file" (change)="cargandoImagen($event.target)" multiple>
+        </div>
+        
       </div>
       <div class="row">
         <div class="col s6 center">
-          <button (click)="guardarNuevoUsuario()" class="waves-effect btn-large brown lighten-3 modal-close black-text">{{'Enviar'|translate}}</button>
+          <button (click)="guardarNuevoUsuario()"
+            class="waves-effect btn-large brown lighten-3 modal-close black-text">{{'Enviar'|translate}}</button>
         </div>
         <div class="col s6 center">
           <a class="modal-action modal-close waves-effect btn-large brown lighten-3

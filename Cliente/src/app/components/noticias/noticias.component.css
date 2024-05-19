@@ -1,0 +1,107 @@
+::ng-deep .my-pagination ::ng-deep .ngx-pagination .current {
+    background: rgb(165, 165, 165) !important;
+}
+
+::ng-deep .my-pagination ::ng-deep .ngx-pagination .current a {
+    color: rgb(255, 255, 255) !important;
+}
+
+.my-pagination ::ng-deep .ngx-pagination {
+    background: #13322B !important;
+}
+
+.header-color {
+    background-color: #9D2449;
+    /* Cambia 'red' al color que prefieras */
+    color: white;
+}
+
+.material-icons{
+    color: #9D2449;
+}
+
+.moved-table {
+    margin-top: 50px;
+    /* Ajusta este valor a tu gusto */
+}
+
+.custom-btn { /* Cambia el boton que esta arriba de la tabla*/
+  
+    /* Green */
+    color: white;
+}
+
+
+/* Esto cambiará el color de todos los íconos Materialize dentro de los modales */
+.modal .material-icons {
+    color: #9D2449; /* Cambia este valor al color que prefieras */
+}
+
+ .custom-button{
+    background-color: #13322B;
+    color : white;
+  }
+
+.colorwhite{
+    color: white!important;
+}  
+
+.buttonRed{
+    background-color: #9D2449;
+    color : white;
+  }
+
+
+
+
+
+
+
+.invalid {
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
+  }
+
+/* Estilos para la tabla */
+.default {
+    width: 100%; /* Ajusta el ancho de la tabla según tus necesidades */
+    border-collapse: collapse; /* Combina los bordes de las celdas para que se vean como una tabla */
+  }
+  
+  /* Estilos para las celdas */
+  .default th,
+  .default td {
+    border: 1px solid #ddd; /* Define bordes de 1px sólido con un color gris claro */
+    padding: 8px; /* Añade espacio entre el contenido de la celda y el borde */
+    text-align: left; /* Alinea el texto a la izquierda dentro de las celdas */
+  }
+  
+  /* Estilos para las celdas de información */
+
+  .informacion-content {
+    white-space: pre-line; /* Mantiene los saltos de línea en el texto */
+  }
+  
+  
+
+  .container
+  {
+    width: 120%;
+  }
+
+
+  .informacion-cell {
+    max-width: 400px;
+    word-wrap: break-word; /* Permite que el texto se ajuste a la anchura de la celda */
+  }
+  
+  .informacion-content {
+    white-space: pre-line; /* Mantiene los saltos de línea en el texto */
+  }
+
+  .input-field label {
+    height: auto; /* Establece la altura automática para que las etiquetas se expandan según el contenido */
+    display: block; /* Para que las etiquetas sean elementos de bloque y ocupen todo el ancho disponible */
+  }
+
+

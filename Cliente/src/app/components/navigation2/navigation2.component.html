@@ -1,0 +1,32 @@
+<nav>
+    <div class="nav-wrapper">
+      <a href="/principal" class="brand-logo">
+        <img src="../../../assets/imagenes/logo2.png" alt="Logo">
+      </a>
+  
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li>
+                <a class="dropdown-trigger" data-target="dropdown3">
+                  <i *ngIf="idioma == ''" id="bandera-icono"class="material-icons icon-flag">flag </i> 
+                  <img *ngIf="idioma == '1'" src="assets/imagenes/bandMex.png" alt="Mexico Flag" style="width: 30px; height: auto;">
+                  <img *ngIf="idioma == '2'" src="assets/imagenes/bandUSA.svg" alt="USA Flag" style="width: 30px; height: auto;">
+                </a>
+                </li>      
+                <li><a href="javascript: void(0);" (click)="logout()">{{'Salir' | translate}}</a></li>
+        </ul>
+        <ul id="dropdown3" class="dropdown-content idioma-nav">
+          <li (click)="setIdioma(1)">
+            <a>
+              <img src="assets/imagenes/bandMex.png" alt="Mexico Flag" style="width: 20px; height: auto;"> {{'Español'|translate}}
+            </a>
+          </li>
+          <li (click)="setIdioma(2)">
+            <a>
+              <img src="assets/imagenes/bandUSA.svg" alt="USA Flag" style="width: 20px; height: auto;"> {{'Inglés'|translate}}
+            </a>
+          </li>
+        </ul>
+        
+  
+    </div>
+  </nav>

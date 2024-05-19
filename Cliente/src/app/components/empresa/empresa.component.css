@@ -1,33 +1,95 @@
 .invalid {
-    border-bottom: 1px solid red;
-    box-shadow: 0 1px 0 0 red;
-  }
-  .mapa {
-    margin: 0px auto;
-    position: relative;
-    width: 85%;
-    height: 500px;
-    overflow: hidden;
-    margin-top: 80px;
-    margin-bottom: 80px;
-  }
-  
-  .mapa iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  /* Estilos adicionales para mejorar la apariencia del mapa */
-  .mapa iframe {
-    border-radius: 10px; /* Borde redondeado */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
-  }
-  .container
-  {
-    width: 90%;
-  }
+  border-bottom: 1px solid red;
+  box-shadow: 0 1px 0 0 red;
+}
+
+.mapa {
+  margin: 0px auto;
+  position: relative;
+  width: 85%;
+  height: 500px;
+  overflow: hidden;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.mapa iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilos adicionales para mejorar la apariencia del mapa */
+.mapa iframe {
+  border-radius: 10px;
+  /* Borde redondeado */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Sombra */
+}
+
+.container {
+  width: 90%;
+}
+
+.colorsito,
+.color-titulos-tabla {
+  background-color: #9D2449;
+  color: white;
+}
+
+.cajita2 {
+  margin-top: 40px !important;
+}
+
+.magenta {
+  color: #9D2449;
+}
 
 
+
+/* Cambiando el color de fondo y haciendo transparente la paginación */
+.my-pagination ::ng-deep .ngx-pagination {
+  background: #13322B;
+  /* Verde con transparencia */
+  padding: -1px;
+  /* Espaciado para separar los elementos */
+  border-radius: 5px;
+  /* Bordes redondeados para un aspecto más suave */
+}
+
+::ng-deep .my-pagination ::ng-deep .ngx-pagination .current {
+  background: rgb(165, 165, 165) !important;
+}
+
+::ng-deep .my-pagination ::ng-deep .ngx-pagination .current a {
+  color: rgb(255, 255, 255) !important;
+}
+
+.cajitasss {
+  float: left !important;
+}
+
+.colorsin {
+  background-color: #9D2449 !important;
+  color: white !important;
+}
+
+.enabled-button:enabled {
+  /* Estilos cuando el botón está habilitado */
+  background-color: #13322B!important; /* Cambia el color de fondo */
+  color: white!important; /* Cambia el color del texto */
+  cursor: pointer!important; /* Cambia el cursor a una mano */
+}
+.flotar-derecha
+{
+  align-items:end;
+}
+
+.enviar
+{
+    /* Estilos cuando el botón está habilitado */
+    background-color: #13322B!important; /* Cambia el color de fondo */
+    color: white!important; /* Cambia el color del texto */
+}

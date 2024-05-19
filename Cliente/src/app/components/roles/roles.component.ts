@@ -24,12 +24,12 @@ export class RolesComponent implements OnInit {
 
     console.log("idioma", this.idioma)
     this.cambioIdiomaService.currentMsg$.subscribe(
-        (msg) => {
-          if(msg != ''){
-            this.idioma = msg;
-          }
-            console.log("idioma actual:", this.idioma, " aaaa");
-        });
+      (msg) => {
+        if (msg != '') {
+          this.idioma = msg;
+        }
+        console.log("idioma actual:", this.idioma, " aaaa");
+      });
   }
 
   ngOnInit(): void {
@@ -49,7 +49,7 @@ export class RolesComponent implements OnInit {
     }, err => console.error(err));
   }
   guardarActualizarRol() {
-    if ((this.rol.name_rol=='') || (this.rol.nombre_rol=='')){
+    if ((this.rol.name_rol == '') || (this.rol.nombre_rol == '')) {
       if (this.idioma == 1) {
         Swal.fire({
           position: 'center',
@@ -63,7 +63,7 @@ export class RolesComponent implements OnInit {
           text: 'Empty fields exist'
         })
       }
-    }else{
+    } else {
       this.rolesService.actualizarRol(this.rol).subscribe((res) => {
         $('#modalModificarEmpresa').modal('close');
         this.rolesService.list().subscribe((resRoles: any) => {
@@ -84,7 +84,7 @@ export class RolesComponent implements OnInit {
         }
       }, err => console.error(err));
     }
-    
+
   }
   crearRol() {
     this.rolNuevo = new Rol();
@@ -94,7 +94,7 @@ export class RolesComponent implements OnInit {
   }
   guardarNuevoRol() {
     console.log("GuardandoRol")
-    if ((this.rolNuevo.name_rol=='') || (this.rolNuevo.nombre_rol=='')){
+    if ((this.rolNuevo.name_rol == '') || (this.rolNuevo.nombre_rol == '')) {
       if (this.idioma == 1) {
         Swal.fire({
           position: 'center',
@@ -108,7 +108,7 @@ export class RolesComponent implements OnInit {
           text: 'Empty fields exist'
         })
       }
-    }else{
+    } else {
       this.rolesService.crearRol(this.rolNuevo).subscribe((res) => {
         $('#modalCrearEmpresa').modal('close');
         this.rolesService.list().subscribe((resRoles: any) => {
@@ -130,76 +130,63 @@ export class RolesComponent implements OnInit {
       }, err => console.error(err));
     }
   }
+
+
   eliminarRol(id_rol: any) {
-    console.log("Click en eliminar Rol");
-    console.log("Identificador del Rol: ", id_rol);
-    if (this.idioma == 1) {
-      Swal.fire({
-        title: "¿Estás seguro de eliminar este Rol?",
-        text: "¡Este rol depende de alguna otra tabla!, ¡CUIDADO!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Sí, quiero eliminarlo!"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.rolesService.eliminarRol(id_rol).subscribe((resRol: any) => {
-            console.log("resRol: ", resRol);
+    const confirmacion = this.idioma == 1 ? {
+      title: "¿Estás seguro de eliminar este Rol?",
+      text: "¡Este rol depende de alguna otra tabla!, ¡CUIDADO!",
+      confirmButtonText: "Sí, quiero eliminarlo!"
+    } : {
+      title: "Are you sure you want to delete this rol?",
+      text: "This action cannot be undone!",
+      confirmButtonText: "Yes, I want to delete it!"
+    };
+  
+    const eliminacionExitosa = this.idioma == 1 ? {
+      title: "¡Eliminado!",
+      text: "Tu rol ha sido eliminado."
+    } : {
+      title: "Deleted!",
+      text: "Your rol has been deleted."
+    };
+  
+    Swal.fire({
+      ...confirmacion,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.rolesService.eliminarRol(id_rol).subscribe((resRol: any) => {
+          if (resRol.exito == -1) {
+            Swal.fire({
+              title: this.idioma == 1 ? "¡Error!" : "Error!",
+              text: this.idioma == 1 ? "Existe una dependencia en otro registro, no es posible eliminar este rol a menos que elimine la informacion relacionada." : "There is a dependency in another record, it is not possible to delete this role unless you delete the related information.",
+              icon: "error"
+            });
+          } else {
             this.rolesService.list().subscribe((resRol: any) => {
               this.roles = resRol;
-              //console.log(resRol);
-              console.log(this.roles)
+              console.log(this.roles);
             },
-              err => console.error(err)
-            );
-          },
             err => console.error(err)
-          );
-
-
-          Swal.fire({
-            title: "¡Eliminado!",
-            text: "Tu rol ha sido eliminado.",
-            icon: "success"
-          });
-        }
-      });
-
-    }
-    else {
-      Swal.fire({
-        title: "Are you sure you want to delete this rol?",
-        text: "This action cannot be undone!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, I want to delete it!"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.rolesService.eliminarRol(id_rol).subscribe((resRol: any) => {
-            console.log("resRol: ", resRol);
-            this.rolesService.list().subscribe((resRol: any) => {
-              this.roles = resRol;
-              //console.log(resRol);
-              console.log(this.roles)
-            },
-              err => console.error(err)
             );
-          },
-            err => console.error(err)
-          );
-
-
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your rol has been deleted.",
-            icon: "success"
-        });
-        }
-      });
-
-    }
+            Swal.fire({
+              ...eliminacionExitosa,
+              icon: "success"
+            });
+          }
+        },
+        err => console.error(err)
+        );
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
   }
+  
+
+
 }
