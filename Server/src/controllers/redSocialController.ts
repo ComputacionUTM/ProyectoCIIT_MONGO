@@ -10,15 +10,14 @@ class RedSocialController {
         connectDB();
     }
     //aqui va el crud
-    public async eliminarRed(req: Request, res:Response)
-    {
+    public async eliminarRed(req: Request, res: Response) {
         console.log("Borrando una Red");
         const redSocial = await RedSocial.findByIdAndDelete(req.params.id)
         res.json(redSocial)
     }
-    
+
     //Mostar todas las redes
-    public async mostrar_todas_redes(req: Request, res: Response ): Promise<void>{
+    public async mostrar_todas_redes(req: Request, res: Response): Promise<void> {
         console.log("Mostrando todas las redes");
         const redSocial = await RedSocial.find()
         res.json(redSocial)
@@ -48,7 +47,13 @@ class RedSocialController {
         catch (error: any) {
             res.status(500).json({ message: error.message });
         }
-}
+    }
+
+    public async actualizarRed(req: Request, res: Response): Promise<void> {
+        console.log("Actualizando una red");
+        const redSocial = await RedSocial.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        res.json(redSocial);
+    }
 }
 
 

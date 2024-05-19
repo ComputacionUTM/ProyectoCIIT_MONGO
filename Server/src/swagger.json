@@ -729,6 +729,45 @@
                     }
                 }
             }
+        },
+        "/api/redSocial/actualizarRed/{id}": {
+            "put": {
+                "tags": [
+                    "Redes Sociales"
+                ],
+                "summary": "Actualización de una red social por medio de su identificador",
+                "description": "<p>Servicio que recibe el identificador y los datos nuevos de una red social, y los sustituye por los ya existentes en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son los nuevos datos de una red social?</strong></em></p>",
+                "operationId": "update",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador de la red social",
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "name": "Red Social",
+                        "in": "body",
+                        "description": "Datos nuevos de la red social",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RedSocial"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
         }
     },
     "definitions":{
