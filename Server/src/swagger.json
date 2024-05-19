@@ -462,7 +462,7 @@
                     
             }
         },
-        "/api/roles/mostrarTodosRoles/":{
+        "/api/roles/":{
             "get": {
                 "tags": [
                     "Roles"
@@ -503,7 +503,7 @@
                             "application/json": [
                                 
                                 {
-                                    "id_rol": 1,
+                                    "id_rol": "66492c2eb6489d86aab8c310",
                                     "nombre_rol": "Administrador"   
                                   }
                                 
@@ -523,8 +523,8 @@
                         "in" : "path",
                         "required" : true,
                         "description" : "identificador del rol",
-                        "type" : "number", 
-                        "default" : "4"
+                        "type" : "string", 
+                        "default" : "66492c2eb6489d86aab8c310"
 
                     } ]
             }
@@ -559,10 +559,10 @@
                 }
             }
         },
-        "/api/roles/actualizarRol/{id}":{
+        "/api/roles/{id}":{
             "put": {
-                "summary": "Actualizar la informaciòn del Rol del ciit",
-                "description": "<p>Servicio que permite editar la informaciòn del Rol de ciit, dado el id el mismo </p><p>&nbsp;</p>",
+                "summary": "Actualizar la información del Rol del ciit",
+                "description": "<p>Servicio que permite editar la información del Rol de ciit, dado el id el mismo </p><p>&nbsp;</p>",
                 "operationId" : "update",
                 "consumes" : ["application/json" ],
                 "produces" : ["application/json" ],
@@ -572,10 +572,8 @@
                         "name" : "id",
                         "in" : "path",
                         "required" : true,
-                        "description" : "identificador del Rol",
-                        "type" : "number", 
-                        "default" : "4"
-
+                        "description" : "Identificador del Rol",
+                        "type" : "string"
                     },
                     {
                         "name" : "Rol",
@@ -775,13 +773,17 @@
             "type": "object",
             "properties":{
                 "id_rol" :{
-                    "type": "int",
-                    "description" : "Codigo que permite identificar al rol"
+                    "type": "string",
+                    "description" : "Identificador del Rol"
                 },
                 
                 "nombre_rol" :{
                     "type": "string",
                     "description" : "Nombre del rol"
+                },
+                "name_rol" :{
+                    "type": "string",
+                    "description" : "Nombre del rol en inglés"
                 }
             }
         },
@@ -798,6 +800,10 @@
                 "nombre_rol" :{
                     "type": "string",
                     "description" : "Nombre del rol"
+                },
+                "name_rol" :{
+                    "type": "string",
+                    "description" : "Nombre del rol en inglés"
                 }
             }
         }

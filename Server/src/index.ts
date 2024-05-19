@@ -5,14 +5,15 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { validarToken } from './middleware/auth'
 import EmpresasRoutes from './routes/EmpresasRoutes';
-//import swaggerDocument from './swagger.json';
+import rolesRoutes from './routes/rolesRoutes';
+import swaggerDocument from './swagger.json';
 class Server {
     public app: Application;
     constructor() {
         this.app = express();
         this.config();
         this.routes();
-        //this.app.use('/documentacion', swagger_ui_express.serve, swagger_ui_express.setup(swaggerDocument));
+        this.app.use('/documentacion', swagger_ui_express.serve, swagger_ui_express.setup(swaggerDocument));
     }
 
     config(): void {
@@ -25,6 +26,7 @@ class Server {
     routes(): void {
         this.app.use('/api/usuarios', usuariosRoutes);
         this.app.use('/api/empresas', EmpresasRoutes);
+        this.app.use('/api/roles', rolesRoutes);
     }
     start(): void {
         this.app.listen(this.app.get('port'), () => {
