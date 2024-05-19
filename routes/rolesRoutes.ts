@@ -7,6 +7,7 @@ class RolesRoutes {
         this.config();
     }
     config(): void {
+        this.router.post('/',rolesController.createRol);
         this.router.get('/obtenerRol/:id',rolesController.listOne);
         this.router.put('/:id',rolesController.actualizarRol);
         this.router.get('/',rolesController.mostrarRoles);

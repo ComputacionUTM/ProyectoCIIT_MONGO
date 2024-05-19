@@ -9,6 +9,29 @@ class RolesController {
     constructor() {
         connectDB();
     }
+    public async createRol(req: Request, res: Response): Promise<void> {
+        const { nombre_rol,name_rol} = req.body;
+        try {
+            const nuevoRol = new roles(
+                {
+                    nombre_rol,
+                    name_rol
+                })
+            console.log(nuevoRol);
+            const rolGuardado = await nuevoRol.save();
+            res.json(
+                {
+                    id: rolGuardado._id,
+                    nombre_empresa: rolGuardado.nombre_rol,
+                    name_rol: rolGuardado.name_rol,
+                    createAt: rolGuardado.createdAt,
+                    updateAt: rolGuardado.updatedAt
+                })
+        }
+        catch (error: any) {
+            res.status(500).json({ message: error.message });
+        }
+    }
     public async listOne(req: Request, res: Response): Promise<void> {
         console.log("Mostrando un rol");
         const role = await roles.findById(req.params.id)
