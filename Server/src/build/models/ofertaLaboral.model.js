@@ -28,8 +28,7 @@ const schemaOfertaLaboral = new mongoose_1.Schema({
     salario: {
         type: Number,
         required: true,
-        trim: true,
-        unique: true
+        trim: true
     },
     puesto: {
         type: String,
@@ -56,8 +55,7 @@ const schemaOfertaLaboral = new mongoose_1.Schema({
     id_empresa: {
         type: String,
         required: true,
-        trim: true,
-        unique: true
+        trim: true
     },
 }, {
     timestamps: true

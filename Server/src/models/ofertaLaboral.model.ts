@@ -16,8 +16,7 @@ const schemaOfertaLaboral = new Schema<OfertaLaboral>({
     salario: {
         type: Number,
         required: true,
-        trim: true,
-        unique: true
+        trim: true
     },
     puesto: {
         type: String,
@@ -44,8 +43,7 @@ const schemaOfertaLaboral = new Schema<OfertaLaboral>({
     id_empresa: {
         type: String,
         required: true,
-        trim: true,
-        unique: true
+        trim: true
     },
 }, {
     timestamps: true

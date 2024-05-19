@@ -25,8 +25,7 @@ const schemaRedSocial = new Schema<RedSocial>({
     foto:
     {
         type: Number,
-        required: true,
-        unique:true
+        required: true
     }
 },
     {

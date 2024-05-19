@@ -38,8 +38,7 @@ const schemaRedSocial = new mongoose_1.Schema({
     },
     foto: {
         type: Number,
-        required: true,
-        unique: true
+        required: true
     }
 }, {
     timestamps: true
