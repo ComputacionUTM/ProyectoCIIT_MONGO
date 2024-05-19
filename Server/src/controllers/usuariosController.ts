@@ -11,30 +11,32 @@ class UsuariosController {
     }
     //aqui va el crud
     public async createUsuario(req: Request, res: Response): Promise<void> { //Leonardo
-        const { usuario, correo, password,fotito,id_rol } = req.body;
+        let { nombre, correo, contrasena,fotito,id_Rol } = req.body;
+        const salt = await bcrypt.genSalt(10);
+        contrasena = await bcrypt.hash(req.body.contrasena, salt);
         try {
             console.log("ENTRANDO...");
 
             const nuevoUsuario = new Usuario(
                 {
-                    usuario,
+                    nombre,
                     correo,
-                    password,
+                    contrasena,
                     fotito,
-                    id_rol
+                    id_Rol
                 })
             console.log(nuevoUsuario);
 
             const usuarioGuardado = await nuevoUsuario.save();
-            //const token = await createAccesToken({ id: usuarioGuardado._id });
-            //res.cookie('token', token);
+
             res.json(
                 {
                     id: usuarioGuardado._id,
-                    usuario: usuarioGuardado.usuario,
+                    nombre: usuarioGuardado.nombre,
+                    contrasena: usuarioGuardado.contrasena,
                     correo: usuarioGuardado.correo,
                     fotito: usuarioGuardado.fotito,
-                    id_rol: usuarioGuardado.id_rol,
+                    id_Rol: usuarioGuardado.id_Rol,
                     createAt: usuarioGuardado.createdAt,
                     updateAt: usuarioGuardado.updatedAt
                 })
@@ -84,7 +86,7 @@ class UsuariosController {
     public async listarUsuariosRol(req: Request, res: Response): Promise<void> {//Juan
         console.log("Mostrando usuarios por ROl");
     
-        const usuario = await Usuario.find({"id_rol": req.params.id})
+        const usuario = await Usuario.find({"id_Rol": req.params.id})
         res.json(usuario)
     }
 
@@ -98,8 +100,8 @@ class UsuariosController {
         console.log("Actualizando contraseña");
     
         const salt = await bcrypt.genSalt(10);
-        req.body.password = await bcrypt.hash(req.body.password, salt)
-        const update = { password: req.body.password };
+        req.body.contrasena = await bcrypt.hash(req.body.contrasena, salt)
+        const update = { contrasena: req.body.contrasena };
         const usuario = await Usuario.findByIdAndUpdate(req.params.token,update,{new:true})
         res.json(usuario)
     }
@@ -118,6 +120,43 @@ class UsuariosController {
         const usuario = await Usuario.findByIdAndUpdate(req.params.id,req.body,{new:true})
         res.json(usuario)
     }
+
+    public async ValidarUsuario(req: Request, res: Response): Promise<void> {
+        const parametros = req.body;
+        //const consulta = "SELECT * FROM usuarios WHERE correo = ?";
+        //console.log(parametros);
+        //console.log(consulta);
+        try {
+            const respuesta = await Usuario.find({"correo":parametros.correo});
+            console.log(respuesta)
+            //console.log(respuesta.length)
+            if (respuesta.length > 0) {
+                const usuario = respuesta[0];
+                bcrypt.compare(parametros.contrasena, usuario.contrasena, (err, resEncriptar) => {
+                    if (resEncriptar) {
+                        const prueba = {
+                            id_: usuario.id,
+                            nombre: usuario.nombre,
+                            correo: usuario.correo,
+                            id_Rol: usuario.id_Rol
+                        };
+                        res.json(prueba);
+                    } else {
+                        console.log("Contraseña incorrecta");
+                        res.json({ id_Rol: "-1" });
+                    }
+                });
+                //console.log("funciona");
+                //res.json(null)
+            } else {
+                console.log("Usuario no encontrado");
+                res.json({ id_Rol: "-1" });
+            }
+        } catch (error) {
+            console.error("Error al validar usuario:", error);
+            res.status(500).json({ mensaje: 'Error en el servidor' });
+        }
+    }  
 }
 /*function decodeJWT(token: any) {
    return (Buffer.from(token.split('.')[1], 'base64').toString());

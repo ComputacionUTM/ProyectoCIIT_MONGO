@@ -1,16 +1,16 @@
 import mongoose, { Schema, Model } from 'mongoose';
 
 interface Usuario {
-    usuario: string;
+    nombre: string;
     correo: string;
-    password: string;
+    contrasena: string;
     fotito: number;
-    id_rol : string;
+    id_Rol : string;
     createdAt: Date;
     updatedAt: Date;
 }
 const schemaUsuario = new Schema<Usuario>({
-    usuario:
+    nombre:
     {
         type: String,
         required: true,
@@ -23,7 +23,7 @@ const schemaUsuario = new Schema<Usuario>({
         trim: true,
         unique: true
     },
-    password:
+    contrasena:
     {
         type: String,
         required: true
@@ -33,7 +33,7 @@ const schemaUsuario = new Schema<Usuario>({
         type: Number,
         required: true
     },
-    id_rol:
+    id_Rol:
     {
         type: String,
         required: true

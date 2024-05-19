@@ -16,6 +16,7 @@ class UsuariosRoutes {
         this.router.put('/reestablecerContrasena/:token', usuariosController.actualizarContrasena);
         this.router.put('/actualizarFotito/:id',usuariosController.actualizarFotito);
         this.router.get('/listarUsuariosRol/:id',usuariosController.listarUsuariosRol);
+        this.router.post('/ValidarUsuario/', usuariosController.ValidarUsuario);
     }
 }
 const usuariosRoutes = new UsuariosRoutes();
