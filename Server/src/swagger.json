@@ -654,6 +654,37 @@
                     } ]
                     
             }
+        },
+        "/api/redSocial/mostrar_todas_redes":{
+            "get": {
+                "tags": [
+                    "Redes Sociales"
+                ],
+                "summary": "Listado de todas las redes sociales que existen en el ciit.",
+                "description": "<p>Servicio que devuelve la información detallada de todas las redes sociales que existen en el ciit.</p><p>&nbsp;</p><p><em><strong>¿Cuáles son las redes sociales existentes en el ciit?</strong></em></p>",
+                    "responses": {
+                    "200":{
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "_id": "1",
+                                    "nombre": "Facebook",
+                                    "enlace": "https://www.facebook.com/",
+                                    "foto": 1
+                                }
+                                
+                            ]
+                        },
+                        "schema":{
+                            "$ref": "#/definitions/RedSocial"
+                        }
+                    },
+                    "403":{
+                        "description": "Prohibido"
+                    }
+                }
+            }
         }
     },
     "definitions":{

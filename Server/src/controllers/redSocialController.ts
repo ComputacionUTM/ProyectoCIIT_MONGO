@@ -16,6 +16,13 @@ class RedSocialController {
         const redSocial = await RedSocial.findByIdAndDelete(req.params.id)
         res.json(redSocial)
     }
+    
+    //Mostar todas las redes
+    public async mostrar_todas_redes(req: Request, res: Response ): Promise<void>{
+        console.log("Mostrando todas las redes");
+        const redSocial = await RedSocial.find()
+        res.json(redSocial)
+    }
 }
 
 
