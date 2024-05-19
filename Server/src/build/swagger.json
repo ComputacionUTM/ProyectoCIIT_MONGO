@@ -624,6 +624,49 @@
                 }
             }
         },
+        "/api/noticias/verNoticia/{id}": {
+            "get": {
+                "tags": ["Noticias"],
+                "summary": "Ver una sola noticia",
+                "description": "Servicio que devuelve la informacion detallada de una noticia",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador de la noticia",
+                        "type": "string",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id_noticia": 1,
+                                    "titulo": "Noticia 1",
+                                    "title": "News 1",
+                                    "autor": "Autor 1",
+                                    "fecha_publicacion": "2020-12-12",
+                                    "contenido": "Contenido de la noticia 1",
+                                    "content": "Content of the news 1",
+                                    "createdAt": "2020-12-12",
+                                    "updatedAt": "2020-12-12"
+                                }
+                            ]
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/noticia"
+                        }
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
         "/api/noticias/": {
             "post": {
                 "summary": "Creando una noticia",

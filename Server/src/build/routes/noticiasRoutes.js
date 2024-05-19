@@ -10,7 +10,7 @@ class NoticiasRoutes {
     config() {
         this.router.post('/', noticiasController_1.noticiasController.createNoticia);
         this.router.get('/verNoticias', noticiasController_1.noticiasController.mostrarNoticias);
-        this.router.get('/:id', noticiasController_1.noticiasController.mostrarNoticia);
+        this.router.get('/verNoticia/:id', noticiasController_1.noticiasController.mostrarNoticia);
         this.router.delete('/:id', noticiasController_1.noticiasController.eliminarNoticia);
         this.router.put('/actualizarNoticia/:id', noticiasController_1.noticiasController.actualizarNoticias);
     }
