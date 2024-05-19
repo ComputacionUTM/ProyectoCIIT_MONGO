@@ -752,9 +752,7 @@
                                 "_id": "1",
                                 "nombre": "Facebook",
                                 "enlace": "https://www.facebook.com/",
-                                "foto": 1,
-                                "createdAt": "2022-01-01T00:00:00Z",
-                                "updatedAt": "2022-01-01T00:00:00Z"
+                                "foto": 1
                             }
                         },
                         "schema": {
