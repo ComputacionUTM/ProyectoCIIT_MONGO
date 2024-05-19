@@ -1,0 +1,51 @@
+::ng-deep .my-pagination ::ng-deep .ngx-pagination .current {
+    background: rgb(165, 165, 165) !important;
+}
+
+::ng-deep .my-pagination ::ng-deep .ngx-pagination .current a {
+    color: rgb(255, 255, 255) !important;
+}
+
+.my-pagination ::ng-deep .ngx-pagination {
+    background: #13322B !important;
+}
+
+.header-color {
+    background-color: #9D2449;
+    /* Cambia 'red' al color que prefieras */
+    color: white;
+}
+
+.iconos-table .material-icons{
+    color: #9D2449;
+}
+
+.moved-table {
+    margin-top: 50px;
+    /* Ajusta este valor a tu gusto */
+}
+
+.custom-btn { /* Cambia el boton que esta arriba de la tabla*/
+    background-color: #9D2449;
+    /* Green */
+    color: white;
+}
+
+/* Esto cambiará el color de todos los íconos Materialize dentro de los modales */
+.modal .material-icons {
+    color: #9D2449; /* Cambia este valor al color que prefieras */
+}
+
+ .custom-button{
+    background-color: #13322B;
+    color : white;
+  }
+
+.colorwhite{
+    color: white!important;
+}  
+
+.buttonRed{
+    background-color: #9D2449;
+    color : white;
+  }

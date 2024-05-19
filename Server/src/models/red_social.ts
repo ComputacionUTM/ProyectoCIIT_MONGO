@@ -1,6 +1,7 @@
 import mongoose, { Schema, Model } from 'mongoose';
 
 interface RedSocial {
+    _id: string,
     nombre : string;
     enlace: string;
     foto: number;

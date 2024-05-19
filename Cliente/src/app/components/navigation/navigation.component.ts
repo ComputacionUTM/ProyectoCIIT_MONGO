@@ -12,7 +12,9 @@ declare var $: any;
 })
 export class NavigationComponent implements OnInit {
   idioma:any;
+  mostrar:any
   constructor(private router: Router, private translate: TranslateService, private cambioIdiomaService: CambioIdiomaService) {
+    this.mostrar = localStorage.getItem("id_Rol");
     this.translate.addLangs(["es","en"]);
     console.log("estoy en el constructor de navigation")
     this.idioma=localStorage.getItem("idioma");

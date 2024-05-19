@@ -9,6 +9,7 @@ import { OlvideContrasenaComponent } from './components/olvide-contrasena/olvide
 import { PrincipalComponent } from './components/principal/principal.component';
 import { OfertaLaboralComponent } from './components/oferta-laboral/oferta-laboral.component';
 import { RolesComponent } from './components/roles/roles.component';
+import { RedesComponent } from './components/redes/redes.component';
 const routes: Routes = [
   {
     path:"",
@@ -51,6 +52,10 @@ const routes: Routes = [
         path: 'roles',
         component: RolesComponent
       },
+      {
+        path: 'redes',
+        component: RedesComponent
+      }
       ]
   }
 ];

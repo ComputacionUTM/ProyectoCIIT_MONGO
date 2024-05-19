@@ -16,6 +16,7 @@
               <li><a href="/home/usuarios">{{'Usuarios' | translate}}</a></li>
               <li><a href="/home/ofertaLaboral">{{'Ofertas' | translate}}</a></li>
               <li><a href="/home/roles">{{'Roles' | translate}}</a></li>
+              <li *ngIf="mostrar==1"><a href="/home/redes">{{'Redes Sociales' | translate}}</a></li>
               <li><a href="javascript: void(0);" (click)="logout()">{{'Salir' | translate}}</a></li>
       </ul>
       <ul id="dropdown3" class="dropdown-content idioma-nav">

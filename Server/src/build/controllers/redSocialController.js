@@ -27,5 +27,51 @@ class RedSocialController {
             res.json(redSocial);
         });
     }
+    //Mostar todas las redes
+    mostrar_todas_redes(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Mostrando todas las redes");
+            const redSocial = yield red_social_1.default.find();
+            res.json(redSocial);
+        });
+    }
+    //Mostar una red
+    listOne(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Mostrando una red");
+            const redSocial = yield red_social_1.default.findById(req.params.id);
+            res.json(redSocial);
+        });
+    }
+    createRedSocial(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { nombre, enlace, foto } = req.body;
+            try {
+                console.log("ENTRANDO...");
+                const nuevaRedSocial = new red_social_1.default({
+                    nombre,
+                    enlace,
+                    foto
+                });
+                console.log(nuevaRedSocial);
+                const redSocialGuardada = yield nuevaRedSocial.save();
+                res.json({
+                    nombre: redSocialGuardada.nombre,
+                    enlace: redSocialGuardada.enlace,
+                    foto: redSocialGuardada.foto,
+                });
+            }
+            catch (error) {
+                res.status(500).json({ message: error.message });
+            }
+        });
+    }
+    actualizarRed(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Actualizando una red");
+            const redSocial = yield red_social_1.default.findByIdAndUpdate(req.params.id, req.body, { new: true });
+            res.json(redSocial);
+        });
+    }
 }
 exports.redSocialController = new RedSocialController();
