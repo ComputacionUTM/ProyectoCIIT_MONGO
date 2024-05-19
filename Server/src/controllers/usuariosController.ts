@@ -12,8 +12,8 @@ class UsuariosController {
     //aqui va el crud
     public async createUsuario(req: Request, res: Response): Promise<void> { //Leonardo
         let { nombre, correo, contrasena,fotito,id_Rol } = req.body;
-        const salt = await bcrypt.genSalt(10);
-        contrasena = await bcrypt.hash(req.body.contrasena, salt);
+        //const salt = await bcrypt.genSalt(10);
+        //contrasena = await bcrypt.hash(req.body.contrasena, salt);
         try {
             console.log("ENTRANDO...");
 
@@ -99,8 +99,8 @@ class UsuariosController {
     public async actualizarContrasena(req: Request, res: Response): Promise<void> { //Alberto
         console.log("Actualizando contraseña");
     
-        const salt = await bcrypt.genSalt(10);
-        req.body.contrasena = await bcrypt.hash(req.body.contrasena, salt)
+        //const salt = await bcrypt.genSalt(10);
+        //req.body.contrasena = await bcrypt.hash(req.body.contrasena, salt)
         const update = { contrasena: req.body.contrasena };
         const usuario = await Usuario.findByIdAndUpdate(req.params.token,update,{new:true})
         res.json(usuario)
@@ -132,8 +132,11 @@ class UsuariosController {
             //console.log(respuesta.length)
             if (respuesta.length > 0) {
                 const usuario = respuesta[0];
-                bcrypt.compare(parametros.contrasena, usuario.contrasena, (err, resEncriptar) => {
-                    if (resEncriptar) {
+                console.log(usuario);
+                console.log(parametros);
+                //bcrypt.compare(parametros.contrasena, usuario.contrasena, (err, resEncriptar) => {
+                    //if (resEncriptar) {
+                    if(parametros.contrasena == usuario.contrasena){
                         const prueba = {
                             id_: usuario.id,
                             nombre: usuario.nombre,
@@ -145,7 +148,7 @@ class UsuariosController {
                         console.log("Contraseña incorrecta");
                         res.json({ id_Rol: "-1" });
                     }
-                });
+                //});
                 //console.log("funciona");
                 //res.json(null)
             } else {

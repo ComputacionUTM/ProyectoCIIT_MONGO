@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.usuariosController = void 0;
-const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const database_1 = require("../database"); //acceso a la base de datos
 const usuario_model_1 = __importDefault(require("../models/usuario.model"));
 class UsuariosController {
@@ -24,8 +23,8 @@ class UsuariosController {
     createUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let { nombre, correo, contrasena, fotito, id_Rol } = req.body;
-            const salt = yield bcryptjs_1.default.genSalt(10);
-            contrasena = yield bcryptjs_1.default.hash(req.body.contrasena, salt);
+            //const salt = await bcrypt.genSalt(10);
+            //contrasena = await bcrypt.hash(req.body.contrasena, salt);
             try {
                 console.log("ENTRANDO...");
                 const nuevoUsuario = new usuario_model_1.default({
@@ -113,8 +112,8 @@ class UsuariosController {
     actualizarContrasena(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("Actualizando contraseña");
-            const salt = yield bcryptjs_1.default.genSalt(10);
-            req.body.contrasena = yield bcryptjs_1.default.hash(req.body.contrasena, salt);
+            //const salt = await bcrypt.genSalt(10);
+            //req.body.contrasena = await bcrypt.hash(req.body.contrasena, salt)
             const update = { contrasena: req.body.contrasena };
             const usuario = yield usuario_model_1.default.findByIdAndUpdate(req.params.token, update, { new: true });
             res.json(usuario);
@@ -149,21 +148,24 @@ class UsuariosController {
                 //console.log(respuesta.length)
                 if (respuesta.length > 0) {
                     const usuario = respuesta[0];
-                    bcryptjs_1.default.compare(parametros.contrasena, usuario.contrasena, (err, resEncriptar) => {
-                        if (resEncriptar) {
-                            const prueba = {
-                                id_: usuario.id,
-                                nombre: usuario.nombre,
-                                correo: usuario.correo,
-                                id_Rol: usuario.id_Rol
-                            };
-                            res.json(prueba);
-                        }
-                        else {
-                            console.log("Contraseña incorrecta");
-                            res.json({ id_Rol: "-1" });
-                        }
-                    });
+                    console.log(usuario);
+                    console.log(parametros);
+                    //bcrypt.compare(parametros.contrasena, usuario.contrasena, (err, resEncriptar) => {
+                    //if (resEncriptar) {
+                    if (parametros.contrasena == usuario.contrasena) {
+                        const prueba = {
+                            id_: usuario.id,
+                            nombre: usuario.nombre,
+                            correo: usuario.correo,
+                            id_Rol: usuario.id_Rol
+                        };
+                        res.json(prueba);
+                    }
+                    else {
+                        console.log("Contraseña incorrecta");
+                        res.json({ id_Rol: "-1" });
+                    }
+                    //});
                     //console.log("funciona");
                     //res.json(null)
                 }

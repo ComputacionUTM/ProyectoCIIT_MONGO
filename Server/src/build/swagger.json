@@ -35,7 +35,7 @@
         "application/json"
     ],
     "paths": {
-        "/api/usuarios/mostrarTodosUsuarios/": {
+        "/api/usuarios/": {
             "get": {
                 "tags": ["Usuarios"],
                 "summary": "Listado de todos los usuarios que existen en el ciit.",
@@ -46,11 +46,14 @@
                         "examples": {
                             "application/json": [
                                 {
-                                    "id": 4,
+                                    "_id": "66492f0010ad0bc1b72270fb",
                                     "nombre": "Angel Cruz",
                                     "correo": "Angel@gmail.com",
-                                    "id_Rol": 4,
-                                    "contrasena": "789*"
+                                    "contrasena": "123",
+                                    "fotito": 1,
+                                    "id_Rol": "rol",
+                                    "createdAt": "2024-05-18T22:43:12.725+00:00",
+                                    "update": "2024-05-18T22:58:18.541+00:00"
                                 }
                             ]
                         },
@@ -75,11 +78,14 @@
                         "examples": {
                             "application/json": [
                                 {
-                                    "id": 4,
+                                    "_id": "66492f0010ad0bc1b72270fb",
                                     "nombre": "Angel Cruz",
                                     "correo": "Angel@gmail.com",
-                                    "id_Rol": 4,
-                                    "contrasena": "789*"
+                                    "contrasena": "123",
+                                    "fotito": 1,
+                                    "id_Rol": "rol",
+                                    "createdAt": "2024-05-18T22:43:12.725+00:00",
+                                    "update": "2024-05-18T22:58:18.541+00:00"
                                 }
                             ]
                         },
@@ -97,7 +103,7 @@
                         "in": "path",
                         "required": true,
                         "description": "identificador del usuario",
-                        "type": "number",
+                        "type": "string",
                         "default": "4"
                     }
                 ]
@@ -118,6 +124,35 @@
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/NuevoUsuario"
+                        }
+                    }
+                ],
+                "tags": ["Usuarios"],
+                "responses": {
+                    "200": {
+                        "description": "Insertado con exito"
+                    },
+                    "403": {
+                        "description": "Prohibido"
+                    }
+                }
+            }
+        },
+        "/api/usuarios/ValidarUsuario/": {
+            "post": {
+                "summary": "Validar un usuario",
+                "operationId": "create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Usuario",
+                        "in": "body",
+                        "description": "Usuario agregado",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/validar"
                         }
                     }
                 ],
@@ -169,21 +204,20 @@
                 }
             }
         },
-        "/api/usuarios/reestablecreestablecerContrasena/{token}": {
+        "/api/usuarios/actualizarFotito/{id}": {
             "put": {
-                "summary": "Actualizar  del usla contraseña de un usuario del ciit",
-                "description": "<p>Servicio que permite editar la contraseña del usuario de ciit, dado el correo tokenizado del usuario </p><p>&nbsp;</p>",
+                "summary": "Actualizar fotito de un usuario del ciit",
                 "operationId": "update",
                 "consumes": ["application/json"],
                 "produces": ["application/json"],
                 "parameters": [
                     {
-                        "name": "token",
+                        "name": "id",
                         "in": "path",
                         "required": true,
-                        "description": "Correo tokenizado del usuario",
+                        "description": "Fotito actualizado del usuario",
                         "type": "string",
-                        "default": "eyJhbGciOiJIUzI1NiJ9.eGltZW5hMjYwNzAzQGdtYWlsLmNvbQ.V8rTdiJR2JZYZn2O1P4PG8jevAWqb-cWwfMYPEnakYc"
+                        "default": "0"
                     },
                     {
                         "name": "Usuario",
@@ -191,7 +225,7 @@
                         "description": "Contraseña nueva del usuario",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/NuevaContrasena"
+                            "$ref": "#/definitions/foto"
                         }
                     }
                 ],
@@ -225,7 +259,7 @@
                         "in": "path",
                         "required": true,
                         "description": "identificador del usuario",
-                        "type": "number",
+                        "type": "string",
                         "default": "8"
                     }
                 ]
@@ -242,11 +276,11 @@
                         "examples": {
                             "application/json": [
                                 {
-                                    "id": 4,
-                                    "nombre": "Angel Cruz",
+                                    "id": "66492f0010ad0bc1b72270fb",
+                                    "usuario": "Angel Cruz",
                                     "correo": "example@gmail.com",
-                                    "id_Rol": 4,
-                                    "contrasena": "789*"
+                                    "id_Rol": "4",
+                                    "password": "789*"
                                 }
                             ]
                         },
@@ -594,8 +628,8 @@
         "Usuario": {
             "type": "object",
             "properties": {
-                "id": {
-                    "type": "number",
+                "_id": {
+                    "type": "string",
                     "description": "Codigo que permite identificar al usuario"
                 },
                 "nombre": {
@@ -606,13 +640,25 @@
                     "type": "string",
                     "description": "Correo del usuario"
                 },
-                "id_Rol": {
+                "fotito": {
                     "type": "number",
-                    "description": "Codigo que permite identificar el rol del usuario"
+                    "description": "Foto del usuario"
                 },
                 "contrasena": {
                     "type": "string",
-                    "description": "Contrasena del usuario"
+                    "description": "Contraseña del usuario"
+                },
+                "createAt": {
+                    "type": "string",
+                    "description": "Fecha en que se creó"
+                },
+                "updateAt": {
+                    "type": "string",
+                    "description": "Fecha en que se modificó"
+                },
+                "id_Rol": {
+                    "type": "string",
+                    "description": "Codigo que permite identificar al rol"
                 }
             }
         },
@@ -633,13 +679,17 @@
                     "type": "string",
                     "description": "Correo del usuario"
                 },
-                "id_Rol": {
+                "fotito": {
                     "type": "number",
-                    "description": "Codigo que permite identificar el rol del usuario"
+                    "description": "Foto del usuario"
                 },
                 "contrasena": {
                     "type": "string",
-                    "description": "Contrasena del usuario"
+                    "description": "Contraseña del usuario"
+                },
+                "id_Rol": {
+                    "type": "string",
+                    "description": "Codigo que permite identificar al rol"
                 }
             }
         },
@@ -649,6 +699,15 @@
                 "contrasena": {
                     "type": "string",
                     "description": "Contrasena nueva del usuario"
+                }
+            }
+        },
+        "foto": {
+            "type": "object",
+            "properties": {
+                "fotito": {
+                    "type": "number",
+                    "description": "Fotito del usuario"
                 }
             }
         },
@@ -737,6 +796,19 @@
                 "nombre_rol": {
                     "type": "string",
                     "description": "Nombre del rol"
+                }
+            }
+        },
+        "validar": {
+            "type": "object",
+            "properties": {
+                "correo": {
+                    "type": "string",
+                    "description": "Correo usuario"
+                },
+                "contrasena": {
+                    "type": "string",
+                    "description": "Contraseña del usuario"
                 }
             }
         }

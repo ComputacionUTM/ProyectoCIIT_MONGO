@@ -17,7 +17,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         //await mongoose.connect('mongodb://localhost/ciiti');
-        yield mongoose_1.default.connect('mongodb://127.0.0.1/ciiti');
+        yield mongoose_1.default.connect('mongodb://127.0.0.1/ciit');
         console.log("Base de datos conectada");
     }
     catch (error) {
