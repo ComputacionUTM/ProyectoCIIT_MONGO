@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "664a6588950fdffa9fbbb22a"
+  },
+  "salario": 8000,
+  "puesto": "Jefe",
+  "position": "Boss",
+  "id_empresa": 1,
+  "descripcion": "Encargarse de toda la administración de la empresa",
+  "description": "Take care of all the administration of the company",
+  "horario": "7 am- 6pm"
+},
+{
+  "_id": {
+    "$oid": "664a6588950fdffa9fbbb22b"
+  },
+  "salario": 5000,
+  "puesto": "Gerente de limpieza",
+  "position": "Cleaning manager",
+  "id_empresa": 1,
+  "descripcion": "servicio de limpieza",
+  "description": "Cleaning service",
+  "horario": "6 am- 5pm"
+},
+{
+  "_id": {
+    "$oid": "664a6588950fdffa9fbbb22c"
+  },
+  "salario": 6000,
+  "puesto": "Administrador",
+  "position": "Administrator",
+  "id_empresa": 3,
+  "descripcion": "administrar inventario",
+  "description": "Manage Inventory",
+  "horario": "7 am- 6pm"
+},
+{
+  "_id": {
+    "$oid": "664a6588950fdffa9fbbb22d"
+  },
+  "salario": 5000,
+  "puesto": "Secretaria",
+  "position": "Secretary",
+  "id_empresa": 4,
+  "descripcion": "Puesto fijo",
+  "description": "Fixed position",
+  "horario": "9 am - 5 pm"
+}]

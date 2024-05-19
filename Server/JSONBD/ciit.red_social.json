@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "664a689f950fdffa9fbbb23a"
+  },
+  "nombre": "Facebook",
+  "enlace": "https://www.facebook.com/gobmexico",
+  "foto": 1
+},
+{
+  "_id": {
+    "$oid": "664a689f950fdffa9fbbb23b"
+  },
+  "nombre": "Twitter",
+  "enlace": "https://www.twitter.com/gobmexico",
+  "foto": 1
+}]
