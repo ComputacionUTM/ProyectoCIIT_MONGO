@@ -9,6 +9,7 @@ interface OfertaLaboral {
     horario: string;
     createdAt: Date;
     updatedAt: Date;
+    id_empresa : number;
 }
 
 const schemaOfertaLaboral = new Schema<OfertaLaboral>({
@@ -39,7 +40,13 @@ const schemaOfertaLaboral = new Schema<OfertaLaboral>({
     horario: {
         type: String,
         required: true,
-    }
+    },
+    id_empresa: {
+        type: Number,
+        required: true,
+        trim: true,
+        unique: true
+    },
 }, {
     timestamps: true
 });
