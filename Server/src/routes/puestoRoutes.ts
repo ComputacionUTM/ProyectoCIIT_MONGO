@@ -10,8 +10,7 @@ class RolesRoutes {
     config(): void {
         this.router.post('/',puestoController.createPuesto);
         this.router.get('/',puestoController.list);
-        this.router.get('/:salario',puestoController.listRestriccion);
-        this.router.post('/:salario',puestoController.listRestriccion);
+        this.router.post('/restriccion', puestoController.listRestriccion);
     }
 }
 const rolesRoutes = new RolesRoutes();
