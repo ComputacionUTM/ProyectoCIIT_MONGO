@@ -1,12 +1,10 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
-import { connectDB } from '../database'; //acceso a la base de datos
 import Empresa from '../models/empresa.model';
 
 class EmpresaController {
 
     constructor() {
-        connectDB();
     }
 
     public async createEmpresa(req: Request, res: Response): Promise<void> {
@@ -51,6 +49,7 @@ class EmpresaController {
     public async actualizarEmpresa(req: Request, res: Response): Promise<void> {
         try {
             const empresas = await Empresa.findByIdAndUpdate(req.params.id, req.body, { new: true });
+            
             res.json(empresas);
         } catch (error: any) {
             res.status(500).json({ message: error.message });
@@ -60,11 +59,18 @@ class EmpresaController {
     public async eliminarEmpresa(req: Request, res: Response): Promise<void> {
         try {
             const empresas = await Empresa.findByIdAndDelete(req.params.id);
-            res.json(empresas);
+            //console.log(empresas);
+            if (empresas==null) {
+                //console.log("Probando...");
+                res.json({mensaje:"No existe ese dato para eliminar"});
+            }else{
+                res.json({id:empresas.id,mensaje:"Empresa eliminada con exito"});
+            }
         } catch (error: any) {
             res.status(500).json({ message: error.message });
         }
     }
+
 
     public async listOne(req: Request, res: Response): Promise<void> {
         try {

@@ -13,11 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.redSocialController = void 0;
-const database_1 = require("../database"); //acceso a la base de datos
 const red_social_model_1 = __importDefault(require("../models/red_social.model"));
 class RedSocialController {
     constructor() {
-        (0, database_1.connectDB)();
     }
     //aqui va el crud
     eliminarRed(req, res) {

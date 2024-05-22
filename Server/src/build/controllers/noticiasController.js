@@ -13,11 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.noticiasController = void 0;
-const database_1 = require("../database"); //acceso a la base de datos
 const noticias_model_1 = __importDefault(require("../models/noticias.model"));
 class NoticiasController {
     constructor() {
-        (0, database_1.connectDB)();
     }
     createNoticia(req, res) {
         return __awaiter(this, void 0, void 0, function* () {

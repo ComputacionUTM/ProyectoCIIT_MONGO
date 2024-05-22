@@ -5,14 +5,17 @@ import ofertalaboralRoutes from './routes/ofertalaboralRoutes';
 import rolesRoutes from './routes/rolesRoutes';
 import redSocialRoutes from './routes/redSocialRoutes';
 import noticiasRoutes from './routes/noticiasRoutes';
+import { connectDB } from './database'; //acceso a la base de datos
 
 import swagger_ui_express from 'swagger-ui-express';
 import swaggerDocument from './swagger.json';
 import morgan from 'morgan';
 import cors from 'cors';
+import puestoRoutes from './routes/puestoRoutes';
 class Server {
     public app: Application;
     constructor() {
+        connectDB();
         this.app = express();
         this.config();
         this.routes();
@@ -33,6 +36,7 @@ class Server {
         this.app.use('/api/roles', rolesRoutes);
         this.app.use('/api/redSocial', redSocialRoutes);
         this.app.use('/api/noticias', noticiasRoutes);
+        this.app.use('/api/puesto',puestoRoutes);
     }
     start(): void {
         this.app.listen(this.app.get('port'), () => {

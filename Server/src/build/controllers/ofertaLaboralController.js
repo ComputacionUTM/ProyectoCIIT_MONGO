@@ -13,11 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ofertaLaboralController = void 0;
-const database_1 = require("../database"); //acceso a la base de datos
 const ofertaLaboral_model_1 = __importDefault(require("../models/ofertaLaboral.model"));
 class OfertaLaboralController {
     constructor() {
-        (0, database_1.connectDB)();
     }
     //aqui va el crud
     createOfertaLaboral(req, res) {

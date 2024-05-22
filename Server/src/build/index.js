@@ -10,12 +10,15 @@ const ofertalaboralRoutes_1 = __importDefault(require("./routes/ofertalaboralRou
 const rolesRoutes_1 = __importDefault(require("./routes/rolesRoutes"));
 const redSocialRoutes_1 = __importDefault(require("./routes/redSocialRoutes"));
 const noticiasRoutes_1 = __importDefault(require("./routes/noticiasRoutes"));
+const database_1 = require("./database"); //acceso a la base de datos
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_json_1 = __importDefault(require("./swagger.json"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
+const puestoRoutes_1 = __importDefault(require("./routes/puestoRoutes"));
 class Server {
     constructor() {
+        (0, database_1.connectDB)();
         this.app = (0, express_1.default)();
         this.config();
         this.routes();
@@ -35,6 +38,7 @@ class Server {
         this.app.use('/api/roles', rolesRoutes_1.default);
         this.app.use('/api/redSocial', redSocialRoutes_1.default);
         this.app.use('/api/noticias', noticiasRoutes_1.default);
+        this.app.use('/api/puesto', puestoRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

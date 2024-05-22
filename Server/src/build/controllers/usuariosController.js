@@ -13,11 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.usuariosController = void 0;
-const database_1 = require("../database"); //acceso a la base de datos
 const usuario_model_1 = __importDefault(require("../models/usuario.model"));
 class UsuariosController {
     constructor() {
-        (0, database_1.connectDB)();
     }
     //aqui va el crud
     createUsuario(req, res) {

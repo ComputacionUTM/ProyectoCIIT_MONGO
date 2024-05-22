@@ -13,11 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.rolesController = void 0;
-const database_1 = require("../database"); //acceso a la base de datos
 const roles_model_1 = __importDefault(require("../models/roles.model"));
 class RolesController {
     constructor() {
-        (0, database_1.connectDB)();
     }
     createRol(req, res) {
         return __awaiter(this, void 0, void 0, function* () {

@@ -1,13 +1,11 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
-import { connectDB } from '../database'; //acceso a la base de datos
 import RedSocial from '../models/red_social.model'
 
 
 class RedSocialController {
 
     constructor() {
-        connectDB();
     }
     //aqui va el crud
     public async eliminarRed(req: Request, res: Response) {

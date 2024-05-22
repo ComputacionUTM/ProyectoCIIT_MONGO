@@ -7,7 +7,7 @@ interface OfertaLaboral {
     descripcion: string;
     description: string;
     horario: string;
-    id_empresa : String;
+    id_empresa : String;//no deberia ser un string -- referencia a otra tabla, no va aqui, va abajo
     createdAt: Date;
     updatedAt: Date;
 }

@@ -5,7 +5,7 @@ interface Usuario {
     correo: string;
     contrasena: string;
     fotito: number;
-    id_Rol : string;
+    id_Rol : string;//no deberia ser un string -- referencia a otra tabla, no va aqui, va abajo
     createdAt: Date;
     updatedAt: Date;
 }

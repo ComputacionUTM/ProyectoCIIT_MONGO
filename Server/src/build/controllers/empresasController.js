@@ -13,11 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.empresaController = void 0;
-const database_1 = require("../database"); //acceso a la base de datos
 const empresa_model_1 = __importDefault(require("../models/empresa.model"));
 class EmpresaController {
     constructor() {
-        (0, database_1.connectDB)();
     }
     createEmpresa(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -77,7 +75,14 @@ class EmpresaController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const empresas = yield empresa_model_1.default.findByIdAndDelete(req.params.id);
-                res.json(empresas);
+                //console.log(empresas);
+                if (empresas == null) {
+                    //console.log("Probando...");
+                    res.json({ mensaje: "No existe ese dato para eliminar" });
+                }
+                else {
+                    res.json({ id: empresas.id, mensaje: "Empresa eliminada con exito" });
+                }
             }
             catch (error) {
                 res.status(500).json({ message: error.message });

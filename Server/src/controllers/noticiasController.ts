@@ -1,13 +1,12 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
-import { connectDB } from '../database'; //acceso a la base de datos
 import Noticias from '../models/noticias.model'
 
 
 class NoticiasController {
 
     constructor() {
-        connectDB();
+        
     }
     
     public async createNoticia(req: Request, res: Response): Promise<void> {
