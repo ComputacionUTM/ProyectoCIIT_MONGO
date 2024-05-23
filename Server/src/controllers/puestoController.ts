@@ -40,15 +40,18 @@ class PuestoController {
     }
     public async listRestricciones(req: Request, res: Response): Promise<void>{
         console.log("Mostrando Puestos");
-        const salario=req.params.salario
-        const rol = await puesto.find({nombre:/Desa/})//Bueca una subcadena en el atributo "nombre"
+        const {text1, text2, sueldo} = req.body;
+
+        const rol = await puesto.find({$and:[{sueldo: {$gte: sueldo}}, {$or: [{ nombre: {$regex:text1}}, {nombre: {$regex: text2}}]}]}) ;
+
+        //const rol = await puesto.find({nombre:/Desa/})//Bueca una subcadena en el atributo "nombre"
         /*Operadores relacionales
         $ne (no iguales)
         $gt (mayores que)
         $gte (mayores o iguales)
         $lt (menor que)
         $lte (menor o igual)
-        $in [15000,20000] (Rango) NOTA: es para un arreglo de valores especificos
+        $in [15000,20000] (Rango) 
         $nin [15000,20000] (fuera de rango)
         Operadores logicos
         $and:[{nombre:"Desarrollador web"},{"sueldo":20000}]
@@ -56,16 +59,17 @@ class PuestoController {
         */
         res.json(rol)
     }
-    public async listRestriccion(req: Request, res: Response): Promise<void> {
-        console.log("Mostrando Puestos");
+    public async listRango(req: Request, res: Response): Promise<void> {
+        console.log("Mostrando Puestos Por Rango");
         const { text, limInferior, limSuperior } = req.body;
 
         const rol = await puesto.find({
-            nombre: { $regex: text },// $options: 'i'---Para que sea insensible a mayuculas y minusculas
+            nombre: { $regex: text },
             sueldo: { $gte: limInferior, $lte: limSuperior }
         });
         res.json(rol);
     }
+
     
 }
 export const puestoController = new PuestoController();

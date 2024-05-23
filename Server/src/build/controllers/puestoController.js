@@ -52,8 +52,9 @@ class PuestoController {
     listRestricciones(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("Mostrando Puestos");
-            const salario = req.params.salario;
-            const rol = yield puesto_model_1.default.find({ nombre: /Desa/ }); //Bueca una subcadena en el atributo "nombre"
+            const { text1, text2, sueldo } = req.body;
+            const rol = yield puesto_model_1.default.find({ $and: [{ sueldo: { $gte: sueldo } }, { $or: [{ nombre: { $regex: text1 } }, { nombre: { $regex: text2 } }] }] });
+            //const rol = await puesto.find({nombre:/Desa/})//Bueca una subcadena en el atributo "nombre"
             /*Operadores relacionales
             $ne (no iguales)
             $gt (mayores que)
@@ -69,23 +70,14 @@ class PuestoController {
             res.json(rol);
         });
     }
-    listRestriccion(req, res) {
+    listRango(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("Mostrando Puestos");
+            console.log("Mostrando Puestos Por Rango");
             const { text, limInferior, limSuperior } = req.body;
-            const rol = yield puesto_model_1.default.find({ nombre: { text, 15000: , 20000:  } }); //Bueca una subcadena en el atributo "nombre"
-            /*Operadores relacionales
-            $ne (no iguales)
-            $gt (mayores que)
-            $gte (mayores o iguales)
-            $lt (menor que)
-            $lte (menor o igual)
-            $in [15000,20000] (Rango)
-            $nin [15000,20000] (fuera de rango)
-            Operadores logicos
-            $and:[{nombre:"Desarrollador web"},{"sueldo":20000}]
-            $or:[{nombre:"Desarrollador web"},{"nombre":"Full stack"}]
-            */
+            const rol = yield puesto_model_1.default.find({
+                nombre: { $regex: text },
+                sueldo: { $gte: limInferior, $lte: limSuperior }
+            });
             res.json(rol);
         });
     }
