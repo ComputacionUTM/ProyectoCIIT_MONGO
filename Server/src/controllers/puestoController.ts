@@ -42,7 +42,7 @@ class PuestoController {
         console.log("Mostrando Puestos");
         const {text1, text2, sueldo} = req.body;
 
-        const rol = await puesto.find({$and:[{sueldo: {$gte: sueldo}}, {$or: [{ nombre: {$regex:text1}}, {nombre: {$regex: text2}}]}]}) ;
+        const rol = await puesto.find({$and:[{sueldo: {$gte: sueldo}}, {$or: [{ nombre: {$regex:text1}}, {nombre: {$regex: text2}}]}]},{nombre:1,sueldo:1,_id:0}) ;
 
         //const rol = await puesto.find({nombre:/Desa/})//Bueca una subcadena en el atributo "nombre"
         /*Operadores relacionales
@@ -70,6 +70,13 @@ class PuestoController {
         res.json(rol);
     }
 
+    public async SueldoMinimo(req: Request, res: Response): Promise<void> {
+        console.log("Mostrando total puestos");
+        const minimos  = await puesto.aggregate([{
+            '$group': { _id: null ,'total':{'$count':{}}}
+        }]);
+        res.json(minimos);
+    }
     
 }
 export const puestoController = new PuestoController();

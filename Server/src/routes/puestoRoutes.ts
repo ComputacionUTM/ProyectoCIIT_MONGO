@@ -12,6 +12,7 @@ class RolesRoutes {
         this.router.get('/',puestoController.list);
         this.router.post('/restricciones',puestoController.listRestricciones);
         this.router.post('/rango', puestoController.listRango);
+        this.router.get('/SueldoMinimo',puestoController.SueldoMinimo);
     }
 }
 const rolesRoutes = new RolesRoutes();

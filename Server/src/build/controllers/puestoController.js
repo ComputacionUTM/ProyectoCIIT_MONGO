@@ -53,7 +53,7 @@ class PuestoController {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("Mostrando Puestos");
             const { text1, text2, sueldo } = req.body;
-            const rol = yield puesto_model_1.default.find({ $and: [{ sueldo: { $gte: sueldo } }, { $or: [{ nombre: { $regex: text1 } }, { nombre: { $regex: text2 } }] }] });
+            const rol = yield puesto_model_1.default.find({ $and: [{ sueldo: { $gte: sueldo } }, { $or: [{ nombre: { $regex: text1 } }, { nombre: { $regex: text2 } }] }] }, { nombre: 1, sueldo: 1, _id: 0 });
             //const rol = await puesto.find({nombre:/Desa/})//Bueca una subcadena en el atributo "nombre"
             /*Operadores relacionales
             $ne (no iguales)
@@ -79,6 +79,15 @@ class PuestoController {
                 sueldo: { $gte: limInferior, $lte: limSuperior }
             });
             res.json(rol);
+        });
+    }
+    SueldoMinimo(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Mostrando total puestos");
+            const minimos = yield puesto_model_1.default.aggregate([{
+                    '$group': { _id: null, 'total': { '$count': {} } }
+                }]);
+            res.json(minimos);
         });
     }
 }
