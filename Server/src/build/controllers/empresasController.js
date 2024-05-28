@@ -100,6 +100,20 @@ class EmpresaController {
             }
         });
     }
+    listOneRestricciones(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const idEmpresa = req.params.id;
+            const ofertas = yield empresa_model_1.default.aggregate([{
+                    $lookup: {
+                        from: "ofertalaboral",
+                        localField: "_id",
+                        foreignField: "id_empresa",
+                        as: "Ofertas"
+                    }
+                }]);
+            res.json(ofertas);
+        });
+    }
     actualizarFotito(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

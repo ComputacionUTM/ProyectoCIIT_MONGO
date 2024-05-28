@@ -49,7 +49,7 @@ class EmpresaController {
     public async actualizarEmpresa(req: Request, res: Response): Promise<void> {
         try {
             const empresas = await Empresa.findByIdAndUpdate(req.params.id, req.body, { new: true });
-            
+
             res.json(empresas);
         } catch (error: any) {
             res.status(500).json({ message: error.message });
@@ -60,11 +60,11 @@ class EmpresaController {
         try {
             const empresas = await Empresa.findByIdAndDelete(req.params.id);
             //console.log(empresas);
-            if (empresas==null) {
+            if (empresas == null) {
                 //console.log("Probando...");
-                res.json({mensaje:"No existe ese dato para eliminar"});
-            }else{
-                res.json({id:empresas.id,mensaje:"Empresa eliminada con exito"});
+                res.json({ mensaje: "No existe ese dato para eliminar" });
+            } else {
+                res.json({ id: empresas.id, mensaje: "Empresa eliminada con exito" });
             }
         } catch (error: any) {
             res.status(500).json({ message: error.message });
@@ -79,6 +79,19 @@ class EmpresaController {
         } catch (error: any) {
             res.status(500).json({ message: error.message });
         }
+    }
+
+    public async listOneRestricciones(req: Request, res: Response): Promise<void> {
+        const idEmpresa = req.params.id;
+        const ofertas = await Empresa.aggregate([{
+            $lookup: {
+                from: "ofertalaboral",
+                localField: "_id",
+                foreignField: "id_empresa",
+                as: "Ofertas"
+            }
+        }]);
+        res.json(ofertas)
     }
 
     public async actualizarFotito(req: Request, res: Response): Promise<void> {

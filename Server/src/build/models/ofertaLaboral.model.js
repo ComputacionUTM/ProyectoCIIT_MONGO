@@ -49,10 +49,10 @@ const schemaOfertaLaboral = new mongoose_1.Schema({
         required: true,
     },
     id_empresa: {
-        type: String,
-        required: true,
-        trim: true
-    },
+        type: mongoose_1.Schema.Types.ObjectId,
+        ref: 'Empresa',
+        require: true
+    }
 }, {
     timestamps: true
 });

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import ofertaLaboralModel from '../models/ofertaLaboral.model';
-
+import Empresa from '../models/empresa.model';
 
 class OfertaLaboralController {
 
@@ -10,7 +10,7 @@ class OfertaLaboralController {
     public async createOfertaLaboral(req: Request, res: Response): Promise<void> {
         try {
             console.log("ENTRANDO...");
-
+            const empresaOferta = await Empresa.findById(req.body.id_empresa);
             const nuevaOfertaLaboral = new ofertaLaboralModel(
                 {
                     salario: req.body.salario,
@@ -19,7 +19,7 @@ class OfertaLaboralController {
                     descripcion: req.body.descripcion,
                     description: req.body.description,
                     horario: req.body.horario,
-                    id_empresa: req.body.id_empresa
+                    id_empresa: empresaOferta
 
                 })
             console.log(nuevaOfertaLaboral);

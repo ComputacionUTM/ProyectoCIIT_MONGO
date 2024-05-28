@@ -13,6 +13,7 @@ class EmpresasRoutes {
         this.router.put('/actualizarEmpresa/:id', empresasController_1.empresaController.actualizarEmpresa);
         this.router.delete('/eliminarEmpresa/:id', empresasController_1.empresaController.eliminarEmpresa);
         this.router.get('/ListOneEmpresa/:id', empresasController_1.empresaController.listOne);
+        this.router.get('/ListOneEmpresaRestricciones/', empresasController_1.empresaController.listOneRestricciones);
         this.router.put('/actualizarFotito/:id', empresasController_1.empresaController.actualizarFotito);
     }
 }

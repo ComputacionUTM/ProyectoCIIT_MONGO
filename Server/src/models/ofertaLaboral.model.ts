@@ -7,7 +7,7 @@ interface OfertaLaboral {
     descripcion: string;
     description: string;
     horario: string;
-    id_empresa : String;//no deberia ser un string -- referencia a otra tabla, no va aqui, va abajo
+    id_empresa: String;//no deberia ser un string -- referencia a otra tabla, no va aqui, va abajo
     createdAt: Date;
     updatedAt: Date;
 }
@@ -40,11 +40,12 @@ const schemaOfertaLaboral = new Schema<OfertaLaboral>({
         type: String,
         required: true,
     },
-    id_empresa: {
-        type: String,
-        required: true,
-        trim: true
-    },
+    id_empresa:
+    {
+        type: Schema.Types.ObjectId,
+        ref: 'Empresa',
+        require: true
+    }
 }, {
     timestamps: true
 });

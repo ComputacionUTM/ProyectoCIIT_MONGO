@@ -58,4 +58,4 @@ const schemaEmpresa = new mongoose_1.Schema({
 }, {
     timestamps: true
 });
-exports.default = mongoose_1.default.model('Empresa', schemaEmpresa, 'empresa');
+exports.default = mongoose_1.default.model('Empresa', schemaEmpresa, 'empresas');

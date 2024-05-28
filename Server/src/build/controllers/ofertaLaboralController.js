@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ofertaLaboralController = void 0;
 const ofertaLaboral_model_1 = __importDefault(require("../models/ofertaLaboral.model"));
+const empresa_model_1 = __importDefault(require("../models/empresa.model"));
 class OfertaLaboralController {
     constructor() {
     }
@@ -22,6 +23,7 @@ class OfertaLaboralController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 console.log("ENTRANDO...");
+                const empresaOferta = yield empresa_model_1.default.findById(req.body.id_empresa);
                 const nuevaOfertaLaboral = new ofertaLaboral_model_1.default({
                     salario: req.body.salario,
                     puesto: req.body.puesto,
@@ -29,7 +31,7 @@ class OfertaLaboralController {
                     descripcion: req.body.descripcion,
                     description: req.body.description,
                     horario: req.body.horario,
-                    id_empresa: req.body.id_empresa
+                    id_empresa: empresaOferta
                 });
                 console.log(nuevaOfertaLaboral);
                 const ofertaLaboralGuardado = yield nuevaOfertaLaboral.save();
