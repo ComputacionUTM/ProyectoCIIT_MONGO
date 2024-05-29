@@ -9,26 +9,23 @@ class EmpresaController {
 
     public async createEmpresa(req: Request, res: Response): Promise<void> {
         try {
-            const { nombre_empresa, direccion, rfc, descripcion, description, telefono, fotito } = req.body;
+            const { nombre, direccion, rfc,ciudad, telefono,responsable } = req.body;
             const nuevoEmpresa = new Empresa({
-                nombre_empresa,
+                nombre,
                 direccion,
                 rfc,
-                descripcion,
-                description,
                 telefono,
-                fotito
+                ciudad,
+                responsable,
             });
             const empresaGuardado = await nuevoEmpresa.save();
             res.json({
                 id: empresaGuardado._id,
-                nombre_empresa: empresaGuardado.nombre_empresa,
+                nombre: empresaGuardado.nombre,
                 direccion: empresaGuardado.direccion,
                 rfc: empresaGuardado.rfc,
-                descripcion: empresaGuardado.descripcion,
-                description: empresaGuardado.description,
                 telefono: empresaGuardado.telefono,
-                fotito: empresaGuardado.fotito,
+                ciudad: empresaGuardado.ciudad,
                 createAt: empresaGuardado.createdAt,
                 updateAt: empresaGuardado.updatedAt
             });

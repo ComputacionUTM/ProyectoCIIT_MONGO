@@ -20,26 +20,23 @@ class EmpresaController {
     createEmpresa(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { nombre_empresa, direccion, rfc, descripcion, description, telefono, fotito } = req.body;
+                const { nombre, direccion, rfc, ciudad, telefono, responsable } = req.body;
                 const nuevoEmpresa = new empresa_model_1.default({
-                    nombre_empresa,
+                    nombre,
                     direccion,
                     rfc,
-                    descripcion,
-                    description,
                     telefono,
-                    fotito
+                    ciudad,
+                    responsable,
                 });
                 const empresaGuardado = yield nuevoEmpresa.save();
                 res.json({
                     id: empresaGuardado._id,
-                    nombre_empresa: empresaGuardado.nombre_empresa,
+                    nombre: empresaGuardado.nombre,
                     direccion: empresaGuardado.direccion,
                     rfc: empresaGuardado.rfc,
-                    descripcion: empresaGuardado.descripcion,
-                    description: empresaGuardado.description,
                     telefono: empresaGuardado.telefono,
-                    fotito: empresaGuardado.fotito,
+                    ciudad: empresaGuardado.ciudad,
                     createAt: empresaGuardado.createdAt,
                     updateAt: empresaGuardado.updatedAt
                 });
