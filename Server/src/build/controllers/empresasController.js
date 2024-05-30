@@ -25,9 +25,9 @@ class EmpresaController {
                     nombre,
                     direccion,
                     rfc,
-                    telefono,
                     ciudad,
-                    responsable,
+                    telefono,
+                    responsable
                 });
                 const empresaGuardado = yield nuevoEmpresa.save();
                 res.json({
@@ -37,6 +37,7 @@ class EmpresaController {
                     rfc: empresaGuardado.rfc,
                     telefono: empresaGuardado.telefono,
                     ciudad: empresaGuardado.ciudad,
+                    responsable: empresaGuardado.responsable,
                     createAt: empresaGuardado.createdAt,
                     updateAt: empresaGuardado.updatedAt
                 });
@@ -102,10 +103,22 @@ class EmpresaController {
             const idEmpresa = req.params.id;
             const ofertas = yield empresa_model_1.default.aggregate([{
                     $lookup: {
-                        from: "ofertalaboral",
+                        from: "ofertas",
                         localField: "_id",
-                        foreignField: "id_empresa",
-                        as: "Ofertas"
+                        foreignField: "empresa_id",
+                        as: "ofertaLaboral"
+                    }
+                },
+                {
+                    $match: {
+                        ciudad: "Oaxaca"
+                    }
+                },
+                {
+                    $project: {
+                        nombre: 1,
+                        responsable: 1,
+                        ofertaLaboral: '$ofertaLaboral.nombre'
                     }
                 }]);
             res.json(ofertas);

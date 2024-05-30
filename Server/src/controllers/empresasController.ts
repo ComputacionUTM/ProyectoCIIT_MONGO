@@ -9,14 +9,14 @@ class EmpresaController {
 
     public async createEmpresa(req: Request, res: Response): Promise<void> {
         try {
-            const { nombre, direccion, rfc,ciudad, telefono,responsable } = req.body;
+            const { nombre, direccion, rfc, ciudad, telefono, responsable } = req.body;
             const nuevoEmpresa = new Empresa({
                 nombre,
                 direccion,
                 rfc,
-                telefono,
                 ciudad,
-                responsable,
+                telefono,
+                responsable
             });
             const empresaGuardado = await nuevoEmpresa.save();
             res.json({
@@ -26,6 +26,7 @@ class EmpresaController {
                 rfc: empresaGuardado.rfc,
                 telefono: empresaGuardado.telefono,
                 ciudad: empresaGuardado.ciudad,
+                responsable: empresaGuardado.responsable,
                 createAt: empresaGuardado.createdAt,
                 updateAt: empresaGuardado.updatedAt
             });
@@ -81,11 +82,26 @@ class EmpresaController {
     public async listOneRestricciones(req: Request, res: Response): Promise<void> {
         const idEmpresa = req.params.id;
         const ofertas = await Empresa.aggregate([{
-            $lookup: {
-                from: "ofertalaboral",
+            $lookup:
+            {
+                from: "ofertas",
                 localField: "_id",
-                foreignField: "id_empresa",
-                as: "Ofertas"
+                foreignField: "empresa_id",
+                as: "ofertaLaboral"
+            }
+        },
+        {
+            $match:
+            {
+                ciudad: "Oaxaca"
+            }
+        },
+        {
+            $project:
+            {
+                nombre: 1,
+                responsable: 1,
+                ofertaLaboral: '$ofertaLaboral.nombre'
             }
         }]);
         res.json(ofertas)
