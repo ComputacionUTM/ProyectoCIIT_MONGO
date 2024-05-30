@@ -99,15 +99,69 @@ class EmpresaController {
     }
     listOneRestricciones(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const idEmpresa = req.params.id;
+            const ofertas = yield empresa_model_1.default.aggregate([
+                {
+                    $lookup: {
+                        from: "ofertalaboral",
+                        localField: "_id",
+                        foreignField: "empresa_id",
+                        as: "Ofertas"
+                    }
+                },
+                {
+                    $match: { ciudad: "Oaxaca" }
+                }
+            ]);
+            res.json(ofertas);
+        });
+    }
+    listConMerge(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
             const ofertas = yield empresa_model_1.default.aggregate([{
                     $lookup: {
                         from: "ofertalaboral",
                         localField: "_id",
-                        foreignField: "id_empresa",
-                        as: "Ofertas"
+                        foreignField: "empresa_id",
+                        as: "ofertaLaboral"
                     }
-                }]);
+                },
+                {
+                    $replaceRoot: {
+                        newRoot: {
+                            $mergeObjects: [{ $arrayElemAt: ['$ofertaLaboral', 0] }, "$$ROOT"]
+                        }
+                    }
+                }
+            ]);
+            res.json(ofertas);
+        });
+    }
+    ListMergeProjection(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ofertas = yield empresa_model_1.default.aggregate([
+                {
+                    $lookup: {
+                        from: "ofertalaboral",
+                        localField: "_id",
+                        foreignField: "empresa_id",
+                        as: "ofertaLaboral"
+                    }
+                },
+                {
+                    $replaceRoot: {
+                        newRoot: {
+                            $mergeObjects: [{ $arrayElemAt: ['$ofertaLaboral', 0] }, "$$ROOT"]
+                        }
+                    }
+                },
+                {
+                    $project: {
+                        _id: 0,
+                        nombre: 1,
+                        nombreOferta: '$ofertaLaboral.nombre'
+                    }
+                }
+            ]);
             res.json(ofertas);
         });
     }
