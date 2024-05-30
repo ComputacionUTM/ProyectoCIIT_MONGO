@@ -1,0 +1,82 @@
+[{
+  "_id": {
+    "$oid": "664e1dd6756da844f68a96c0"
+  },
+  "nombre": "Desarrollador junior",
+  "descripcion": "Echar colado",
+  "sueldo": 20000,
+  "createdAt": {
+    "$date": "2024-05-22T16:31:18.229Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-22T16:31:18.229Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664e1df6756da844f68a96c2"
+  },
+  "nombre": "Desarrollador Web",
+  "descripcion": "Echar colado",
+  "sueldo": 10000,
+  "createdAt": {
+    "$date": "2024-05-22T16:31:50.219Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-22T16:31:50.219Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664e1e0c756da844f68a96c4"
+  },
+  "nombre": "Desarrollador Senior",
+  "descripcion": "Echar colado",
+  "sueldo": 25000,
+  "createdAt": {
+    "$date": "2024-05-22T16:32:12.102Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-22T16:32:12.102Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664e1e20756da844f68a96c6"
+  },
+  "nombre": "Desarrollador Full Stack",
+  "descripcion": "Echar colado",
+  "sueldo": 20000,
+  "createdAt": {
+    "$date": "2024-05-22T16:32:32.786Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-22T16:32:32.786Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664e1e3d756da844f68a96c8"
+  },
+  "nombre": "Desarrollador Backend",
+  "descripcion": "Echar colado",
+  "sueldo": 25000,
+  "createdAt": {
+    "$date": "2024-05-22T16:33:01.596Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-22T16:33:01.596Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6650c2dc1c998ca1c4927eba"
+  },
+  "nombre": "algo",
+  "descripcion": "algo"
+}]

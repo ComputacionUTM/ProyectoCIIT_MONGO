@@ -1,48 +1,42 @@
 [{
   "_id": {
-    "$oid": "664a6588950fdffa9fbbb22a"
+    "$oid": "66565fae5bdceb26bf581174"
   },
-  "salario": 8000,
-  "puesto": "Jefe",
-  "position": "Boss",
-  "id_empresa": 1,
-  "descripcion": "Encargarse de toda la administración de la empresa",
-  "description": "Take care of all the administration of the company",
-  "horario": "7 am- 6pm"
+  "salario": 1000,
+  "puesto": "Ranch Jefe",
+  "position": "Ranch",
+  "descripcion": "Echar colado",
+  "description": "Echar colado",
+  "horario": "12hrs",
+  "id_empresa": {
+    "$oid": "6658aecef9269ab19e226648"
+  },
+  "createdAt": {
+    "$date": "2024-05-28T22:50:22.205Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-28T22:50:22.205Z"
+  },
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "664a6588950fdffa9fbbb22b"
+    "$oid": "6656618efd428a8f3c1b9b2a"
   },
-  "salario": 5000,
-  "puesto": "Gerente de limpieza",
-  "position": "Cleaning manager",
-  "id_empresa": 1,
-  "descripcion": "servicio de limpieza",
-  "description": "Cleaning service",
-  "horario": "6 am- 5pm"
-},
-{
-  "_id": {
-    "$oid": "664a6588950fdffa9fbbb22c"
+  "salario": 1000,
+  "puesto": "Ranch Secre",
+  "position": "Secre",
+  "descripcion": "Secre colado",
+  "description": "Secre colado",
+  "horario": "12hrs",
+  "id_empresa": {
+    "$oid": "6658aecef9269ab19e226648"
   },
-  "salario": 6000,
-  "puesto": "Administrador",
-  "position": "Administrator",
-  "id_empresa": 3,
-  "descripcion": "administrar inventario",
-  "description": "Manage Inventory",
-  "horario": "7 am- 6pm"
-},
-{
-  "_id": {
-    "$oid": "664a6588950fdffa9fbbb22d"
+  "createdAt": {
+    "$date": "2024-05-28T22:58:22.104Z"
   },
-  "salario": 5000,
-  "puesto": "Secretaria",
-  "position": "Secretary",
-  "id_empresa": 4,
-  "descripcion": "Puesto fijo",
-  "description": "Fixed position",
-  "horario": "9 am - 5 pm"
+  "updatedAt": {
+    "$date": "2024-05-28T22:58:22.104Z"
+  },
+  "__v": 0
 }]

@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$oid": "6658aecef9269ab19e226648"
+  },
+  "nombre": "Ossi",
+  "direccion": "Calle 91",
+  "rfc": "RAPE090541",
+  "telefono": "56423114",
+  "responsable": "so",
+  "ciudad": "Oaxaca",
+  "createdAt": {
+    "$date": "2024-05-30T16:52:30.762Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-30T16:52:30.762Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6658aeeaf9269ab19e22664a"
+  },
+  "nombre": "coca",
+  "direccion": "Calle 1",
+  "rfc": "RAPE090",
+  "telefono": "56423114",
+  "responsable": "so",
+  "ciudad": "Puebla",
+  "createdAt": {
+    "$date": "2024-05-30T16:52:58.593Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-30T16:52:58.593Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6658afe16e34bb78a96f0c0e"
+  },
+  "nombre": "Pepsi",
+  "direccion": "Calle 2033",
+  "rfc": "RAPE04324290",
+  "telefono": "56423134614",
+  "responsable": "Erik",
+  "ciudad": "Oaxaca",
+  "createdAt": {
+    "$date": "2024-05-30T16:57:05.579Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-30T16:57:05.579Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6658b039bfd8017b1d8bfc82"
+  },
+  "nombre": "Pepsi",
+  "direccion": "Calle 2033",
+  "rfc": "RAPE04324290",
+  "telefono": "56423134614",
+  "responsable": "Erik",
+  "ciudad": "Oaxaca",
+  "createdAt": {
+    "$date": "2024-05-30T16:58:33.318Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-30T16:58:33.318Z"
+  },
+  "__v": 0
+}]
