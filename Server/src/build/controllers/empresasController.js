@@ -25,9 +25,9 @@ class EmpresaController {
                     nombre,
                     direccion,
                     rfc,
-                    ciudad,
                     telefono,
-                    responsable
+                    ciudad,
+                    responsable,
                 });
                 const empresaGuardado = yield nuevoEmpresa.save();
                 res.json({
@@ -37,7 +37,6 @@ class EmpresaController {
                     rfc: empresaGuardado.rfc,
                     telefono: empresaGuardado.telefono,
                     ciudad: empresaGuardado.ciudad,
-                    responsable: empresaGuardado.responsable,
                     createAt: empresaGuardado.createdAt,
                     updateAt: empresaGuardado.updatedAt
                 });
@@ -100,27 +99,69 @@ class EmpresaController {
     }
     listOneRestricciones(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const idEmpresa = req.params.id;
+            const ofertas = yield empresa_model_1.default.aggregate([
+                {
+                    $lookup: {
+                        from: "ofertalaboral",
+                        localField: "_id",
+                        foreignField: "empresa_id",
+                        as: "Ofertas"
+                    }
+                },
+                {
+                    $match: { ciudad: "Oaxaca" }
+                }
+            ]);
+            res.json(ofertas);
+        });
+    }
+    listConMerge(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
             const ofertas = yield empresa_model_1.default.aggregate([{
                     $lookup: {
-                        from: "ofertas",
+                        from: "ofertalaboral",
                         localField: "_id",
                         foreignField: "empresa_id",
                         as: "ofertaLaboral"
                     }
                 },
                 {
-                    $match: {
-                        ciudad: "Oaxaca"
+                    $replaceRoot: {
+                        newRoot: {
+                            $mergeObjects: [{ $arrayElemAt: ['$ofertaLaboral', 0] }, "$$ROOT"]
+                        }
+                    }
+                }
+            ]);
+            res.json(ofertas);
+        });
+    }
+    ListMergeProjection(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ofertas = yield empresa_model_1.default.aggregate([
+                {
+                    $lookup: {
+                        from: "ofertalaboral",
+                        localField: "_id",
+                        foreignField: "empresa_id",
+                        as: "ofertaLaboral"
+                    }
+                },
+                {
+                    $replaceRoot: {
+                        newRoot: {
+                            $mergeObjects: [{ $arrayElemAt: ['$ofertaLaboral', 0] }, "$$ROOT"]
+                        }
                     }
                 },
                 {
                     $project: {
+                        _id: 0,
                         nombre: 1,
-                        responsable: 1,
-                        ofertaLaboral: '$ofertaLaboral.nombre'
+                        nombreOferta: '$ofertaLaboral.nombre'
                     }
-                }]);
+                }
+            ]);
             res.json(ofertas);
         });
     }

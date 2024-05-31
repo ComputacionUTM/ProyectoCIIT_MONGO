@@ -14,9 +14,9 @@ class EmpresaController {
                 nombre,
                 direccion,
                 rfc,
-                ciudad,
                 telefono,
-                responsable
+                ciudad,
+                responsable,
             });
             const empresaGuardado = await nuevoEmpresa.save();
             res.json({
@@ -26,7 +26,6 @@ class EmpresaController {
                 rfc: empresaGuardado.rfc,
                 telefono: empresaGuardado.telefono,
                 ciudad: empresaGuardado.ciudad,
-                responsable: empresaGuardado.responsable,
                 createAt: empresaGuardado.createdAt,
                 updateAt: empresaGuardado.updatedAt
             });
@@ -80,32 +79,74 @@ class EmpresaController {
     }
 
     public async listOneRestricciones(req: Request, res: Response): Promise<void> {
-        const idEmpresa = req.params.id;
-        const ofertas = await Empresa.aggregate([{
-            $lookup:
+        const ofertas = await Empresa.aggregate([
             {
-                from: "ofertas",
+                $lookup: {
+                    from: "ofertalaboral",
+                    localField: "_id",
+                    foreignField: "empresa_id",
+                    as: "Ofertas"
+                }
+            },
+            {
+                $match: { ciudad: "Oaxaca" }
+            }]);
+        res.json(ofertas)
+    }
+
+    public async listConMerge(req: Request, res: Response): Promise<void> {
+        const ofertas = await Empresa.aggregate([{
+
+            $lookup: {
+                from: "ofertalaboral",
                 localField: "_id",
                 foreignField: "empresa_id",
                 as: "ofertaLaboral"
             }
         },
         {
-            $match:
-            {
-                ciudad: "Oaxaca"
+            $replaceRoot: {
+                newRoot: {
+                    $mergeObjects: [{ $arrayElemAt: ['$ofertaLaboral', 0] }, "$$ROOT"]
+                }
             }
-        },
-        {
-            $project:
-            {
-                nombre: 1,
-                responsable: 1,
-                ofertaLaboral: '$ofertaLaboral.nombre'
-            }
-        }]);
+        }
+        ]);
         res.json(ofertas)
     }
+
+    public async ListMergeProjection(req: Request, res: Response): Promise<void> {
+        const ofertas = await Empresa.aggregate([
+            {
+                $lookup:
+                {
+                    from: "ofertalaboral",
+                    localField: "_id",
+                    foreignField: "empresa_id",
+                    as: "ofertaLaboral"
+                }
+            },
+            {
+                $replaceRoot:
+                {
+                    newRoot:
+                    {
+                        $mergeObjects: [{ $arrayElemAt: ['$ofertaLaboral', 0] }, "$$ROOT"]
+                    }
+                }
+            },
+            {
+                $project:
+                {
+                    _id: 0,
+                    nombre: 1,
+                    nombreOferta: '$ofertaLaboral.nombre'
+                }
+            }
+        ]);
+        res.json(ofertas)
+    }
+
 
     public async actualizarFotito(req: Request, res: Response): Promise<void> {
         try {
