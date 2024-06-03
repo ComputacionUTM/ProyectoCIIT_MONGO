@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import Empresa from '../models/empresa.model';
+import ofertaLaboral from '../models/ofertaLaboral.model';
 
 class EmpresaController {
 
@@ -82,15 +83,32 @@ class EmpresaController {
         const ofertas = await Empresa.aggregate([
             {
                 $lookup: {
-                    from: "ofertalaboral",
+                    from: "ofertas",
                     localField: "_id",
                     foreignField: "empresa_id",
-                    as: "Ofertas"
+                    as: "Oferta_e"
                 }
+                
+            }, 
+            {
+                $lookup: {
+                from: "detalleofertas",
+                localField: "Oferta_e._id",
+                foreignField: "detalleOferta_id",
+                as: "DetalleOfertas"
+            }
+
             },
             {
-                $match: { ciudad: "Oaxaca" }
-            }]);
+                $match: {ciudad:"Oaxaca"}
+            },
+            {
+                $project:{
+                    nombre: 1,
+                    horario : '$DetalleOfertas.horario'
+                }
+            }
+            ]);
         res.json(ofertas)
     }
 

@@ -102,14 +102,28 @@ class EmpresaController {
             const ofertas = yield empresa_model_1.default.aggregate([
                 {
                     $lookup: {
-                        from: "ofertalaboral",
+                        from: "ofertas",
                         localField: "_id",
                         foreignField: "empresa_id",
-                        as: "Ofertas"
+                        as: "Oferta_e"
+                    }
+                },
+                {
+                    $lookup: {
+                        from: "detalleofertas",
+                        localField: "Oferta_e._id",
+                        foreignField: "detalleOferta_id",
+                        as: "DetalleOfertas"
                     }
                 },
                 {
                     $match: { ciudad: "Oaxaca" }
+                },
+                {
+                    $project: {
+                        nombre: 1,
+                        horario: '$DetalleOfertas.horario'
+                    }
                 }
             ]);
             res.json(ofertas);
