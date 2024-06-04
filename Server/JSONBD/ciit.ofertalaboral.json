@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "66565fae5bdceb26bf581174"
+  },
+  "salario": 1000,
+  "puesto": "Ranch Jefe",
+  "position": "Ranch",
+  "descripcion": "Echar colado",
+  "description": "Echar colado",
+  "horario": "12hrs",
+  "id_empresa": {
+    "$oid": "6658aecef9269ab19e226648"
+  },
+  "createdAt": {
+    "$date": "2024-05-28T22:50:22.205Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-28T22:50:22.205Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6656618efd428a8f3c1b9b2a"
+  },
+  "salario": 1000,
+  "puesto": "Ranch Secre",
+  "position": "Secre",
+  "descripcion": "Secre colado",
+  "description": "Secre colado",
+  "horario": "12hrs",
+  "id_empresa": {
+    "$oid": "6658aecef9269ab19e226648"
+  },
+  "createdAt": {
+    "$date": "2024-05-28T22:58:22.104Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-28T22:58:22.104Z"
+  },
+  "__v": 0
+}]

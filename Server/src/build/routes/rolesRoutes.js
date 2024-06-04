@@ -8,12 +8,11 @@ class RolesRoutes {
         this.config();
     }
     config() {
-        //this.router.get('/mostrarTodosRoles/',(req,res) => res.send('probando Roles'));
-        this.router.get('/mostrarTodosRoles/', rolesController_1.rolesController.mostrar_todos_roles);
+        this.router.post('/', rolesController_1.rolesController.createRol);
         this.router.get('/obtenerRol/:id', rolesController_1.rolesController.listOne);
-        this.router.post('/crearRol/', rolesController_1.rolesController.createRol);
-        this.router.put('/actualizarRol/:id', rolesController_1.rolesController.actualizarRol);
-        this.router.delete('/eliminarRol/:id', rolesController_1.rolesController.eliminarRol);
+        this.router.put('/:id', rolesController_1.rolesController.actualizarRol);
+        this.router.get('/', rolesController_1.rolesController.mostrarRoles);
+        this.router.delete('/eliminaRol/:id', rolesController_1.rolesController.deleteRol);
     }
 }
 const rolesRoutes = new RolesRoutes();

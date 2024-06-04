@@ -9,9 +9,14 @@ class UsuariosRoutes {
     config(): void {
         this.router.get('/',usuariosController.mostrar_todos_usuarios);
         this.router.get('/obtenerUsuario/:id',usuariosController.listOne);
-        this.router.post('/', usuariosController.createUsuario);
-        this.router.delete('/:id',usuariosController.borrarUsuario);
-        this.router.put('/:id',usuariosController.actualizarUsuario);
+        this.router.post('/crearUsuario/', usuariosController.createUsuario);
+        this.router.delete('/eliminarUsuario/:id',usuariosController.eliminarUsuario);
+        this.router.get('/obtenerUsuarioCorreo/:correo', usuariosController.obtenerUsuarioCorreo);
+        this.router.put('/actualizarUsuario/:id',usuariosController.actualizarUsuario);
+        this.router.put('/reestablecerContrasena/:token', usuariosController.actualizarContrasena);
+        this.router.put('/actualizarFotito/:id',usuariosController.actualizarFotito);
+        this.router.get('/listarUsuariosRol/:id',usuariosController.listarUsuariosRol);
+        this.router.post('/ValidarUsuario/', usuariosController.ValidarUsuario);
     }
 }
 const usuariosRoutes = new UsuariosRoutes();

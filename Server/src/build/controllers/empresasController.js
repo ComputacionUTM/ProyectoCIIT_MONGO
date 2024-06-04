@@ -13,43 +13,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.empresaController = void 0;
-const database_1 = require("../database"); //acceso a la base de datos
 const empresa_model_1 = __importDefault(require("../models/empresa.model"));
 class EmpresaController {
     constructor() {
-        (0, database_1.connectDB)();
     }
-    //aqui va el crud
-    /*
-    nombre_empresa: string;
-    direccion: string;
-    rfc: string;
-    descripcion: string;
-    description: string;
-    */
     createEmpresa(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { nombre_empresa, direccion, rfc, descripcion, description } = req.body;
             try {
-                console.log("ENTRANDO...");
+                const { nombre, direccion, rfc, ciudad, telefono, responsable } = req.body;
                 const nuevoEmpresa = new empresa_model_1.default({
-                    nombre_empresa,
+                    nombre,
                     direccion,
                     rfc,
-                    descripcion,
-                    description
+                    telefono,
+                    ciudad,
+                    responsable,
                 });
-                console.log(nuevoEmpresa);
                 const empresaGuardado = yield nuevoEmpresa.save();
-                //const token = await createAccesToken({ id: usuarioGuardado._id });
-                //res.cookie('token', token);
                 res.json({
                     id: empresaGuardado._id,
-                    nombre_empresa: empresaGuardado.nombre_empresa,
+                    nombre: empresaGuardado.nombre,
                     direccion: empresaGuardado.direccion,
                     rfc: empresaGuardado.rfc,
-                    descripcion: empresaGuardado.descripcion,
-                    description: empresaGuardado.description,
+                    telefono: empresaGuardado.telefono,
+                    ciudad: empresaGuardado.ciudad,
                     createAt: empresaGuardado.createdAt,
                     updateAt: empresaGuardado.updatedAt
                 });
@@ -59,8 +46,149 @@ class EmpresaController {
             }
         });
     }
+    mostrar_todos_empresa(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const empresas = yield empresa_model_1.default.find();
+                res.json(empresas);
+            }
+            catch (error) {
+                res.status(500).json({ message: error.message });
+            }
+        });
+    }
+    actualizarEmpresa(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const empresas = yield empresa_model_1.default.findByIdAndUpdate(req.params.id, req.body, { new: true });
+                res.json(empresas);
+            }
+            catch (error) {
+                res.status(500).json({ message: error.message });
+            }
+        });
+    }
+    eliminarEmpresa(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const empresas = yield empresa_model_1.default.findByIdAndDelete(req.params.id);
+                //console.log(empresas);
+                if (empresas == null) {
+                    //console.log("Probando...");
+                    res.json({ mensaje: "No existe ese dato para eliminar" });
+                }
+                else {
+                    res.json({ id: empresas.id, mensaje: "Empresa eliminada con exito" });
+                }
+            }
+            catch (error) {
+                res.status(500).json({ message: error.message });
+            }
+        });
+    }
+    listOne(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const empresas = yield empresa_model_1.default.findById(req.params.id);
+                res.json(empresas);
+            }
+            catch (error) {
+                res.status(500).json({ message: error.message });
+            }
+        });
+    }
+    listOneRestricciones(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ofertas = yield empresa_model_1.default.aggregate([
+                {
+                    $lookup: {
+                        from: "ofertas",
+                        localField: "_id",
+                        foreignField: "empresa_id",
+                        as: "Oferta_e"
+                    }
+                },
+                {
+                    $lookup: {
+                        from: "detalleofertas",
+                        localField: "Oferta_e._id",
+                        foreignField: "detalleOferta_id",
+                        as: "DetalleOfertas"
+                    }
+                },
+                {
+                    $match: { ciudad: "Oaxaca" }
+                },
+                {
+                    $project: {
+                        nombre: 1,
+                        horario: '$DetalleOfertas.horario'
+                    }
+                }
+            ]);
+            res.json(ofertas);
+        });
+    }
+    listConMerge(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ofertas = yield empresa_model_1.default.aggregate([{
+                    $lookup: {
+                        from: "ofertalaboral",
+                        localField: "_id",
+                        foreignField: "empresa_id",
+                        as: "ofertaLaboral"
+                    }
+                },
+                {
+                    $replaceRoot: {
+                        newRoot: {
+                            $mergeObjects: [{ $arrayElemAt: ['$ofertaLaboral', 0] }, "$$ROOT"]
+                        }
+                    }
+                }
+            ]);
+            res.json(ofertas);
+        });
+    }
+    ListMergeProjection(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const ofertas = yield empresa_model_1.default.aggregate([
+                {
+                    $lookup: {
+                        from: "ofertalaboral",
+                        localField: "_id",
+                        foreignField: "empresa_id",
+                        as: "ofertaLaboral"
+                    }
+                },
+                {
+                    $replaceRoot: {
+                        newRoot: {
+                            $mergeObjects: [{ $arrayElemAt: ['$ofertaLaboral', 0] }, "$$ROOT"]
+                        }
+                    }
+                },
+                {
+                    $project: {
+                        _id: 0,
+                        nombre: 1,
+                        nombreOferta: '$ofertaLaboral.nombre'
+                    }
+                }
+            ]);
+            res.json(ofertas);
+        });
+    }
+    actualizarFotito(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const empresas = yield empresa_model_1.default.findByIdAndUpdate(req.params.id, { "fotito": "1" }, { new: true });
+                res.json(empresas);
+            }
+            catch (error) {
+                res.status(500).json({ message: error.message });
+            }
+        });
+    }
 }
-//function decodeJWT(token: any) {
-//    return (Buffer.from(token.split('.')[1], 'base64').toString());
-//}
 exports.empresaController = new EmpresaController();

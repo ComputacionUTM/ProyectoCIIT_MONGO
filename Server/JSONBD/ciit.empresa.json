@@ -1,0 +1,52 @@
+[{
+  "_id": {
+    "$oid": "664a5b6c950fdffa9fbbb211"
+  },
+  "nombre_empresa": "Corana s.a de c.v",
+  "direccion": "CDMX, Carretera 304",
+  "rfc": "546546HHEEHE",
+  "telefono": "7376463737",
+  "descripcion": "Empresa de Cerveza",
+  "description": "Beer Company",
+  "fecha": "08/05/2024",
+  "fotito": 1
+},
+{
+  "_id": {
+    "$oid": "664a5b6c950fdffa9fbbb212"
+  },
+  "nombre_empresa": "Pepsi s.a de c.v",
+  "direccion": "CDMX, Carretera 504",
+  "rfc": "HEEGEEHE7674",
+  "telefono": "2132747464",
+  "descripcion": "Empresa de Refrescos",
+  "description": "Soda Company",
+  "fecha": "15/05/2024",
+  "fotito": 1
+},
+{
+  "_id": {
+    "$oid": "664a5b6c950fdffa9fbbb213"
+  },
+  "nombre_empresa": "Intel",
+  "direccion": "USA, CA",
+  "rfc": "HEHWUWYE1331",
+  "telefono": "3984994939",
+  "descripcion": "Compañia de Tecnologia",
+  "description": "Technology Company",
+  "fecha": "14/05/2024",
+  "fotito": 1
+},
+{
+  "_id": {
+    "$oid": "664a5b6c950fdffa9fbbb214"
+  },
+  "nombre_empresa": "Coca Cola",
+  "direccion": "CDMX Avenida",
+  "rfc": "HEHHWHW27333",
+  "telefono": "8383848484",
+  "descripcion": "Empresa de Refrescos",
+  "description": "Soda Company",
+  "fecha": "2024-04-19",
+  "fotito": 1
+}]

@@ -20,23 +20,40 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const schemaRedSocial = new mongoose_1.Schema({
-    nombre: {
-        type: String,
+const schemaOfertaLaboral = new mongoose_1.Schema({
+    salario: {
+        type: Number,
         required: true,
         trim: true
     },
-    enlace: {
+    puesto: {
         type: String,
         required: true,
         trim: true,
+    },
+    position: {
+        type: String,
+        required: true,
         unique: true
     },
-    foto: {
-        type: Number,
-        required: true
+    descripcion: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    horario: {
+        type: String,
+        required: true,
+    },
+    id_empresa: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        ref: 'Empresa',
+        require: true
     }
 }, {
     timestamps: true
 });
-exports.default = mongoose_1.default.model('RedSocial', schemaRedSocial, 'red_social');
+exports.default = mongoose_1.default.model('OfertaLaboral', schemaOfertaLaboral, 'ofertalaboral');

@@ -1,18 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const ofertaLaboralController_1 = require("../controllers/ofertaLaboralController");
+const ofertalaboralController_1 = require("../controllers/ofertalaboralController");
 class OfertaLaboralRoutes {
     constructor() {
         this.router = (0, express_1.Router)();
         this.config();
     }
     config() {
-        this.router.get('/mostrarTodosOfertasLaborales/', ofertaLaboralController_1.ofertaLaboralController.mostrar_todos_puestos);
-        this.router.get('/obtenerOferta/:id', ofertaLaboralController_1.ofertaLaboralController.listOne);
-        this.router.post('/createOferta/', ofertaLaboralController_1.ofertaLaboralController.createOferta);
-        this.router.put('/actualizarOferta/:id', ofertaLaboralController_1.ofertaLaboralController.actualizarOferta);
-        this.router.delete('/eliminarOferta/:id', ofertaLaboralController_1.ofertaLaboralController.eliminarOferta);
+        this.router.post('/crearOfertaLaboral', ofertalaboralController_1.ofertaLaboralController.createOfertaLaboral);
+        this.router.get('/obtenerOfertasLaborales', ofertalaboralController_1.ofertaLaboralController.getOfertasLaborales);
+        this.router.get('/obtenerOfertaLaboral/:id', ofertalaboralController_1.ofertaLaboralController.getOfertaLaboral);
+        this.router.put('/actualizarOfertaLaboral/:id', ofertalaboralController_1.ofertaLaboralController.putOfertaLaboral);
+        /*
+        this.router.post('/', ofertaLaboralController.createOfertaLaboral);
+        */
+        this.router.delete('/eliminarOfertaLaboral/:id', ofertalaboralController_1.ofertaLaboralController.deleteOfertaLaboral);
     }
 }
 const ofertaLaboralRoutes = new OfertaLaboralRoutes();

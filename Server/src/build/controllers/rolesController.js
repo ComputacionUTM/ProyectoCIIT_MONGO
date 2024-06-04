@@ -13,59 +13,69 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.rolesController = void 0;
-const database_1 = __importDefault(require("../database")); //acceso a la base de datos
+const roles_model_1 = __importDefault(require("../models/roles.model"));
 class RolesController {
-    mostrar_todos_roles(req, res) {
+    constructor() {
+    }
+    createRol(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("YA ESTAMOS AQUI");
-            const respuesta = yield database_1.default.query('SELECT * FROM roles');
-            res.json(respuesta);
+            const { nombre_rol, name_rol } = req.body;
+            try {
+                const nuevoRol = new roles_model_1.default({
+                    nombre_rol,
+                    name_rol
+                });
+                console.log(nuevoRol);
+                const rolGuardado = yield nuevoRol.save();
+                res.json({
+                    id: rolGuardado._id,
+                    nombre_empresa: rolGuardado.nombre_rol,
+                    name_rol: rolGuardado.name_rol,
+                    createAt: rolGuardado.createdAt,
+                    updateAt: rolGuardado.updatedAt
+                });
+            }
+            catch (error) {
+                res.status(500).json({ message: error.message });
+            }
         });
     }
     listOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const respuesta = yield database_1.default.query('SELECT * FROM roles WHERE id_rol = ?', [id]);
-            if (respuesta.length > 0) {
-                res.json(respuesta[0]);
-                return;
-            }
-            res.status(404).json({ 'mensaje': 'Rol no encontrado' });
-        });
-    }
-    //aqui va el crud
-    createRol(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            //console.log(req.body)
-            const resp = yield database_1.default.query("INSERT INTO roles set ?", [req.body]);
-            res.json(resp);
-            //res.json(null);
+            console.log("Mostrando un rol");
+            const role = yield roles_model_1.default.findById(req.params.id);
+            res.json(role);
         });
     }
     actualizarRol(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            //console.log(req.params);
-            console.log(id);
-            const resp = yield database_1.default.query("UPDATE roles set ? WHERE id_rol = ?", [req.body, id]);
-            res.json(resp);
-            //res.json(null);
+            console.log("Actualizando un rol");
+            const rol = yield roles_model_1.default.findByIdAndUpdate(req.params.id, req.body, { new: true });
+            res.json(rol);
         });
     }
-    eliminarRol(req, res) {
-        var _a;
+    mostrarRoles(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            // Obtener nombre_rol del rol que se va a eliminar
-            const respNombreRol = yield database_1.default.query(`SELECT nombre_rol FROM roles WHERE id_rol = ${id}`);
-            const nombreRol = (_a = respNombreRol[0]) === null || _a === void 0 ? void 0 : _a.nombre_rol;
-            // Eliminar ofertas laborales donde aparezca el nombre del rol en el campo puesto
-            yield database_1.default.query(`DELETE FROM ofertalaboral WHERE puesto = '${nombreRol}'`);
-            // Eliminar usuarios con el mismo id_rol
-            yield database_1.default.query(`DELETE FROM usuarios WHERE id_rol = ${id}`);
-            // Eliminar el rol
-            const resp = yield database_1.default.query(`DELETE FROM roles WHERE id_rol = ${id}`);
-            res.json(resp);
+            console.log("Mostrando Roles");
+            const rol = yield roles_model_1.default.find();
+            res.json(rol);
+        });
+    }
+    deleteRol(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Eliminando un rol");
+            try {
+                const role = yield roles_model_1.default.findByIdAndDelete(req.params.id);
+                if (!role) {
+                    res.status(404).json({ message: 'Rol no encontrado' });
+                }
+                else {
+                    res.json({ message: 'Rol eliminado exitosamente' });
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
         });
     }
 }

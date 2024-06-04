@@ -1,6 +1,7 @@
 import mongoose, { Schema, Model } from 'mongoose';
 
 interface RedSocial {
+    _id: string,
     nombre : string;
     enlace: string;
     foto: number;
@@ -24,12 +25,11 @@ const schemaRedSocial = new Schema<RedSocial>({
     foto:
     {
         type: Number,
-        required: true,
-        unique:true
+        required: true
     }
 },
     {
         timestamps: true
     }
 )
-export default mongoose.model('RedSocial', schemaRedSocial);
+export default mongoose.model('RedSocial', schemaRedSocial, 'red_social');
