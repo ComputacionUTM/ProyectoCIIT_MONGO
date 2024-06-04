@@ -12,6 +12,7 @@ import swaggerDocument from './swagger.json';
 import morgan from 'morgan';
 import cors from 'cors';
 import puestoRoutes from './routes/puestoRoutes';
+import LoginRoutes  from './routes/LoginRoutes';
 class Server {
     public app: Application;
     constructor() {
@@ -37,6 +38,8 @@ class Server {
         this.app.use('/api/redSocial', redSocialRoutes);
         this.app.use('/api/noticias', noticiasRoutes);
         this.app.use('/api/puesto',puestoRoutes);
+        this.app.use('/api/login', LoginRoutes);
+
     }
     start(): void {
         this.app.listen(this.app.get('port'), () => {
