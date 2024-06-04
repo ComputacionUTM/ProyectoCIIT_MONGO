@@ -1,6 +1,6 @@
 import express, { Application } from 'express';
 import usuariosRoutes from './routes/usuariosRoutes';
-import empresasRoutes from './routes/empresasRoutes';
+import empresasRoutes from './routes/EmpresasRoutes';
 import ofertalaboralRoutes from './routes/ofertalaboralRoutes';
 import rolesRoutes from './routes/rolesRoutes';
 import redSocialRoutes from './routes/redSocialRoutes';

@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
-const empresasRoutes_1 = __importDefault(require("./routes/empresasRoutes"));
+const EmpresasRoutes_1 = __importDefault(require("./routes/EmpresasRoutes"));
 const ofertalaboralRoutes_1 = __importDefault(require("./routes/ofertalaboralRoutes"));
 const rolesRoutes_1 = __importDefault(require("./routes/rolesRoutes"));
 const redSocialRoutes_1 = __importDefault(require("./routes/redSocialRoutes"));
@@ -16,6 +16,7 @@ const swagger_json_1 = __importDefault(require("./swagger.json"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const puestoRoutes_1 = __importDefault(require("./routes/puestoRoutes"));
+const LoginRoutes_1 = __importDefault(require("./routes/LoginRoutes"));
 class Server {
     constructor() {
         (0, database_1.connectDB)();
@@ -33,12 +34,13 @@ class Server {
     }
     routes() {
         this.app.use('/api/usuarios', usuariosRoutes_1.default);
-        this.app.use('/api/empresas', empresasRoutes_1.default);
+        this.app.use('/api/empresas', EmpresasRoutes_1.default);
         this.app.use('/api/ofertasLaborales', ofertalaboralRoutes_1.default);
         this.app.use('/api/roles', rolesRoutes_1.default);
         this.app.use('/api/redSocial', redSocialRoutes_1.default);
         this.app.use('/api/noticias', noticiasRoutes_1.default);
         this.app.use('/api/puesto', puestoRoutes_1.default);
+        this.app.use('/api/login', LoginRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
