@@ -8,6 +8,8 @@ class LoginRoutes {
     }
     config(): void {
         this.router.post('/',loginController.crearUsuario);
+        this.router.post('/login',loginController.login);
+        this.router.get('/logout',loginController.logout);
         /*this.router.get('/obtenerUsuario/:id',empresaController.listOne);
         this.router.post('/', empresaController.createUsuario);
         this.router.delete('/:id',empresaController.borrarUsuario);

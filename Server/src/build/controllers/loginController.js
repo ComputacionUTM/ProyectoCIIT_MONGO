@@ -53,6 +53,35 @@ class LoginController {
             }
         });
     }
+    login(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { correo, password } = req.body;
+            const usuarioEncontrado = yield login_model_1.default.findOne({ correo });
+            if (!usuarioEncontrado) //null es equivalente a 0
+                res.status(400).json({ mensaje: "Usuario no encontrado" });
+            else {
+                const esCorrecto = yield bcryptjs_1.default.compare(password, usuarioEncontrado.password);
+                if (!esCorrecto)
+                    res.status(400).json({ mensaje: "Credenciales inválidas" });
+                const token = yield (0, jwt_1.createAccesToken)({ id: usuarioEncontrado._id });
+                res.cookie('token', token);
+                res.json({
+                    id: usuarioEncontrado._id,
+                    correo: usuarioEncontrado.correo,
+                    createAt: usuarioEncontrado.createdAt,
+                    updateAt: usuarioEncontrado.updatedAt
+                });
+                //res.json(token)
+            }
+        });
+    }
+    logout(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("deslogueando");
+            res.cookie('token', "", { expires: new Date(0) }); //expira hoy
+            res.sendStatus(200);
+        });
+    }
 }
 //function decodeJWT(token: any) {
 //    return (Buffer.from(token.split('.')[1], 'base64').toString());

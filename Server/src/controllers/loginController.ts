@@ -43,6 +43,42 @@ class LoginController {
         }
     }
 
+    public async login(req: Request, res: Response): Promise<void> {
+        const {correo,password} = req.body
+        const usuarioEncontrado=await Login.findOne({correo});
+        
+        if(!usuarioEncontrado) //null es equivalente a 0
+            res.status(400).json({mensaje:"Usuario no encontrado"});
+        else{
+            const esCorrecto= await bcrypt.compare(password,usuarioEncontrado.password)
+            if(!esCorrecto)
+                res.status(400).json({mensaje:"Credenciales inválidas"});
+            
+            const token= await createAccesToken({id:usuarioEncontrado._id});
+            res.cookie('token',token);
+
+            res.json(
+                {
+                id:usuarioEncontrado._id,
+                correo:usuarioEncontrado.correo,
+                createAt:usuarioEncontrado.createdAt,
+                updateAt:usuarioEncontrado.updatedAt
+                })
+                
+            //res.json(token)
+        }
+
+
+
+    }
+
+    public async logout(req: Request, res: Response): Promise<void> {
+        console.log("deslogueando");
+        res.cookie('token',"",{expires: new Date(0)}) //expira hoy
+        res.sendStatus(200)
+    }
+        
+
     /*public async mostrar_todos_usuarios(req: Request, res: Response): Promise<void> {
         console.log("Mostrando todos usuario");
         const usuarios = await Usuario.find()
