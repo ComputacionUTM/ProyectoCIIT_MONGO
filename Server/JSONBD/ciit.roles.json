@@ -1,35 +1,14 @@
 [{
   "_id": {
-    "$oid": "664a5af0950fdffa9fbbb202"
+    "$oid": "664b6d266d7815e3042309f4"
   },
   "nombre_rol": "Administrador",
-  "name_rol": "Administrator"
-},
-{
-  "_id": {
-    "$oid": "664a5af0950fdffa9fbbb203"
+  "name_rol": "Admin",
+  "createdAt": {
+    "$date": "2024-05-20T15:32:54.041Z"
   },
-  "nombre_rol": "Usuario",
-  "name_rol": "User"
-},
-{
-  "_id": {
-    "$oid": "664a5af0950fdffa9fbbb204"
+  "updatedAt": {
+    "$date": "2024-05-20T15:32:54.041Z"
   },
-  "nombre_rol": "Jefe de Operaciones",
-  "name_rol": "Operation Boss"
-},
-{
-  "_id": {
-    "$oid": "664a5af0950fdffa9fbbb205"
-  },
-  "nombre_rol": "Prueba",
-  "name_rol": "Test"
-},
-{
-  "_id": {
-    "$oid": "664a5af0950fdffa9fbbb206"
-  },
-  "nombre_rol": "Palero",
-  "name_rol": "Shovel Worker"
+  "__v": 0
 }]

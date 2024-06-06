@@ -1,72 +1,36 @@
 [{
   "_id": {
-    "$oid": "6658aecef9269ab19e226648"
+    "$oid": "664ca9926d7322e963c55fd0"
   },
-  "nombre": "Ossi",
-  "direccion": "Calle 91",
-  "rfc": "RAPE090541",
-  "telefono": "56423114",
-  "responsable": "so",
-  "ciudad": "Oaxaca",
+  "nombre": "Erikue S.A. de C.V. Oaxaca",
+  "direccion": "Calle Geranio 9",
+  "rfc": "RAPE120177",
+  "telefono": "9531071388",
+  "responsable": "Erik Ramos",
   "createdAt": {
-    "$date": "2024-05-30T16:52:30.762Z"
+    "$date": "2024-05-21T14:02:58.848Z"
   },
   "updatedAt": {
-    "$date": "2024-05-30T16:52:30.762Z"
+    "$date": "2024-05-21T14:02:58.848Z"
   },
-  "__v": 0
+  "__v": 0,
+  "ciudad": "Oaxaca"
 },
 {
   "_id": {
-    "$oid": "6658aeeaf9269ab19e22664a"
+    "$oid": "664cba91e399ad8c137a91ce"
   },
-  "nombre": "coca",
-  "direccion": "Calle 1",
-  "rfc": "RAPE090",
-  "telefono": "56423114",
-  "responsable": "so",
-  "ciudad": "Puebla",
+  "nombre": "German S.A. de C.V. Puebla",
+  "direccion": "Calle Geranio 9",
+  "rfc": "RAPE120177",
+  "telefono": "9531071388",
+  "responsable": "Erik Ramos",
   "createdAt": {
-    "$date": "2024-05-30T16:52:58.593Z"
+    "$date": "2024-05-21T15:15:29.065Z"
   },
   "updatedAt": {
-    "$date": "2024-05-30T16:52:58.593Z"
+    "$date": "2024-05-21T15:15:29.065Z"
   },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6658afe16e34bb78a96f0c0e"
-  },
-  "nombre": "Pepsi",
-  "direccion": "Calle 2033",
-  "rfc": "RAPE04324290",
-  "telefono": "56423134614",
-  "responsable": "Erik",
-  "ciudad": "Oaxaca",
-  "createdAt": {
-    "$date": "2024-05-30T16:57:05.579Z"
-  },
-  "updatedAt": {
-    "$date": "2024-05-30T16:57:05.579Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6658b039bfd8017b1d8bfc82"
-  },
-  "nombre": "Pepsi",
-  "direccion": "Calle 2033",
-  "rfc": "RAPE04324290",
-  "telefono": "56423134614",
-  "responsable": "Erik",
-  "ciudad": "Oaxaca",
-  "createdAt": {
-    "$date": "2024-05-30T16:58:33.318Z"
-  },
-  "updatedAt": {
-    "$date": "2024-05-30T16:58:33.318Z"
-  },
-  "__v": 0
+  "__v": 0,
+  "ciudad": "Puebla"
 }]

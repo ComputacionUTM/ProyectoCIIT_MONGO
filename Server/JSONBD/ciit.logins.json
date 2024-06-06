@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "66608da46d2517c0e846f0c0"
+  },
+  "correo": "a@correo.com",
+  "password": "$2a$10$fVVn9Jqa02.GpNeI6RsSbO7oCQiTKC75FArvLcvD61CC4rx9hGz2e",
+  "createdAt": {
+    "$date": "2024-06-05T16:09:08.753Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-05T16:09:08.753Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66608dfb6d2517c0e846f0c2"
+  },
+  "correo": "correo@correo.com",
+  "password": "$2a$10$eeYz8JTCz0B2Fu6OmyRZ3ubKKMFmXGdRFh3Jeg5SEEKxLt6DorIYW",
+  "createdAt": {
+    "$date": "2024-06-05T16:10:35.993Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-05T16:10:35.993Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6660916d4d7d4718727db39b"
+  },
+  "correo": "correo@correo.com",
+  "password": "$2a$10$7ITL2/G04zZk5w.ScMFc7OjL39UETsrhymqruEA87z1X318WUsSvW",
+  "createdAt": {
+    "$date": "2024-06-05T16:25:17.171Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-05T16:25:17.171Z"
+  },
+  "__v": 0
+}]

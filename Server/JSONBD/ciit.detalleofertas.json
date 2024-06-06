@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "6657491d681dd018e7ff43a2"
+  },
+  "horario": "9:00-14:00",
+  "oficina": "16-B",
+  "detalleOferta_id": {
+    "$oid": "6655d122927ec69b5f0bdd9f"
+  }
+},
+{
+  "_id": {
+    "$oid": "665df2f1612a6aa184758fbd"
+  },
+  "horario": "16:00-19:00",
+  "oficina": "17-B",
+  "detalleOferta_id": {
+    "$oid": "6655d122927ec69b5f0bdd9f"
+  }
+}]

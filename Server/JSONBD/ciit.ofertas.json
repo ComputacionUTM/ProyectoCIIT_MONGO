@@ -1,0 +1,76 @@
+[{
+  "_id": {
+    "$oid": "6655d0ac927ec69b5f0bdd90"
+  },
+  "descripcion": "Programar hasta morir",
+  "sexo": "M",
+  "sueldo": 25000,
+  "empresa_id": {
+    "$oid": "664cba91e399ad8c137a91ce"
+  },
+  "createdAt": {
+    "$date": "2024-05-28T12:40:12.269Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-28T12:40:12.269Z"
+  },
+  "__v": 0,
+  "nombreOferta": "Programador front end"
+},
+{
+  "_id": {
+    "$oid": "6655d0c7927ec69b5f0bdd93"
+  },
+  "descripcion": "Programar hasta morir",
+  "sexo": "D",
+  "sueldo": 35000,
+  "empresa_id": {
+    "$oid": "664cba91e399ad8c137a91ce"
+  },
+  "createdAt": {
+    "$date": "2024-05-28T12:40:39.537Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-28T12:40:39.537Z"
+  },
+  "__v": 0,
+  "nombreOferta": "Programador back end"
+},
+{
+  "_id": {
+    "$oid": "6655d0d3927ec69b5f0bdd96"
+  },
+  "descripcion": "Programar hasta morir",
+  "sexo": "H",
+  "sueldo": 50000,
+  "empresa_id": {
+    "$oid": "664cba91e399ad8c137a91ce"
+  },
+  "createdAt": {
+    "$date": "2024-05-28T12:40:51.082Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-28T12:40:51.082Z"
+  },
+  "__v": 0,
+  "nombreOferta": "Programador full stack"
+},
+{
+  "_id": {
+    "$oid": "6655d122927ec69b5f0bdd9f"
+  },
+  "descripcion": "Programar hasta morir",
+  "sexo": "H",
+  "sueldo": 10000,
+  "empresa_id": {
+    "$oid": "664ca9926d7322e963c55fd0"
+  },
+  "createdAt": {
+    "$date": "2024-05-28T12:42:10.438Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-28T12:42:10.438Z"
+  },
+  "__v": 0,
+  "nombreOferta": "Programador front end"
+}]
