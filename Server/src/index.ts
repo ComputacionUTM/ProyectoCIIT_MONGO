@@ -29,12 +29,12 @@ class Server {
         this.app.use(morgan('dev')); //que ejecutamos y que tiempo
         this.app.use(cors());
         this.app.use(express.json()); //permite que utilicemos json
-        this.app.use(express.urlencoded({ extended: false })); //decodifca las url
         this.app.use(cookiePArser());
+        this.app.use(express.urlencoded({ extended: false })); //decodifca las url
     }
     routes(): void {
         this.app.use('/api/usuarios', usuariosRoutes);
-        this.app.use('/api/empresas', empresasRoutes);
+        this.app.use('/api/empresas', empresasRoutes);  //Se puede validar todas las rutas sin tener que hacerlo una a una
         this.app.use('/api/ofertasLaborales', ofertalaboralRoutes);
         this.app.use('/api/roles', rolesRoutes);
         this.app.use('/api/redSocial', redSocialRoutes);

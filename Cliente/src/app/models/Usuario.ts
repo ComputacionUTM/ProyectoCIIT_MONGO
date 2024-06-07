@@ -10,9 +10,9 @@ export class Usuario{
     constructor() {
         this.id=0;
         this.nombre = '';
-        this.correo = 'Angel@gmail.com';
+        this.correo = 'correo@correo.com';
         this.id_Rol = 3;
-        this.contrasena = '789*';
+        this.contrasena = 'x';
         this.fotito = 0;
       //  this.imagenUrl='';
     }

@@ -84,7 +84,7 @@ class LoginController {
     }
     perfil(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.status(200).json({ mensaje: "Perfil" });
+            console.log(req.usuario);
             const loginEncontrado = yield login_model_1.default.findById(req.usuario.id);
             if (!loginEncontrado)
                 res.status(400).json({ mensaje: "Usuario no encontrado" });

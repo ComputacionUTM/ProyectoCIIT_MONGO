@@ -31,12 +31,12 @@ class Server {
         this.app.use((0, morgan_1.default)('dev')); //que ejecutamos y que tiempo
         this.app.use((0, cors_1.default)());
         this.app.use(express_1.default.json()); //permite que utilicemos json
-        this.app.use(express_1.default.urlencoded({ extended: false })); //decodifca las url
         this.app.use((0, cookie_parser_1.default)());
+        this.app.use(express_1.default.urlencoded({ extended: false })); //decodifca las url
     }
     routes() {
         this.app.use('/api/usuarios', usuariosRoutes_1.default);
-        this.app.use('/api/empresas', EmpresasRoutes_1.default);
+        this.app.use('/api/empresas', EmpresasRoutes_1.default); //Se puede validar todas las rutas sin tener que hacerlo una a una
         this.app.use('/api/ofertasLaborales', ofertalaboralRoutes_1.default);
         this.app.use('/api/roles', rolesRoutes_1.default);
         this.app.use('/api/redSocial', redSocialRoutes_1.default);

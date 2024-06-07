@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const empresasController_1 = require("../controllers/empresasController");
+const auth_1 = require("../middleware/auth");
 class EmpresasRoutes {
     constructor() {
         this.router = (0, express_1.Router)();
@@ -9,7 +10,7 @@ class EmpresasRoutes {
     }
     config() {
         this.router.post('/crearEmpresa/', empresasController_1.empresaController.createEmpresa);
-        this.router.get('/MostrarTodasEmpresas/', empresasController_1.empresaController.mostrar_todos_empresa);
+        this.router.get('/MostrarTodasEmpresas/', auth_1.validarToken, empresasController_1.empresaController.mostrar_todos_empresa);
         this.router.put('/actualizarEmpresa/:id', empresasController_1.empresaController.actualizarEmpresa);
         this.router.delete('/eliminarEmpresa/:id', empresasController_1.empresaController.eliminarEmpresa);
         this.router.get('/ListOneEmpresa/:id', empresasController_1.empresaController.listOne);
@@ -18,6 +19,6 @@ class EmpresasRoutes {
         this.router.get('/ListMergeProjection/', empresasController_1.empresaController.ListMergeProjection);
         this.router.put('/actualizarFotito/:id', empresasController_1.empresaController.actualizarFotito);
     }
-}
+} //http://localhost:3000/api/empresas/MostrarTodasEmpresas/
 const empresasRoutes = new EmpresasRoutes();
 exports.default = empresasRoutes.router;

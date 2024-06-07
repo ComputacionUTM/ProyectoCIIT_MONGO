@@ -12,9 +12,14 @@ list() {
 }
 
 existe(correo : any, password : any){ 
-  return this.http.post(`${environment.API_URI}/usuarios/ValidarUsuario`,{"correo":correo, "contrasena":password});
+  return this.http.post(`${environment.API_URI}/login/login`,{"correo":correo, "password":password});
+  //return this.http.post(`${environment.API_URI}/usuarios/ValidarUsuario`,{"correo":correo, "contrasena":password});
 }
 
+perfil(){ 
+  return this.http.get(`${environment.API_URI}/login/perfil`);
+  //return this.http.post(`${environment.API_URI}/usuarios/ValidarUsuario`,{"correo":correo, "contrasena":password});
+}
 eliminarUsuario(id : any){ 
   return this.http.delete(`${environment.API_URI}/usuarios/eliminarUsuario/${id}`);
 }

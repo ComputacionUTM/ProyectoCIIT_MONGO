@@ -78,8 +78,11 @@ class LoginController {
         res.sendStatus(200)
     }
     public async perfil(req: any, res: Response): Promise<void> {
-        res.status(200).json({ mensaje: "Perfil" })
+        console.log(req.usuario)
+        
         const loginEncontrado = await Login.findById(req.usuario.id)
+
+        
         if (!loginEncontrado)
             res.status(400).json({ mensaje: "Usuario no encontrado" })
         res.json({
@@ -89,6 +92,7 @@ class LoginController {
             updatedAt: loginEncontrado?.updatedAt
         })
     }
+    //http://localhost:3000/api/login/perfil
 
 
 

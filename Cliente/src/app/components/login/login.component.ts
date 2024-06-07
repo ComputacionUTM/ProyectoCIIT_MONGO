@@ -28,15 +28,18 @@ export class LoginComponent {
     this.verificarIdioma();
     this.usuarioService.existe(this.usuario.correo,this.usuario.contrasena).subscribe((resusuario: any) =>
     {
-      if(resusuario.id_Rol != -1)
-      {
-        localStorage.setItem('correo', resusuario.correo);
-        localStorage.setItem('id_Rol', resusuario.id_Rol);
-        localStorage.setItem('idioma','1');
-        this.router.navigateByUrl('/principal');
-      }else{
-        console.log("Error, usuario o contrasena no valida");
-      }
+        console.log(resusuario);
+        this.usuarioService.perfil().subscribe((resPerfil: any) =>
+          {
+              console.log(resPerfil);
+              
+              //this.router.navigateByUrl('/principal');
+            
+          },
+          err => console.error(err)
+          );
+        //this.router.navigateByUrl('/principal');
+      
     },
     err => console.error(err)
     );
