@@ -82,6 +82,20 @@ class LoginController {
             res.sendStatus(200);
         });
     }
+    perfil(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            res.status(200).json({ mensaje: "Perfil" });
+            const loginEncontrado = yield login_model_1.default.findById(req.usuario.id);
+            if (!loginEncontrado)
+                res.status(400).json({ mensaje: "Usuario no encontrado" });
+            res.json({
+                id: loginEncontrado === null || loginEncontrado === void 0 ? void 0 : loginEncontrado._id,
+                correo: loginEncontrado === null || loginEncontrado === void 0 ? void 0 : loginEncontrado.correo,
+                createdAt: loginEncontrado === null || loginEncontrado === void 0 ? void 0 : loginEncontrado.createdAt,
+                updatedAt: loginEncontrado === null || loginEncontrado === void 0 ? void 0 : loginEncontrado.updatedAt
+            });
+        });
+    }
 }
 //function decodeJWT(token: any) {
 //    return (Buffer.from(token.split('.')[1], 'base64').toString());

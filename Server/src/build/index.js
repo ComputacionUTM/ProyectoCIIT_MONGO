@@ -11,6 +11,7 @@ const rolesRoutes_1 = __importDefault(require("./routes/rolesRoutes"));
 const redSocialRoutes_1 = __importDefault(require("./routes/redSocialRoutes"));
 const noticiasRoutes_1 = __importDefault(require("./routes/noticiasRoutes"));
 const database_1 = require("./database"); //acceso a la base de datos
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_json_1 = __importDefault(require("./swagger.json"));
 const morgan_1 = __importDefault(require("morgan"));
@@ -31,6 +32,7 @@ class Server {
         this.app.use((0, cors_1.default)());
         this.app.use(express_1.default.json()); //permite que utilicemos json
         this.app.use(express_1.default.urlencoded({ extended: false })); //decodifca las url
+        this.app.use((0, cookie_parser_1.default)());
     }
     routes() {
         this.app.use('/api/usuarios', usuariosRoutes_1.default);

@@ -1,34 +1,29 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validarToken = void 0;
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const validarToken = (req, res, next) => {
     dotenv_1.default.config();
-    const bearerHeader = req.headers.bearer;
-    if (typeof bearerHeader !== 'undefined') {
-        const bearerToken = bearerHeader + "";
-        console.log("Process env : ", process.env.TOKEN_SEGURIDAD);
-        jsonwebtoken_1.default.verify(bearerToken, process.env.TOKEN_SECRET || 'prueba', (error, authData) => __awaiter(void 0, void 0, void 0, function* () {
-            if (error)
-                res.sendStatus(403);
-            else
-                next();
-        }));
-    }
-    else
-        res.sendStatus(403);
+    const palabraSecreta = process.env.TOKEN_SECRET;
+    console.log(req);
+    console.log("valida", req.cookie);
+    next();
+    //const { token } = req.cookies;
+    // console.log(token);
+    // if (!token) {
+    //     return res.status(401).json({ mensaj: "No token, autorización denegada" })
+    // }
+    // else {
+    //     jwt.verify(token, palabraSecreta!, (err: any, user: any) => {
+    //         if (err)
+    //             return res.status(403).json({ mensaje: "token inválido" });
+    //         console.log("usuario", user);
+    //         req.usuario = user;
+    //     })
+    //     next();
+    // }
 };
 exports.validarToken = validarToken;

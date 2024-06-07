@@ -6,6 +6,7 @@ import rolesRoutes from './routes/rolesRoutes';
 import redSocialRoutes from './routes/redSocialRoutes';
 import noticiasRoutes from './routes/noticiasRoutes';
 import { connectDB } from './database'; //acceso a la base de datos
+import cookiePArser from 'cookie-parser'
 
 import swagger_ui_express from 'swagger-ui-express';
 import swaggerDocument from './swagger.json';
@@ -29,6 +30,7 @@ class Server {
         this.app.use(cors());
         this.app.use(express.json()); //permite que utilicemos json
         this.app.use(express.urlencoded({ extended: false })); //decodifca las url
+        this.app.use(cookiePArser());
     }
     routes(): void {
         this.app.use('/api/usuarios', usuariosRoutes);
