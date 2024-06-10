@@ -27,7 +27,7 @@ class Server {
     config(): void {
         this.app.set('port', process.env.PORT || 3000); //En que puerto va a ejecutar
         this.app.use(morgan('dev')); //que ejecutamos y que tiempo
-        this.app.use(cors());
+        this .app.use(cors({origin:  "http://localhost:4200" , credentials:  true })); 
         this.app.use(express.json()); //permite que utilicemos json
         this.app.use(cookiePArser());
         this.app.use(express.urlencoded({ extended: false })); //decodifca las url

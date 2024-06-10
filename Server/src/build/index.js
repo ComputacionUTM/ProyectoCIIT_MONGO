@@ -29,7 +29,7 @@ class Server {
     config() {
         this.app.set('port', process.env.PORT || 3000); //En que puerto va a ejecutar
         this.app.use((0, morgan_1.default)('dev')); //que ejecutamos y que tiempo
-        this.app.use((0, cors_1.default)());
+        this.app.use((0, cors_1.default)({ origin: "http://localhost:4200", credentials: true }));
         this.app.use(express_1.default.json()); //permite que utilicemos json
         this.app.use((0, cookie_parser_1.default)());
         this.app.use(express_1.default.urlencoded({ extended: false })); //decodifca las url

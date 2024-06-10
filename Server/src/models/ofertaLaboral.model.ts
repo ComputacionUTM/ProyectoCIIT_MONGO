@@ -44,7 +44,7 @@ const schemaOfertaLaboral = new Schema<OfertaLaboral>({
     {
         type: Schema.Types.ObjectId,
         ref: 'Empresa',
-        require: true
+        required: true
     }
 }, {
     timestamps: true

@@ -12,7 +12,7 @@ list() {
 }
 
 existe(correo : any, password : any){ 
-  return this.http.post(`${environment.API_URI}/login/login`,{"correo":correo, "password":password});
+  return this.http.post(`${environment.API_URI}/login/login`,{"correo":correo, "password":password},{withCredentials:  true  }  );
   //return this.http.post(`${environment.API_URI}/usuarios/ValidarUsuario`,{"correo":correo, "contrasena":password});
 }
 

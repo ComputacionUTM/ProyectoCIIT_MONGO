@@ -29,15 +29,15 @@ export class LoginComponent {
     this.usuarioService.existe(this.usuario.correo,this.usuario.contrasena).subscribe((resusuario: any) =>
     {
         console.log(resusuario);
-        this.usuarioService.perfil().subscribe((resPerfil: any) =>
-          {
-              console.log(resPerfil);
+        //this.usuarioService.perfil().subscribe((resPerfil: any) =>
+       //   {
+           //   console.log(resPerfil);
               
               //this.router.navigateByUrl('/principal');
             
-          },
-          err => console.error(err)
-          );
+        //  },
+      //    err => console.error(err)
+       //   );
         //this.router.navigateByUrl('/principal');
       
     },
