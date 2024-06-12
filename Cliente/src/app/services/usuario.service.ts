@@ -17,9 +17,14 @@ existe(correo : any, password : any){
 }
 
 perfil(){ 
-  return this.http.get(`${environment.API_URI}/login/perfil`);
+  return this.http.get(`${environment.API_URI}/login/perfil`,{withCredentials:true});
   //return this.http.post(`${environment.API_URI}/usuarios/ValidarUsuario`,{"correo":correo, "contrasena":password});
 }
+
+deslogin(){
+  return this.http.get(`${environment.API_URI}/login/`,{withCredentials:true});
+  }
+  
 eliminarUsuario(id : any){ 
   return this.http.delete(`${environment.API_URI}/usuarios/eliminarUsuario/${id}`);
 }
