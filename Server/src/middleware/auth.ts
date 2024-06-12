@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 export const validarToken = (req: any, res: Response, next: NextFunction) => {
     dotenv.config();
     const palabraSecreta = process.env.TOKEN_SECRET
+    console.log(req.cookies);
+    
     const { token } = req.cookies;
     console.log("token: ", token)
     if (!token) {

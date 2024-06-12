@@ -9,6 +9,8 @@ import { OlvideContrasenaComponent } from './components/olvide-contrasena/olvide
 import { PrincipalComponent } from './components/principal/principal.component';
 import { OfertaLaboralComponent } from './components/oferta-laboral/oferta-laboral.component';
 import { RolesComponent } from './components/roles/roles.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+PerfilComponent
 const routes: Routes = [
   {
     path:"",
@@ -42,6 +44,10 @@ const routes: Routes = [
       {
         path: 'empresa',
         component: EmpresaComponent
+      },
+      {
+        path: 'perfil',
+        component: PerfilComponent
       },
       {
         path: 'ofertaLaboral',

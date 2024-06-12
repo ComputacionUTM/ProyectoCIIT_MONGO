@@ -9,6 +9,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const validarToken = (req, res, next) => {
     dotenv_1.default.config();
     const palabraSecreta = process.env.TOKEN_SECRET;
+    console.log(req.cookies);
     const { token } = req.cookies;
     console.log("token: ", token);
     if (!token) {

@@ -77,12 +77,11 @@ class LoginController {
         res.cookie('token', "", { expires: new Date(0) }) //expira hoy
         res.sendStatus(200)
     }
+
     public async perfil(req: any, res: Response): Promise<void> {
         console.log(req.usuario)
         
         const loginEncontrado = await Login.findById(req.usuario.id)
-
-        
         if (!loginEncontrado)
             res.status(400).json({ mensaje: "Usuario no encontrado" })
         res.json({
